@@ -12,8 +12,8 @@
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import "MainFeedCustomClass.h"
 #import "CustomCell.h"
-
-
+#import "RecipeDetailsViewController.h"
+#import "AddRecipeViewController.h"
 
 
 @interface MainFeedTableViewController ()
@@ -42,18 +42,41 @@
     recipe1.userName =@"Matthew Darke";
     recipe1.userFollow = @"22";
     recipe1.likes = @"11";
+    recipe1.serving = @"4";
+    recipe1.ingredients1 =@"Monterey Jack cheese";
+    recipe1.ingredients2 =@"1 large red onion";
+    recipe1.ingredients3 =@"1 bag of dried pacilla chillies";
+    recipe1.ingredients4 =@"1 tsp onion powder";
+    recipe1.ingredients5 =@"2 cloves of garlic";
+    recipe1.ingredients6 =@"1 tsp salt";
+    recipe1.directionsLable = @"fry each tortilla in hot oil a few seconds on each side to soften. drain/set-aside\n\n2. put a small handful of both cheese on a tortilla. Add a sprinkle of onions. Roll up and place seam side down in a baking pan";
+    
+    
     
     recipe1.recipeTitle = @"Cheese Enchaladas with pascilla sauce";
     recipe1.userImage = [UIImage imageNamed:@"MeImage.jpg"];
     recipe1.recipeImage = [UIImage imageNamed:@"IMG_1732.jpg"];
-   
+ 
+    
+    
+    
+    /////////////////////////////////////////////////////////////////////////////
+    
     
     
     MainFeedCustomClass *recipe2 = [[MainFeedCustomClass alloc]init];
     recipe2.userName =@"Jessica Darke";
     recipe2.userFollow = @"30";
     recipe2.likes = @"22";
-    
+    recipe2.serving = @"4";
+    recipe2.ingredients1 =@"4 scalloped chicken brest";
+    recipe2.ingredients2 =@"4 small shallots";
+    recipe2.ingredients3 =@"1 cup heavy whipping cream";
+    recipe2.ingredients4 =@"1 tsp safforon";
+    recipe2.ingredients5 =@"2 cups white wine";
+    recipe2.ingredients6 =@"1 tsp salt";
+    recipe2.directionsLable = @"fry each tortilla in hot oil a few seconds on each side to soften. drain/set-aside\n\n2. put a small handful of both cheese on a tortilla. Add a sprinkle of onions. Roll up and place seam side down in a baking pan";
+
     recipe2.recipeTitle = @"Chicken Scallopinni with a saffron cream wine sauce";
     recipe2.userImage = [UIImage imageNamed:@"jess.jpg"];
     recipe2.recipeImage = [UIImage imageNamed:@"IMG_Scallopinni.jpg"];
@@ -71,15 +94,32 @@
     [self->myTabelView reloadData];
     
     
-    
-    
-    
-    
-    
-    
+}
+
+
+
+-(IBAction)backTotheStart:(UIStoryboardSegue *)segue
+
+
+
+
+{
+
     
     
 }
+
+
+- (IBAction)commentButn:(id)sender {
+    
+    [self performSegueWithIdentifier:@"DetailsSegue" sender:self];
+    
+    
+}
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -117,6 +157,13 @@
 }
 
 
+
+
+
+
+
+
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -151,14 +198,36 @@
 }
 */
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+  
+    if ([segue.identifier isEqualToString:@"AddRecipeSegue"])
+    {
+       AddRecipeViewController *destViewController = segue.destinationViewController;
+    
+    
+    
+    }
+    
+    
+    
+    else if ([segue.identifier isEqualToString:@"DetailsSegue"])
+        
+    {
+    
+        
+        RecipeDetailsViewController *destViewController = segue.destinationViewController;
+        
+        NSIndexPath *indexPath = [self.mmyTableView indexPathForSelectedRow];
+        destViewController.currentRecipe = [recipeArray objectAtIndex:indexPath.row];
+    
+    
+    }
+    
+    
 }
-*/
+
 
 @end

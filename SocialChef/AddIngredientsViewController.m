@@ -19,6 +19,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
+    barButton.title = @"Back";
+    self.navigationController.navigationBar.topItem.backBarButtonItem = barButton;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,6 +58,7 @@
                 [eventAlertView show];
                 
                 [eventAlertView dismissWithClickedButtonIndex:0 animated:YES];
+                
             }
             
             
@@ -85,7 +90,7 @@
     
     [self performSelector:@selector(submitForm)];
     
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
     
 
 
@@ -104,14 +109,21 @@
 
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if (sender == self.done) return;
+        
+    
+    
+    
+    
+    
+    
 }
-*/
+
 
 @end

@@ -19,8 +19,11 @@
     
 }
 
+
+@property (weak, nonatomic) IBOutlet UITableView *mmyTableView;
+
 @property (strong, nonatomic) NSMutableArray* recipeArray;
 
-
+- (IBAction)commentButn:(id)sender;
 
 @end

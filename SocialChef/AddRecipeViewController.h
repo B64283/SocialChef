@@ -15,6 +15,7 @@
 {
    NSMutableArray *userStrIngArray;
     IBOutlet UIAlertView *alert;
+    
     __weak IBOutlet UIImageView *imageView;
     
     UIImagePickerController *picker;
@@ -24,8 +25,11 @@
 }
 
 
--(IBAction)TakePhoto:(id)sender; 
+-(IBAction)TakePhoto:(id)sender;
+-(IBAction)Sharerecipe:(id)sender;
 
+
+@property (strong, nonatomic)IBOutlet UIBarButtonItem *share;
 
 @property (strong, nonatomic) NSMutableArray* userStrIngArray;
 

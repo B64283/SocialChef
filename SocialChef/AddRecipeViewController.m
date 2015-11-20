@@ -100,6 +100,20 @@
     
 }
 
+-(IBAction)Sharerecipe:(id)sender{
+    UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"Congratulations you've shared your first recipe on Social Chef!!!" message:nil delegate:self cancelButtonTitle:@"SWEET!" otherButtonTitles: nil, nil];
+    
+    if(eventAlertView != nil)
+        
+    {
+        [eventAlertView show];
+    }
+    
+[eventAlertView dismissWithClickedButtonIndex:0 animated:YES];
+
+}
+
+
 
 
 -(IBAction)TakePhoto:(id)sender {
@@ -208,9 +222,12 @@
     }
 }
 
--(IBAction)back:(id)sender
+-(IBAction)backTotheStart:(UIStoryboardSegue *)segue
+
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    //AddIngredientsViewController *source = segue.sourceViewController;
+    
+    
 }
 
 

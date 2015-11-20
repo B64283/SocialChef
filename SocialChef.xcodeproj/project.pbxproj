@@ -68,6 +68,15 @@
 		24F90D9E1BF4107700A6EA3B /* dreamstime_l_57968381.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 24F90D9D1BF4107700A6EA3B /* dreamstime_l_57968381.jpg */; };
 		24F90DA31BF460C000A6EA3B /* Social-ChefIconFix.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F90DA21BF460C000A6EA3B /* Social-ChefIconFix.png */; };
 		24F90DA61BF4669400A6EA3B /* MainFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F90DA51BF4669400A6EA3B /* MainFeedTableViewController.m */; };
+		24F929D11BFDA6340009A598 /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F929D01BFDA6340009A598 /* ProfileTableViewController.m */; };
+		24F929D31BFDCE610009A598 /* Screen Shot 2015-11-19 at 1.29.40 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F929D21BFDCE610009A598 /* Screen Shot 2015-11-19 at 1.29.40 AM.png */; };
+		24F929D51BFDE2180009A598 /* Follow.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F929D41BFDE2180009A598 /* Follow.png */; };
+		24F929D71BFDE2200009A598 /* Following.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F929D61BFDE2200009A598 /* Following.png */; };
+		24F929DB1BFE36B40009A598 /* house-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F929D81BFE36B40009A598 /* house-7.png */; };
+		24F929DC1BFE36B40009A598 /* clock-timer-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F929D91BFE36B40009A598 /* clock-timer-7.png */; };
+		24F929DD1BFE36B40009A598 /* shopping-cart-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F929DA1BFE36B40009A598 /* shopping-cart-7.png */; };
+		24F929DF1BFE38770009A598 /* gear-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F929DE1BFE38770009A598 /* gear-7.png */; };
+		24F929E11BFE3D5E0009A598 /* circle-user-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F929E01BFE3D5E0009A598 /* circle-user-7.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +174,16 @@
 		24F90DA21BF460C000A6EA3B /* Social-ChefIconFix.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Social-ChefIconFix.png"; sourceTree = "<group>"; };
 		24F90DA41BF4669400A6EA3B /* MainFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainFeedTableViewController.h; sourceTree = "<group>"; };
 		24F90DA51BF4669400A6EA3B /* MainFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainFeedTableViewController.m; sourceTree = "<group>"; };
+		24F929CF1BFDA6340009A598 /* ProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewController.h; sourceTree = "<group>"; };
+		24F929D01BFDA6340009A598 /* ProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewController.m; sourceTree = "<group>"; };
+		24F929D21BFDCE610009A598 /* Screen Shot 2015-11-19 at 1.29.40 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2015-11-19 at 1.29.40 AM.png"; sourceTree = "<group>"; };
+		24F929D41BFDE2180009A598 /* Follow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Follow.png; sourceTree = "<group>"; };
+		24F929D61BFDE2200009A598 /* Following.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Following.png; sourceTree = "<group>"; };
+		24F929D81BFE36B40009A598 /* house-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "house-7.png"; sourceTree = "<group>"; };
+		24F929D91BFE36B40009A598 /* clock-timer-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-timer-7.png"; sourceTree = "<group>"; };
+		24F929DA1BFE36B40009A598 /* shopping-cart-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shopping-cart-7.png"; sourceTree = "<group>"; };
+		24F929DE1BFE38770009A598 /* gear-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear-7.png"; sourceTree = "<group>"; };
+		24F929E01BFE3D5E0009A598 /* circle-user-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-user-7.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,8 +262,14 @@
 			children = (
 				24F90DA21BF460C000A6EA3B /* Social-ChefIconFix.png */,
 				24F90D991BF407AF00A6EA3B /* Social-414Chef.png */,
+				24F929D21BFDCE610009A598 /* Screen Shot 2015-11-19 at 1.29.40 AM.png */,
+				24F929D81BFE36B40009A598 /* house-7.png */,
+				24F929D91BFE36B40009A598 /* clock-timer-7.png */,
+				24F929DA1BFE36B40009A598 /* shopping-cart-7.png */,
 				240BEF931BFA6B37004E35FA /* socialIcon.png */,
 				240BEF8F1BFA5F19004E35FA /* NewRed.png */,
+				24F929D41BFDE2180009A598 /* Follow.png */,
+				24F929D61BFDE2200009A598 /* Following.png */,
 				240BEF911BFA6156004E35FA /* Commenticon.png */,
 				240BEF951BFA7A8D004E35FA /* socialButton.png */,
 				240BEF731BF57060004E35FA /* Social-Chef.png */,
@@ -252,6 +277,7 @@
 				240BEF8B1BF876FB004E35FA /* whiteCircle.png */,
 				240BEF851BF5E4E4004E35FA /* jess.jpg */,
 				240BEF7F1BF5DB8F004E35FA /* IMG_1732.jpg */,
+				24F929DE1BFE38770009A598 /* gear-7.png */,
 				240BEF871BF86ADA004E35FA /* heart.png */,
 				240BEF831BF5E3E8004E35FA /* MeImage.jpg */,
 				240BEF971BFA7D8F004E35FA /* launchscreen.png */,
@@ -262,6 +288,7 @@
 				24F90D951BF3EF6200A6EA3B /* Social-ChefNew.png */,
 				24F90D971BF3EFEC00A6EA3B /* 600Social-Chef.png */,
 				24F90D9D1BF4107700A6EA3B /* dreamstime_l_57968381.jpg */,
+				24F929E01BFE3D5E0009A598 /* circle-user-7.png */,
 				24F90D931BF3EECE00A6EA3B /* Social-LogoChef.png */,
 				24F90D8F1BF3E2BD00A6EA3B /* dreamstime_l_38524672.jpg */,
 				24F90D911BF3E4B800A6EA3B /* Untitled-1.png */,
@@ -295,6 +322,8 @@
 			isa = PBXGroup;
 			children = (
 				24F90D391BF2B9B100A6EA3B /* Main.storyboard */,
+				24F929CF1BFDA6340009A598 /* ProfileTableViewController.h */,
+				24F929D01BFDA6340009A598 /* ProfileTableViewController.m */,
 				2484CED01BFBC60A00AFF478 /* CustomIngredientCell.h */,
 				2484CED11BFBC60A00AFF478 /* CustomIngredientCell.m */,
 				2484CECD1BFBB8B600AFF478 /* AddRecipeViewController.h */,
@@ -456,10 +485,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24F929E11BFE3D5E0009A598 /* circle-user-7.png in Resources */,
 				240BEF8E1BFA5F0B004E35FA /* BlackHeart.png in Resources */,
 				240BEF941BFA6B37004E35FA /* socialIcon.png in Resources */,
+				24F929DC1BFE36B40009A598 /* clock-timer-7.png in Resources */,
 				240BEF821BF5DB94004E35FA /* IMG_1701.jpg in Resources */,
 				240BEF7E1BF5DB79004E35FA /* IMG_Scallopinni.jpg in Resources */,
+				24F929DB1BFE36B40009A598 /* house-7.png in Resources */,
 				240BEF841BF5E3E8004E35FA /* MeImage.jpg in Resources */,
 				240BEF801BF5DB8F004E35FA /* IMG_1732.jpg in Resources */,
 				24F90D431BF2B9B100A6EA3B /* LaunchScreen.storyboard in Resources */,
@@ -475,9 +507,14 @@
 				240BEF861BF5E4E4004E35FA /* jess.jpg in Resources */,
 				240BEF981BFA7D8F004E35FA /* launchscreen.png in Resources */,
 				240BEF741BF57060004E35FA /* Social-Chef.png in Resources */,
+				24F929DD1BFE36B40009A598 /* shopping-cart-7.png in Resources */,
 				24F90D3B1BF2B9B100A6EA3B /* Main.storyboard in Resources */,
 				240BEF881BF86ADA004E35FA /* heart.png in Resources */,
 				240BEF8C1BF876FB004E35FA /* whiteCircle.png in Resources */,
+				24F929D31BFDCE610009A598 /* Screen Shot 2015-11-19 at 1.29.40 AM.png in Resources */,
+				24F929D71BFDE2200009A598 /* Following.png in Resources */,
+				24F929D51BFDE2180009A598 /* Follow.png in Resources */,
+				24F929DF1BFE38770009A598 /* gear-7.png in Resources */,
 				24F90D961BF3EF6200A6EA3B /* Social-ChefNew.png in Resources */,
 				240BEF8A1BF873C5004E35FA /* imagecirclef.png in Resources */,
 				240BEF901BFA5F19004E35FA /* NewRed.png in Resources */,
@@ -517,6 +554,7 @@
 				240BEF791BF5AB65004E35FA /* CustomCell.m in Sources */,
 				24F90D321BF2B9B100A6EA3B /* main.m in Sources */,
 				2484CED21BFBC60A00AFF478 /* CustomIngredientCell.m in Sources */,
+				24F929D11BFDA6340009A598 /* ProfileTableViewController.m in Sources */,
 				24F90D8E1BF34C9000A6EA3B /* LoginViewController.m in Sources */,
 				240BEF9B1BFB13E7004E35FA /* RecipeDetailsViewController.m in Sources */,
 			);
@@ -665,7 +703,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SocialChef/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fullsail.demoApp.SocialChef;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -685,7 +723,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SocialChef/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fullsail.demoApp.SocialChef;
 				PRODUCT_NAME = "$(TARGET_NAME)";

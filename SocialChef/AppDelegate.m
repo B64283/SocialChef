@@ -22,6 +22,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+   
+    
+   [[UITabBar appearance] setTintColor:[UIColor orangeColor]];
+    
+    
+   
+    
+    
     [Parse enableLocalDatastore];
  
     [Parse setApplicationId:@"v1o10zcvnGz8BpXUQla0P5NN4gAWRVHKcWf6TytC"

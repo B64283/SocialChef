@@ -12,6 +12,8 @@
 
 @property (weak, nonatomic)IBOutlet UITextField *ingredientName;
 @property (weak, nonatomic)IBOutlet UITextField *measureNumber;
+@property (strong, nonatomic)IBOutlet UIBarButtonItem *done;
+
 
 - (IBAction)saveButn:(id)sender;
 
