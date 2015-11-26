@@ -8,6 +8,12 @@
 
 #import "ViewController.h"
 #import <Parse/Parse.h>
-@interface LoginViewController : ViewController
+@interface LoginViewController : ViewController <NSURLConnectionDataDelegate>
+
+
+
+
+
+@property (strong,nonatomic)NSMutableData *profilePicData;
 
 @end

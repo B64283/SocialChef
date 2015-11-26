@@ -9,12 +9,27 @@
 #import "AddRecipeViewController.h"
 #import "CustomIngredientCell.h"
 #import "AddIngredientsViewController.h"
-
+#import <Parse/Parse.h>
 @interface AddRecipeViewController ()
-
+//@property (nonatomic, strong) UIImage *anImage;
+//@property (nonatomic, strong) UIImage *image;
+//
+//@property (nonatomic, strong) PFFile *thumbnailFile;
+//@property (nonatomic, assign) UIBackgroundTaskIdentifier fileUploadBackgroundTaskId;
+//@property (nonatomic, assign) UIBackgroundTaskIdentifier photoPostBackgroundTaskId;
+//
 @end
 
 @implementation AddRecipeViewController
+
+//@synthesize image;
+////@synthesize commentTextField;
+//@synthesize photoFile;
+//@synthesize thumbnailFile;
+//@synthesize fileUploadBackgroundTaskId;
+//@synthesize photoPostBackgroundTaskId;
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -101,19 +116,45 @@
 }
 
 -(IBAction)Sharerecipe:(id)sender{
-    UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"Congratulations you've shared your first recipe on Social Chef!!!" message:nil delegate:self cancelButtonTitle:@"SWEET!" otherButtonTitles: nil, nil];
     
-    if(eventAlertView != nil)
+    
+    if (imageView.image) {
+        NSData *imageData = UIImagePNGRepresentation(imageView.image);
+        PFFile *photoFile = [PFFile fileWithData:imageData];
+        PFObject *photo = [PFObject objectWithClassName:@"Takenphoto"];
+        photo [@"Takenimage"] = photoFile;
+        photo [@"whoIsuser"] = [PFUser currentUser];
+        [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         
-    {
-        [eventAlertView show];
+            if (!succeeded) {
+                [self showError];
+            }
+            
+        }];
+        
+        
+        
+    }
+    else{
+        [self showError];
+        
     }
     
-[eventAlertView dismissWithClickedButtonIndex:0 animated:YES];
+    [self.tabBarController setSelectedIndex:0];
+
 
 }
 
-
+-(void)showError {
+    
+    UIAlertView *Alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"could not upload your photo" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    
+    [Alert show];
+    
+    
+    
+    
+}
 
 
 -(IBAction)TakePhoto:(id)sender {
@@ -132,12 +173,64 @@
 }
 
 
+//- (BOOL)shouldUploadImage:(UIImage *)anImage {
+////    // Resize the image to be square (what is shown in the preview)
+////    UIImage *resizedImage = [anImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit
+////                                                          bounds:CGSizeMake(560.0f, 560.0f)
+////                                            interpolationQuality:kCGInterpolationHigh];
+////    // Create a thumbnail and add a corner radius for use in table views
+////    UIImage *thumbnailImage = [anImage thumbnailImage:86.0f
+////                                    transparentBorder:0.0f
+////                                         cornerRadius:10.0f
+////                                 interpolationQuality:kCGInterpolationDefault];
+////    
+////    // Get an NSData representation of our images. We use JPEG for the larger image
+////    // for better compression and PNG for the thumbnail to keep the corner radius transparency
+//  
+//    NSData *imageData = UIImageJPEGRepresentation(image, 0.8f);
+//    //NSData *thumbnailImageData = UIImageJPEGRepresentation(image, 0.8f);
+////
+////    if (!imageData || !thumbnailImageData) {
+////        return NO;
+////    }
+//    // Create the PFFiles and store them in properties since we'll need them later
+//    
+//    self.photoFile = [PFFile fileWithData:imageData];
+//    //self.thumbnailFile = [PFFile fileWithData:thumbnailImageData];
+//    
+//    // Request a background execution task to allow us to finish uploading the photo even if the app is backgrounded
+//    self.fileUploadBackgroundTaskId = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+//        [[UIApplication sharedApplication] endBackgroundTask:self.fileUploadBackgroundTaskId];
+//    }];
+//    
+//    [self.photoFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        if (succeeded) {
+//            [self.thumbnailFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                [[UIApplication sharedApplication] endBackgroundTask:self.fileUploadBackgroundTaskId];
+//            }];
+//        } else {
+//            [[UIApplication sharedApplication] endBackgroundTask:self.fileUploadBackgroundTaskId];
+//        }
+//    }];
+//    
+//    return YES;
+//}
+
+
+
+
+
+
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     
     image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    
     [imageView setImage:image];
+    [imageView setContentMode:UIViewContentModeScaleAspectFit];
+    
+     self->picker.allowsEditing = YES;
     [self dismissViewControllerAnimated:YES  completion:NULL];
     
     

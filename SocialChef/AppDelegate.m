@@ -27,10 +27,6 @@
     
    [[UITabBar appearance] setTintColor:[UIColor orangeColor]];
     
-    
-   
-    
-    
     [Parse enableLocalDatastore];
  
     [Parse setApplicationId:@"v1o10zcvnGz8BpXUQla0P5NN4gAWRVHKcWf6TytC"

@@ -77,6 +77,8 @@
 		24F929DD1BFE36B40009A598 /* shopping-cart-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F929DA1BFE36B40009A598 /* shopping-cart-7.png */; };
 		24F929DF1BFE38770009A598 /* gear-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F929DE1BFE38770009A598 /* gear-7.png */; };
 		24F929E11BFE3D5E0009A598 /* circle-user-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F929E01BFE3D5E0009A598 /* circle-user-7.png */; };
+		24F929E71C05AF0D0009A598 /* NewCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F929E61C05AF0D0009A598 /* NewCommentCell.m */; };
+		24F929EA1C05AF350009A598 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F929E91C05AF350009A598 /* CommentCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +186,10 @@
 		24F929DA1BFE36B40009A598 /* shopping-cart-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shopping-cart-7.png"; sourceTree = "<group>"; };
 		24F929DE1BFE38770009A598 /* gear-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear-7.png"; sourceTree = "<group>"; };
 		24F929E01BFE3D5E0009A598 /* circle-user-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-user-7.png"; sourceTree = "<group>"; };
+		24F929E51C05AF0D0009A598 /* NewCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCommentCell.h; sourceTree = "<group>"; };
+		24F929E61C05AF0D0009A598 /* NewCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCommentCell.m; sourceTree = "<group>"; };
+		24F929E81C05AF350009A598 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		24F929E91C05AF350009A598 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +328,8 @@
 			isa = PBXGroup;
 			children = (
 				24F90D391BF2B9B100A6EA3B /* Main.storyboard */,
+				24F929E81C05AF350009A598 /* CommentCell.h */,
+				24F929E91C05AF350009A598 /* CommentCell.m */,
 				24F929CF1BFDA6340009A598 /* ProfileTableViewController.h */,
 				24F929D01BFDA6340009A598 /* ProfileTableViewController.m */,
 				2484CED01BFBC60A00AFF478 /* CustomIngredientCell.h */,
@@ -339,6 +347,8 @@
 				24F90D8C1BF34C9000A6EA3B /* LoginViewController.h */,
 				24F90D8D1BF34C9000A6EA3B /* LoginViewController.m */,
 				240BEF771BF5AB65004E35FA /* CustomCell.h */,
+				24F929E51C05AF0D0009A598 /* NewCommentCell.h */,
+				24F929E61C05AF0D0009A598 /* NewCommentCell.m */,
 				240BEF781BF5AB65004E35FA /* CustomCell.m */,
 				240BEF7A1BF5D128004E35FA /* MainFeedCustomClass.h */,
 				240BEF7B1BF5D128004E35FA /* MainFeedCustomClass.m */,
@@ -552,10 +562,12 @@
 				2484CECF1BFBB8B600AFF478 /* AddRecipeViewController.m in Sources */,
 				2484CECC1BFBB77700AFF478 /* AddIngredientsViewController.m in Sources */,
 				240BEF791BF5AB65004E35FA /* CustomCell.m in Sources */,
+				24F929E71C05AF0D0009A598 /* NewCommentCell.m in Sources */,
 				24F90D321BF2B9B100A6EA3B /* main.m in Sources */,
 				2484CED21BFBC60A00AFF478 /* CustomIngredientCell.m in Sources */,
 				24F929D11BFDA6340009A598 /* ProfileTableViewController.m in Sources */,
 				24F90D8E1BF34C9000A6EA3B /* LoginViewController.m in Sources */,
+				24F929EA1C05AF350009A598 /* CommentCell.m in Sources */,
 				240BEF9B1BFB13E7004E35FA /* RecipeDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -703,7 +715,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SocialChef/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fullsail.demoApp.SocialChef;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -723,7 +735,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SocialChef/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fullsail.demoApp.SocialChef;
 				PRODUCT_NAME = "$(TARGET_NAME)";

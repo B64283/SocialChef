@@ -12,6 +12,8 @@
 
 @interface AddRecipeViewController : UIViewController  <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UIAlertViewDelegate, UITableViewDataSource>
 
+
+
 {
    NSMutableArray *userStrIngArray;
     IBOutlet UIAlertView *alert;
@@ -22,11 +24,17 @@
     
     UIImage *image;
     
+    
 }
-
+- (id)initWithImage:(UIImage *)aImage;
 
 -(IBAction)TakePhoto:(id)sender;
 -(IBAction)Sharerecipe:(id)sender;
+
+@property (weak, nonatomic)IBOutlet UITextField *recipeTitle;
+@property (weak, nonatomic)IBOutlet UITextField *recipeServings;
+
+
 
 
 @property (strong, nonatomic)IBOutlet UIBarButtonItem *share;
