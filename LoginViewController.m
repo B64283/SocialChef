@@ -33,7 +33,7 @@
 
         
     }
-    
+    //////////////////////////
     else if (![PFUser currentUser]) {
 
         
