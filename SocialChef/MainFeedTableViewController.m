@@ -7,13 +7,11 @@
 //
 
 #import "MainFeedTableViewController.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
-#import "MainFeedCustomClass.h"
-#import "CustomCell.h"
+
 #import "RecipeDetailsViewController.h"
 #import "AddRecipeViewController.h"
+
+
 
 
 @interface MainFeedTableViewController ()
@@ -22,7 +20,15 @@
 
 @implementation MainFeedTableViewController
 
-@synthesize recipeArray;
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if (self) {
+        
+    }
+    return self;
+}
 
 
 
@@ -38,83 +44,44 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-   MainFeedCustomClass *recipe1 = [[MainFeedCustomClass alloc]init];
-    recipe1.userName =@"Matthew Darke";
-    recipe1.userFollow = @"22";
-    recipe1.likes = @"11";
-    recipe1.serving = @"4";
-    recipe1.ingredients1 =@"Monterey Jack cheese";
-    recipe1.ingredients2 =@"1 large red onion";
-    recipe1.ingredients3 =@"1 bag of dried pacilla chillies";
-    recipe1.ingredients4 =@"1 tsp onion powder";
-    recipe1.ingredients5 =@"2 cloves of garlic";
-    recipe1.ingredients6 =@"1 tsp salt";
-    recipe1.directionsLable = @"fry each tortilla in hot oil a few seconds on each side to soften. drain/set-aside\n\n2. put a small handful of both cheese on a tortilla. Add a sprinkle of onions. Roll up and place seam side down in a baking pan";
-    
-    
-    
-    recipe1.recipeTitle = @"Cheese Enchaladas with pascilla sauce";
-    recipe1.userImage = [UIImage imageNamed:@"MeImage.jpg"];
-    recipe1.recipeImage = [UIImage imageNamed:@"IMG_1732.jpg"];
- 
-    
-    
-    
-    /////////////////////////////////////////////////////////////////////////////
-    
-    
-    
-    MainFeedCustomClass *recipe2 = [[MainFeedCustomClass alloc]init];
-    recipe2.userName =@"Jessica Darke";
-    recipe2.userFollow = @"30";
-    recipe2.likes = @"22";
-    recipe2.serving = @"4";
-    recipe2.ingredients1 =@"4 scalloped chicken brest";
-    recipe2.ingredients2 =@"4 small shallots";
-    recipe2.ingredients3 =@"1 cup heavy whipping cream";
-    recipe2.ingredients4 =@"1 tsp safforon";
-    recipe2.ingredients5 =@"2 cups white wine";
-    recipe2.ingredients6 =@"1 tsp salt";
-    recipe2.directionsLable = @"fry each tortilla in hot oil a few seconds on each side to soften. drain/set-aside\n\n2. put a small handful of both cheese on a tortilla. Add a sprinkle of onions. Roll up and place seam side down in a baking pan";
-
-    recipe2.recipeTitle = @"Chicken Scallopinni with a saffron cream wine sauce";
-    recipe2.userImage = [UIImage imageNamed:@"jess.jpg"];
-    recipe2.recipeImage = [UIImage imageNamed:@"IMG_Scallopinni.jpg"];
-    
-   
-    
-    
-    
-    
-    
-    recipeArray = [[NSMutableArray alloc]initWithObjects:recipe1, recipe2, nil];
-    
-    
-    
-    [self->myTabelView reloadData];
-    
-    
 }
 
 
 
--(IBAction)backTotheStart:(UIStoryboardSegue *)segue
-
-
-
-
+-(id)initWithCoder:(NSCoder *)aDecoder
 {
+    
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.parseClassName = @"Takenphoto";
+        self.pullToRefreshEnabled = YES;
+        self.paginationEnabled = YES;
+        self.objectsPerPage = 3;
+    }
+    
+    return self;
+    
+}
 
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
-    
+    [self loadObjects];
+}
+
+
+
+
+
+-(IBAction)backTotheStart:(UIStoryboardSegue *)segue
+{
 }
 
 
 - (IBAction)commentButn:(id)sender {
     
     [self performSegueWithIdentifier:@"DetailsSegue" sender:self];
-    
-    
 }
 
 
@@ -125,45 +92,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-#pragma mark - Table view data source
-
-
-
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-////#warning Incomplete implementation, return the number of sections
-//    return 0;
-//}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//#warning Incomplete implementation, return the number of rows
-    return [recipeArray count];
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCustomCell"];
-    if (cell != nil)
-    {
-        MainFeedCustomClass *currentRecipe = [recipeArray objectAtIndex:indexPath.row];
-        
-        [cell refreshCellWithInfo:currentRecipe.userName secondString:currentRecipe.userFollow thirdString:currentRecipe.recipeTitle fourthString:currentRecipe.likes cellImage:currentRecipe.userImage recepImage:currentRecipe.recipeImage];
-        
-        //cell.detailTextLabel.text = currentRecipe.description;
-    
-    // Configure the cell..
-    }
-    return cell;
-}
-
-
-
-
-
-
-
-
-
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -206,28 +134,207 @@
     if ([segue.identifier isEqualToString:@"AddRecipeSegue"])
     {
        AddRecipeViewController *destViewController = segue.destinationViewController;
-    
-    
-    
     }
-    
-    
     
     else if ([segue.identifier isEqualToString:@"DetailsSegue"])
         
     {
     
-        
-        RecipeDetailsViewController *destViewController = segue.destinationViewController;
-        
-        NSIndexPath *indexPath = [self.mmyTableView indexPathForSelectedRow];
-        destViewController.currentRecipe = [recipeArray objectAtIndex:indexPath.row];
-    
-    
     }
+}
+
+
+
+#pragma mark - PFQueryTableViewDataSource and Delegates
+- (void)objectsDidLoad:(NSError *)error {
+    [super objectsDidLoad:error];
+    
+}
+
+// return objects in a different indexpath order. in this case we return object based on the section, not row, the default is row
+
+
+
+- (PFObject *)objectAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section < self.objects.count) {
+        
+        return [self.objects objectAtIndex:indexPath.section];
+
+    }
+    else{
+        return nil;
+
+    }
+}
+
+
+- (NSIndexPath *)_indexPathForPaginationCell {
+    return [NSIndexPath indexPathForRow:0 inSection:[self.objects count]];
+    
+}
+
+
+
+
+
+
+//get recipe image and profile image and other recipe info
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == self.objects.count) {
+        return nil;
+    }
+    
+    static NSString *CellIdentifier = @"SectionHeaderCell";
+    UITableViewCell *sectionHeaderView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    PFImageView *profileImageView = (PFImageView * )[sectionHeaderView viewWithTag:1];
+    UILabel *userNameLable = (UILabel *)[sectionHeaderView viewWithTag:2];
+    UILabel *titleLable = (UILabel *)[sectionHeaderView viewWithTag:3];
+    
+    
+    PFObject *photo = [self.objects objectAtIndex:section];
+    PFUser *user = [photo objectForKey:@"whoIsuser"];
+    PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
+    NSString *title = photo[@"RecipeTitle"];
+    
+    
+    userNameLable.text = user.username;
+    titleLable.text = title;
+    
+    profileImageView.file = profilePicture;
+    [profileImageView loadInBackground];
+    
+    
+    return sectionHeaderView;
+}
+
+
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    NSInteger sections = self.objects.count;
+    
+    if (self.paginationEnabled && sections >0) {
+        
+        sections++;
+        
+    }
+    return sections;
+}
+
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
+    
+    if (indexPath.section == self.objects.count) {
+        UITableViewCell *cell = [self tableView:tableView cellForNextPageAtIndexPath:indexPath];
+        return cell;
+    }
+    
+    static NSString *CellIdentifier = @"ImageCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    PFImageView *photo = (PFImageView *)[cell viewWithTag:1];
+     photo.file = object [@"Takenimage"];
+    [photo loadInBackground];
+    
+    
+    return cell;
+    
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == self.objects.count) {
+        
+        return 0.0f;
+    
+    }else
+    
+        return 50.0f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //if last section return 50
+    if (indexPath.section == self.objects.count) {
+        return 50.0f;
+    }else
+    return 220.0f;
+}
+
+
+
+
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"LoadMoreCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    return cell;
+    
+}
+
+
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == self.objects.count && self.paginationEnabled) {
+        
+        [self loadNextPage];
+        
+    }
+        
+        
+}
+
+
+
+- (PFQuery *)queryForTable {
+    
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    [query includeKey:@"whoIsuser"];
+    [query orderByDescending:@"createdAt"];
+    
+    
+    return query;
+    
     
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @end

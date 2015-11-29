@@ -8,21 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-@interface MainFeedTableViewController : UIViewController  <UITableViewDelegate, UITableViewDelegate>
+#import <ParseUI/ParseUI.h>
+
+@interface MainFeedTableViewController : PFQueryTableViewController 
 
 
-{
-    IBOutlet UITableView *myTabelView;
-    NSMutableArray *recipeArray;
+- (NSIndexPath *)_indexPathForPaginationCell;
     
-    
-    
-}
 
 
-@property (weak, nonatomic) IBOutlet UITableView *mmyTableView;
 
-@property (strong, nonatomic) NSMutableArray* recipeArray;
 
 - (IBAction)commentButn:(id)sender;
 

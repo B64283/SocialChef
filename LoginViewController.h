@@ -13,7 +13,11 @@
 
 
 
-
 @property (strong,nonatomic)NSMutableData *profilePicData;
+
+
+
+
+
 
 @end

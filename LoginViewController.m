@@ -33,7 +33,7 @@
 
         
     }
-    //////////////////////////
+    
     else if (![PFUser currentUser]) {
 
         
@@ -66,6 +66,8 @@
     
 
 }
+
+
 
 
 
@@ -118,9 +120,14 @@
             
             [[PFUser currentUser]saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 
-                FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"myFriends" parameters:nil];
-                
-                [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+                FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
+                                              initWithGraphPath:@"/me/friends"
+                                              parameters:nil];
+                [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
+                                                      id result,
+                                                      NSError *error) {
+                    // Handle the result
+            
                     
                     if (!error) {
                         NSArray *data = [result objectForKey:@"data"];

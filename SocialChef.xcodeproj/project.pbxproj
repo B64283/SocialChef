@@ -30,6 +30,7 @@
 		2484CECF1BFBB8B600AFF478 /* AddRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2484CECE1BFBB8B600AFF478 /* AddRecipeViewController.m */; };
 		2484CED21BFBC60A00AFF478 /* CustomIngredientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2484CED11BFBC60A00AFF478 /* CustomIngredientCell.m */; };
 		2484CED41BFC5FC000AFF478 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2484CED31BFC5FC000AFF478 /* MobileCoreServices.framework */; };
+		24D8C7321C0A4EFF00204C1F /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D8C7311C0A4EFF00204C1F /* ParseUI.framework */; };
 		24F90D321BF2B9B100A6EA3B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F90D311BF2B9B100A6EA3B /* main.m */; };
 		24F90D351BF2B9B100A6EA3B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F90D341BF2B9B100A6EA3B /* AppDelegate.m */; };
 		24F90D381BF2B9B100A6EA3B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F90D371BF2B9B100A6EA3B /* ViewController.m */; };
@@ -128,6 +129,7 @@
 		2484CED01BFBC60A00AFF478 /* CustomIngredientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIngredientCell.h; sourceTree = "<group>"; };
 		2484CED11BFBC60A00AFF478 /* CustomIngredientCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIngredientCell.m; sourceTree = "<group>"; };
 		2484CED31BFC5FC000AFF478 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		24D8C7311C0A4EFF00204C1F /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		24F90D2D1BF2B9B100A6EA3B /* SocialChef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialChef.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F90D311BF2B9B100A6EA3B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		24F90D331BF2B9B100A6EA3B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				24F90D7D1BF31FF600A6EA3B /* SystemConfiguration.framework in Frameworks */,
 				24F90D7B1BF31FE000A6EA3B /* StoreKit.framework in Frameworks */,
 				24F90D791BF31FD200A6EA3B /* Social.framework in Frameworks */,
+				24D8C7321C0A4EFF00204C1F /* ParseUI.framework in Frameworks */,
 				24F90D771BF31FC500A6EA3B /* Security.framework in Frameworks */,
 				24F90D751BF31FBA00A6EA3B /* QuartzCore.framework in Frameworks */,
 				24F90D731BF31FA800A6EA3B /* CoreLocation.framework in Frameworks */,
@@ -240,6 +243,7 @@
 		240BEF711BF561E9004E35FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24D8C7311C0A4EFF00204C1F /* ParseUI.framework */,
 				2484CED31BFC5FC000AFF478 /* MobileCoreServices.framework */,
 				24F90D801BF3204100A6EA3B /* libsqlite3.tbd */,
 				24F90D7E1BF3200B00A6EA3B /* libz.tbd */,
@@ -347,9 +351,9 @@
 				24F90D8C1BF34C9000A6EA3B /* LoginViewController.h */,
 				24F90D8D1BF34C9000A6EA3B /* LoginViewController.m */,
 				240BEF771BF5AB65004E35FA /* CustomCell.h */,
+				240BEF781BF5AB65004E35FA /* CustomCell.m */,
 				24F929E51C05AF0D0009A598 /* NewCommentCell.h */,
 				24F929E61C05AF0D0009A598 /* NewCommentCell.m */,
-				240BEF781BF5AB65004E35FA /* CustomCell.m */,
 				240BEF7A1BF5D128004E35FA /* MainFeedCustomClass.h */,
 				240BEF7B1BF5D128004E35FA /* MainFeedCustomClass.m */,
 				24F90DA41BF4669400A6EA3B /* MainFeedTableViewController.h */,
