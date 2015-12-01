@@ -20,7 +20,7 @@ IBOutlet UILabel * measureLable;
 -(void)refreshCell;
 
 @property(nonatomic, strong) NSString *ingredNameText;
-@property(nonatomic, strong) NSString *measureNumberText;
+//@property(nonatomic, strong) NSString *measureNumberText;
 
 
 @end

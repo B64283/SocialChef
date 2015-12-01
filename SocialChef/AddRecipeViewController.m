@@ -8,6 +8,7 @@
 
 #import "AddRecipeViewController.h"
 #import "CustomIngredientCell.h"
+#import <MobileCoreServices/UTCoreTypes.h>
 #import "AddIngredientsViewController.h"
 #import <Parse/Parse.h>
 @interface AddRecipeViewController ()
@@ -85,7 +86,10 @@
             picker.sourceType = UIImagePickerControllerSourceTypeCamera;
             picker.delegate =self;
             
-            picker.allowsEditing = true;
+            picker.allowsEditing = YES;
+            
+    ///delete if crash
+//            picker.mediaTypes = [NSArray arrayWithObjects:(NSString *)kUTTypeImage, nil];
             
             [self presentViewController:picker animated:true completion:nil];
         }
@@ -124,6 +128,18 @@
         PFObject *photo = [PFObject objectWithClassName:@"Takenphoto"];
         photo [@"Takenimage"] = photoFile;
         photo [@"whoIsuser"] = [PFUser currentUser];
+        
+        photo [@"title"] = self.recipeTitle.text;
+        photo [@"ingred1"] = self.ingredItem1.text;
+        photo [@"ingred2"] = self.ingredItem2.text;
+        photo [@"ingred3"] = self.ingredItem3.text;
+
+
+        
+        
+        [photo addUniqueObjectsFromArray:@[@"ingred1", @"ingred2", @"ingred1"] forKey:@"ingredientsArray"];
+        [photo saveInBackground];
+        
         [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         
             if (!succeeded) {
@@ -268,24 +284,24 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    CustomIngredientCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyAddCell"];
-    if (cell != nil)
-    {
-        PFObject *tempObject = [userStrIngArray objectAtIndex:indexPath.row];
-        
-        cell.ingredNameText = [tempObject objectForKey:@"itemName"];
-        cell.measureNumberText = [tempObject objectForKey:@"itemNumber"];
-        
-        
-        
-    }
-    
-    [cell refreshCell];
-    return cell;
-
-}
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    CustomIngredientCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyAddCell"];
+//    if (cell != nil)
+//    {
+//        PFObject *tempObject = [userStrIngArray objectAtIndex:indexPath.row];
+//        
+//        cell.ingredNameText = [tempObject objectForKey:@"itemName"];
+//        //cell.measureNumberText = [tempObject objectForKey:@"itemNumber"];
+//        
+//        
+//        
+//    }
+//    
+//    [cell refreshCell];
+//    return cell;
+//
+//}
 
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

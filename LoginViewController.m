@@ -96,7 +96,7 @@
             
             
             if (facebookName && facebookName != 0) {
-                [[PFUser currentUser]setObject:facebookName forKey:@"displayName"];
+                [[PFUser currentUser]setObject:facebookName forKey:@"username"];
             }
             if (facebookID && facebookID != 0) {
                 [[PFUser currentUser]setObject:facebookID forKey:@"facebookID"];
@@ -121,7 +121,7 @@
             [[PFUser currentUser]saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 
                 FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
-                                              initWithGraphPath:@"/me/friends"
+                                              initWithGraphPath:@"me/friends"
                                               parameters:nil];
                 [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
                                                       id result,

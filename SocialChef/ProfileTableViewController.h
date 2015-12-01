@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainFeedTableViewController.h"
 
-@interface ProfileTableViewController : UITableViewController
+@interface ProfileTableViewController : MainFeedTableViewController
 
 
 

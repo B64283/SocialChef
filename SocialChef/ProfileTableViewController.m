@@ -7,8 +7,25 @@
 //
 
 #import "ProfileTableViewController.h"
-
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 @interface ProfileTableViewController ()
+
+@property (weak, nonatomic) IBOutlet PFImageView *profileImageView;
+
+@property (weak, nonatomic) IBOutlet UILabel *userNameLable;
+
+@property (weak, nonatomic) IBOutlet UILabel *followerNumberLable;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *followingNumberLable;
+
+
+
+
+
+
+
+
 
 @end
 
@@ -17,6 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"BlackNavagation"] forBarMetrics:UIBarMetricsDefault];
+    [super viewDidLoad];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -28,6 +47,90 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+-(void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    [self updateUserStatus];
+    
+    
+}
+
+
+
+-(void)updateUserStatus {
+    
+    PFUser *user = [PFUser currentUser];
+    self.profileImageView.file = user [@"profilePhoto"];
+    [self.profileImageView loadInBackground];
+    self.userNameLable.text = user.username;
+
+    //following
+    PFQuery *followingQuery = [PFQuery queryWithClassName:@"Activity"];
+    [followingQuery whereKey:@"FromUser" equalTo:user];
+    [followingQuery whereKey:@"Type" equalTo:@"follow"];
+    
+    [followingQuery findObjectsInBackgroundWithBlock:^(NSArray * followingActivities, NSError * error) {
+        if (!error) {
+            self.followingNumberLable.text = [[NSNumber numberWithInteger:followingActivities.count]stringValue];
+            
+        }
+    
+    
+    
+}];
+   
+    //follower
+    PFQuery *followerQuery = [PFQuery queryWithClassName:@"Activity"];
+    [followerQuery whereKey:@"ToUser" equalTo:user];
+    [followerQuery whereKey:@"Type" equalTo:@"follow"];
+    
+    [followerQuery findObjectsInBackgroundWithBlock:^(NSArray * followerActivities, NSError * error) {
+        if (!error) {
+            self.followerNumberLable.text = [[NSNumber numberWithInteger:followerActivities.count]stringValue];
+            
+        }
+        
+        
+        
+    }];
+
+    
+}
+
+-(PFQuery *)queryForTable {
+    
+    if (![PFUser currentUser] || ![PFFacebookUtils isLinkedWithUser: [PFUser currentUser]]){
+        return nil;
+    
+        }
+    
+    PFQuery *followingQuery = [PFQuery queryWithClassName:@"Activity"];
+    [followingQuery whereKey:@"FromUser" equalTo:[PFUser currentUser]];
+    [followingQuery whereKey:@"Type" equalTo:@"follow"];
+   
+    //limiting the photos seen
+    PFQuery *photosFromFollowedUsersQuery = [PFQuery queryWithClassName:@"Takenphoto"];
+    
+    [photosFromFollowedUsersQuery whereKey:@"whoIsuser" matchesKey:@"ToUser" inQuery:followingQuery];
+    
+    PFQuery *phototsFromCurrentUserQuery = [PFQuery queryWithClassName:@"Takenphoto"];
+    
+    PFQuery *superQuery = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:phototsFromCurrentUserQuery, photosFromFollowedUsersQuery,nil]];
+    
+    //get user profile info from userclass
+    [superQuery includeKey:@"whoIsuser"];
+    [superQuery orderByDescending:@"createdAt"];
+    
+    return superQuery;
+    
+    
+    
+    
+    
+}
+
 
 #pragma mark - Table view data source
 

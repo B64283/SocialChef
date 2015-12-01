@@ -1,16 +1,14 @@
 //
-//  CustomIngredientCell.m
+//  CustomShoppingCell.m
 //  SocialChef
 //
-//  Created by Matthew Darke on 11/17/15.
+//  Created by Matthew Darke on 11/30/15.
 //  Copyright © 2015 Matthew Darke. All rights reserved.
 //
 
-#import "CustomIngredientCell.h"
+#import "CustomShoppingCell.h"
 
-@implementation CustomIngredientCell
-
-@synthesize ingredNameText;
+@implementation CustomShoppingCell
 
 - (void)awakeFromNib {
     // Initialization code
@@ -21,15 +19,5 @@
 
     // Configure the view for the selected state
 }
-
-
-
--(void)refreshCell
-
-{
-    ingredLable.text = ingredNameText;
-   // measureLable.text = measureNumberText;
-}
-
 
 @end

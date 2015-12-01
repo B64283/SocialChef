@@ -15,28 +15,18 @@
 
 
 @interface MainFeedTableViewController ()
+@property (nonatomic, strong)NSMutableArray *followingArray;
 
 @end
 
 @implementation MainFeedTableViewController
-
--(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    
-    if (self) {
-        
-    }
-    return self;
-}
-
 
 
 - (void)viewDidLoad {
     
     
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"Social-414Chef"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"BlackNavagation"] forBarMetrics:UIBarMetricsDefault];
     [super viewDidLoad];
     // Uncomment the following line to preserve selection between presentations.
     //self.clearsSelectionOnViewWillAppear = NO;
@@ -56,7 +46,7 @@
         self.parseClassName = @"Takenphoto";
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = YES;
-        self.objectsPerPage = 3;
+        self.objectsPerPage = 8;
     }
     
     return self;
@@ -149,6 +139,34 @@
 - (void)objectsDidLoad:(NSError *)error {
     [super objectsDidLoad:error];
     
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Activity"];
+    [query whereKey:@"FromUser"  equalTo:[PFUser currentUser]];
+    [query whereKey:@"Type"  equalTo:@"follow"];
+    [query includeKey:@"ToUser"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * objects, NSError * error) {
+       
+        if (!error) {
+            self.followingArray = [NSMutableArray array];
+            if (objects.count > 0) {
+                
+                for (PFObject *activity in objects) {
+                    PFUser *user = activity[@"ToUser"];
+                   
+                    //get object id from each user object
+                    
+                    //from parse: (you should check to see whether users Contains a PFuser with an object ID matches your current user)
+                    [self.followingArray addObject:user.objectId];
+                    
+                
+                }
+            }
+            [self.tableView reloadData];
+        }
+        
+    }];
+    
+    
 }
 
 // return objects in a different indexpath order. in this case we return object based on the section, not row, the default is row
@@ -195,14 +213,41 @@
     PFObject *photo = [self.objects objectAtIndex:section];
     PFUser *user = [photo objectForKey:@"whoIsuser"];
     PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
-    NSString *title = photo[@"RecipeTitle"];
+    NSString *title = photo[@"title"];
     
     
     userNameLable.text = user.username;
+    
     titleLable.text = title;
     
     profileImageView.file = profilePicture;
     [profileImageView loadInBackground];
+    
+    
+    FollowButton *followButton = (FollowButton *)[sectionHeaderView viewWithTag: 4];
+    followButton.delegate = self;
+    
+    followButton.sectionIndex = section;
+    
+    // update state of following button we dont want user to follow their self
+    
+    if (!self.followingArray || [user.objectId isEqualToString:[PFUser currentUser].objectId] ) {
+        followButton.hidden = YES;
+        
+        
+    }else{
+        followButton.hidden = NO;
+        NSInteger indexOfMatchedObject = [self.followingArray indexOfObject:user.objectId];
+        
+        if (indexOfMatchedObject == NSNotFound) {
+            followButton.selected = NO;
+            
+            
+        }else{
+            
+            followButton.selected = YES;
+        }
+    }
     
     
     return sectionHeaderView;
@@ -259,7 +304,7 @@
     
     }else
     
-        return 50.0f;
+        return 94.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -267,7 +312,7 @@
     if (indexPath.section == self.objects.count) {
         return 50.0f;
     }else
-    return 220.0f;
+    return 204.0f;
 }
 
 
@@ -301,10 +346,12 @@
 }
 
 
-
+//use includekey to accsess other data
 - (PFQuery *)queryForTable {
     
+    
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    
     [query includeKey:@"whoIsuser"];
     [query orderByDescending:@"createdAt"];
     
@@ -315,15 +362,70 @@
     
 }
 
+//follow button
+-(void)followButton:(FollowButton *)button didTapWithSectionIndex:(NSInteger)index {
+    
+    PFObject *photo = [self.objects objectAtIndex:index];
+    PFUser *user = photo [@"whoIsuser"];
+    
+    if (!button.selected) {
+        [self followUser:user];
+    
+    }else{
+        [self UnfollowUser:user];
+    }
+    
+    //refresh tableView to show change
+    [self.tableView reloadData];
+    
+}
+
+
+// follow USER
+-(void)followUser:(PFUser *)user {
+    if (![user.objectId isEqualToString:[PFUser currentUser].objectId]) {
+        
+        //update array to make changes happen
+        [self.followingArray addObject:user.objectId];
+        
+        PFObject *followActivity = [PFObject objectWithClassName:@"Activity"];
+        followActivity [@"FromUser"] = [PFUser currentUser];
+        followActivity [@"ToUser"] = user;
+        followActivity [@"Type"] = @"follow";
+        [followActivity saveEventually];
+        
+    }
+    
+    
+    
+}
 
 
 
-
-
-
-
-
-
+// Unfollow User
+-(void)UnfollowUser:(PFUser *)user {
+    
+    //update array to make changes happen
+    [self.followingArray removeObject:user.objectId];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Activity"];
+    [query whereKey:@"FromUser" equalTo:[PFUser currentUser]];
+    [query whereKey:@"ToUser" equalTo:user];
+    [query whereKey:@"Type" equalTo:@"follow"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * followActivities, NSError * error)
+    
+    {
+        if (!error) {
+            for (PFObject *followActivity in followActivities) {
+                [followActivity deleteEventually];
+            }
+        }
+    }];
+    
+    
+    
+    
+}
 
 
 
