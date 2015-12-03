@@ -10,13 +10,19 @@
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 #import "FollowButton.h"
+#import "LikesButton.h"
 
-
-@interface MainFeedTableViewController : PFQueryTableViewController <FollowButtonDelegate>
+@interface MainFeedTableViewController : PFQueryTableViewController <FollowButtonDelegate, LikesButtonDelegate>
 
 
 - (NSIndexPath *)_indexPathForPaginationCell;
+
     
+    
+    
+    
+    
+
 
 
 

@@ -24,13 +24,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)backTotheStart:(UIStoryboardSegue *)segue
-
-{
-    //AddIngredientsViewController *source = segue.sourceViewController;
-    
-    
-}
 
 
 

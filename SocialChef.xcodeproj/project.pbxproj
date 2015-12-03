@@ -36,6 +36,10 @@
 		24EC94381C0D471400B2F149 /* CustomShoppingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC94371C0D471300B2F149 /* CustomShoppingCell.m */; };
 		24EC943B1C0D485C00B2F149 /* ShoppingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC943A1C0D485C00B2F149 /* ShoppingViewController.m */; };
 		24EC943E1C0D48A200B2F149 /* AddInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC943D1C0D48A200B2F149 /* AddInfoViewController.m */; };
+		24EC94411C0E228B00B2F149 /* LikesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC94401C0E228B00B2F149 /* LikesButton.m */; };
+		24EC94431C0FD29200B2F149 /* imagePlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 24EC94421C0FD29100B2F149 /* imagePlaceholder.png */; };
+		24EC94461C103C3400B2F149 /* ShoppingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC94451C103C3400B2F149 /* ShoppingListViewController.m */; };
+		24EC94491C103DD600B2F149 /* AddShoppingItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC94481C103DD600B2F149 /* AddShoppingItemsViewController.m */; };
 		24F90D321BF2B9B100A6EA3B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F90D311BF2B9B100A6EA3B /* main.m */; };
 		24F90D351BF2B9B100A6EA3B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F90D341BF2B9B100A6EA3B /* AppDelegate.m */; };
 		24F90D381BF2B9B100A6EA3B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F90D371BF2B9B100A6EA3B /* ViewController.m */; };
@@ -144,6 +148,13 @@
 		24EC943A1C0D485C00B2F149 /* ShoppingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingViewController.m; sourceTree = "<group>"; };
 		24EC943C1C0D48A200B2F149 /* AddInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddInfoViewController.h; sourceTree = "<group>"; };
 		24EC943D1C0D48A200B2F149 /* AddInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddInfoViewController.m; sourceTree = "<group>"; };
+		24EC943F1C0E228B00B2F149 /* LikesButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikesButton.h; sourceTree = "<group>"; };
+		24EC94401C0E228B00B2F149 /* LikesButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikesButton.m; sourceTree = "<group>"; };
+		24EC94421C0FD29100B2F149 /* imagePlaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagePlaceholder.png; sourceTree = "<group>"; };
+		24EC94441C103C3400B2F149 /* ShoppingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListViewController.h; sourceTree = "<group>"; };
+		24EC94451C103C3400B2F149 /* ShoppingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListViewController.m; sourceTree = "<group>"; };
+		24EC94471C103DD600B2F149 /* AddShoppingItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddShoppingItemsViewController.h; sourceTree = "<group>"; };
+		24EC94481C103DD600B2F149 /* AddShoppingItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddShoppingItemsViewController.m; sourceTree = "<group>"; };
 		24F90D2D1BF2B9B100A6EA3B /* SocialChef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialChef.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F90D311BF2B9B100A6EA3B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		24F90D331BF2B9B100A6EA3B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -288,6 +299,7 @@
 				24F90D991BF407AF00A6EA3B /* Social-414Chef.png */,
 				24F929D21BFDCE610009A598 /* Screen Shot 2015-11-19 at 1.29.40 AM.png */,
 				24F929D81BFE36B40009A598 /* house-7.png */,
+				24EC94421C0FD29100B2F149 /* imagePlaceholder.png */,
 				24F929D91BFE36B40009A598 /* clock-timer-7.png */,
 				24F929DA1BFE36B40009A598 /* shopping-cart-7.png */,
 				240BEF931BFA6B37004E35FA /* socialIcon.png */,
@@ -379,6 +391,12 @@
 				24F90DA51BF4669400A6EA3B /* MainFeedTableViewController.m */,
 				24EC94361C0D471300B2F149 /* CustomShoppingCell.h */,
 				24EC94371C0D471300B2F149 /* CustomShoppingCell.m */,
+				24EC94441C103C3400B2F149 /* ShoppingListViewController.h */,
+				24EC94451C103C3400B2F149 /* ShoppingListViewController.m */,
+				24EC94471C103DD600B2F149 /* AddShoppingItemsViewController.h */,
+				24EC94481C103DD600B2F149 /* AddShoppingItemsViewController.m */,
+				24EC943F1C0E228B00B2F149 /* LikesButton.h */,
+				24EC94401C0E228B00B2F149 /* LikesButton.m */,
 				24EC94311C0B023600B2F149 /* FollowButton.h */,
 				24EC94321C0B023600B2F149 /* FollowButton.m */,
 				24F90D3F1BF2B9B100A6EA3B /* Assets.xcassets */,
@@ -557,6 +575,7 @@
 				240BEF8A1BF873C5004E35FA /* imagecirclef.png in Resources */,
 				240BEF901BFA5F19004E35FA /* NewRed.png in Resources */,
 				240BEF921BFA6156004E35FA /* Commenticon.png in Resources */,
+				24EC94431C0FD29200B2F149 /* imagePlaceholder.png in Resources */,
 				24F90D941BF3EECE00A6EA3B /* Social-LogoChef.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,10 +601,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24EC94491C103DD600B2F149 /* AddShoppingItemsViewController.m in Sources */,
+				24EC94461C103C3400B2F149 /* ShoppingListViewController.m in Sources */,
 				24EC94381C0D471400B2F149 /* CustomShoppingCell.m in Sources */,
 				24F90DA61BF4669400A6EA3B /* MainFeedTableViewController.m in Sources */,
 				24F90D3E1BF2B9B100A6EA3B /* SocialChef.xcdatamodeld in Sources */,
 				240BEF7C1BF5D128004E35FA /* MainFeedCustomClass.m in Sources */,
+				24EC94411C0E228B00B2F149 /* LikesButton.m in Sources */,
 				24F90D381BF2B9B100A6EA3B /* ViewController.m in Sources */,
 				24F90D351BF2B9B100A6EA3B /* AppDelegate.m in Sources */,
 				2484CECF1BFBB8B600AFF478 /* AddRecipeViewController.m in Sources */,

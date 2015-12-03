@@ -119,6 +119,9 @@
     
 }
 
+
+
+//SAVE DATA
 -(IBAction)Sharerecipe:(id)sender{
     
     
@@ -130,14 +133,36 @@
         photo [@"whoIsuser"] = [PFUser currentUser];
         
         photo [@"title"] = self.recipeTitle.text;
+        photo [@"serving"] = self.recipeServings.text;
+        
         photo [@"ingred1"] = self.ingredItem1.text;
         photo [@"ingred2"] = self.ingredItem2.text;
         photo [@"ingred3"] = self.ingredItem3.text;
-
+        photo [@"ingred4"] = self.ingredItem4.text;
+        photo [@"ingred5"] = self.ingredItem5.text;
+        photo [@"ingred6"] = self.ingredItem6.text;
+        photo [@"ingred7"] = self.ingredItem7.text;
+        photo [@"ingred8"] = self.ingredItem8.text;
+        photo [@"ingred9"] = self.ingredItem9.text;
+        photo [@"ingred10"] = self.ingredItem10.text;
+        photo [@"ingred11"] = self.ingredItem11.text;
+        photo [@"ingred12"] = self.ingredItem12.text;
+        photo [@"ingred13"] = self.ingredItem13.text;
+        photo [@"ingred14"] = self.ingredItem14.text;
+        photo [@"ingred15"] = self.ingredItem15.text;
+        photo [@"ingred16"] = self.ingredItem16.text;
+        photo [@"ingred17"] = self.ingredItem17.text;
+        photo [@"ingred18"] = self.ingredItem18.text;
+        
+        photo [@"stepOne"] = self.stepOne.text;
+        photo [@"stepTwo"] = self.stepTwo.text;
+        photo [@"stepThree"] = self.stepThree.text;
+        
 
         
         
-        [photo addUniqueObjectsFromArray:@[@"ingred1", @"ingred2", @"ingred1"] forKey:@"ingredientsArray"];
+        [photo addUniqueObjectsFromArray:@[@"ingred1", @"ingred2", @"ingred3",@"ingred4", @"ingred5", @"ingred6",@"ingred7", @"ingred8", @"ingred9",@"ingred10", @"ingred11", @"ingred12",@"ingred13", @"ingred14", @"ingred15",@"ingred16", @"ingred17", @"ingred18"] forKey:@"ingredientsArray"];
+        
         [photo saveInBackground];
         
         [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
@@ -264,24 +289,24 @@
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
     barButton.title = @"Back";
     
-    [self performSelector:@selector(retrieveFromParse)];
-    [self.myIngredientTableView reloadData];
+    //[self performSelector:@selector(retrieveFromParse)];
+    //[self.myIngredientTableView reloadData];
 }
 
 
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
-{
-    return 1;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
+//{
+//    return 1;
+//}
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    
-    return [userStrIngArray count];
-    
-}
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    
+//    return [userStrIngArray count];
+//    
+//}
 
 
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -304,32 +329,32 @@
 //}
 
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{    //are we in delete mode
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        PFObject *tempObject = [userStrIngArray objectAtIndex:indexPath.row];
-        
-        [tempObject deleteInBackground];
-        
-        
-        [tempObject unpinInBackground];
-        
-        [userStrIngArray removeObjectAtIndex:indexPath.row];
-        
-        [_myIngredientTableView reloadData];
-        
-        
-        
-        
-    }
-}
+//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return YES;
+//}
+//
+//
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+//{    //are we in delete mode
+//    
+//    if (editingStyle == UITableViewCellEditingStyleDelete)
+//    {
+//        PFObject *tempObject = [userStrIngArray objectAtIndex:indexPath.row];
+//        
+//        [tempObject deleteInBackground];
+//        
+//        
+//        [tempObject unpinInBackground];
+//        
+//        [userStrIngArray removeObjectAtIndex:indexPath.row];
+//        
+//        [_myIngredientTableView reloadData];
+//        
+//        
+//        
+//        
+//    }
+//}
 
 -(IBAction)backTotheStart:(UIStoryboardSegue *)segue
 

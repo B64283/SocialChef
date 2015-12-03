@@ -111,11 +111,14 @@
     [followingQuery whereKey:@"Type" equalTo:@"follow"];
    
     //limiting the photos seen
-    PFQuery *photosFromFollowedUsersQuery = [PFQuery queryWithClassName:@"Takenphoto"];
     
+    PFQuery *photosFromFollowedUsersQuery = [PFQuery queryWithClassName:@"Takenphoto"];
     [photosFromFollowedUsersQuery whereKey:@"whoIsuser" matchesKey:@"ToUser" inQuery:followingQuery];
     
     PFQuery *phototsFromCurrentUserQuery = [PFQuery queryWithClassName:@"Takenphoto"];
+    [phototsFromCurrentUserQuery whereKey:@"whoIsuser" equalTo:[PFUser currentUser]];
+    
+    
     
     PFQuery *superQuery = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:phototsFromCurrentUserQuery, photosFromFollowedUsersQuery,nil]];
     

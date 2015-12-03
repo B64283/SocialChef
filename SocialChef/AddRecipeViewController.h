@@ -32,7 +32,11 @@
 -(IBAction)Sharerecipe:(id)sender;
 
 @property (weak, nonatomic)IBOutlet UITextField *recipeTitle;
+
+
+
 @property (weak, nonatomic)IBOutlet UITextField *recipeServings;
+
 @property (weak, nonatomic)IBOutlet UITextField *ingredItem1;
 @property (weak, nonatomic)IBOutlet UITextField *ingredItem2;
 @property (weak, nonatomic)IBOutlet UITextField *ingredItem3;
@@ -51,6 +55,11 @@
 @property (weak, nonatomic)IBOutlet UITextField *ingredItem16;
 @property (weak, nonatomic)IBOutlet UITextField *ingredItem17;
 @property (weak, nonatomic)IBOutlet UITextField *ingredItem18;
+
+@property (weak, nonatomic)IBOutlet UITextView *stepOne;
+@property (weak, nonatomic)IBOutlet UITextView *stepTwo;
+@property (weak, nonatomic)IBOutlet UITextView *stepThree;
+
 
 
 

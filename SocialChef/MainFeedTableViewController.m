@@ -16,7 +16,7 @@
 
 @interface MainFeedTableViewController ()
 @property (nonatomic, strong)NSMutableArray *followingArray;
-
+@property (nonatomic, strong)NSMutableArray *userStrArray;
 @end
 
 @implementation MainFeedTableViewController
@@ -123,13 +123,46 @@
   
     if ([segue.identifier isEqualToString:@"AddRecipeSegue"])
     {
-       AddRecipeViewController *destViewController = segue.destinationViewController;
+       //AddRecipeViewController *destViewController = segue.destinationViewController;
     }
     
     else if ([segue.identifier isEqualToString:@"DetailsSegue"])
         
     {
-    
+     
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        PFObject *photo = [self.objects objectAtIndex:indexPath.section];
+        PFQuery *photoQ = [self.objects objectAtIndex:indexPath.section];
+        if (photo) {
+            RecipeDetailsViewController *photoDetailsVC = [segue destinationViewController];
+            
+            
+            photoDetailsVC.getObject = photo;
+        }
+            
+           if (photoQ) {
+            RecipeDetailsViewController *photoDetailsVCQ = [segue destinationViewController];
+        
+        
+               photoDetailsVCQ.getObjectQuery = photoQ;
+
+       
+        
+//        PFObject *post = [self.objects objectAtIndex:indexPath.section];
+//        
+//        PFQuery *Qpost = [self.objects objectAtIndex:indexPath.section];
+//        
+//        NSLog(@"%@", post.objectId);
+//        
+//        RecipeDetailsViewController *vcu =
+//        
+//        
+//        RecipeDetailsViewController *vcuQ = [segue destinationViewController];
+        
+               
+        }
+        
+
     }
 }
 
@@ -210,10 +243,18 @@
     UILabel *titleLable = (UILabel *)[sectionHeaderView viewWithTag:3];
     
     
+    
+    
+    
+    
     PFObject *photo = [self.objects objectAtIndex:section];
     PFUser *user = [photo objectForKey:@"whoIsuser"];
     PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
+ 
+    
+    //
     NSString *title = photo[@"title"];
+    NSString *titleServing = photo[@"serving"];
     
     
     userNameLable.text = user.username;
@@ -228,6 +269,17 @@
     followButton.delegate = self;
     
     followButton.sectionIndex = section;
+    
+    //Likes button
+    LikesButton *likesButton = (LikesButton *)[sectionHeaderView viewWithTag: 5];
+    likesButton.delegate = self;
+    
+    likesButton.sectionIndex = section;
+    
+    
+    
+    
+    
     
     // update state of following button we dont want user to follow their self
     
@@ -304,7 +356,7 @@
     
     }else
     
-        return 94.0f;
+        return 86.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -425,8 +477,17 @@
     
     
     
+    
 }
 
+
+-(void)likesButton:(LikesButton *)button didTapWithSectionIndex:(NSInteger)index {
+    
+
+
+
+
+}
 
 
 

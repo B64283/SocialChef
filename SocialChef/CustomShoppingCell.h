@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface CustomShoppingCell : UITableViewCell
+{
 
+IBOutlet UILabel * itemNameLable;
+IBOutlet UILabel * itemNumberLable;
+
+
+
+}
+
+-(void)refreshCell;
+
+@property(nonatomic, strong) NSString *itemNameText;
+@property(nonatomic, strong) NSString *itemNumberText;
 @end

@@ -9,6 +9,9 @@
 #import "CustomShoppingCell.h"
 
 @implementation CustomShoppingCell
+@synthesize itemNameText, itemNumberText;
+
+
 
 - (void)awakeFromNib {
     // Initialization code
@@ -19,5 +22,16 @@
 
     // Configure the view for the selected state
 }
+
+
+
+-(void)refreshCell
+
+{
+    itemNameLable.text = itemNameText;
+    itemNumberLable.text = itemNumberText;
+}
+
+
 
 @end
