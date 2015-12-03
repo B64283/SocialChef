@@ -30,7 +30,7 @@
     
     
         [self performSelector:@selector(submitForm)];
-        
+        [self.navigationController popViewControllerAnimated:YES];
 }
 
     
@@ -54,9 +54,14 @@
             
             //[self dismissViewControllerAnimated:YES completion:nil];
             // The object has been saved.
-            UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"Saved!" message:@"  item successfully saved" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+            UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"Saved!" message:@"  item successfully saved! Enter more items and when finished use back button." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             //[self performSelector:@selector(backTothe:)];
-            
+            if(eventAlertView != nil)
+                
+            {
+                [eventAlertView show];
+                
+            }
             
         } else {
             // There was a problem, check error.description
@@ -77,7 +82,7 @@
 
 
 
--(IBAction)backTothe:(UIStoryboardSegue *)segue
+-(IBAction)backTotheStart:(UIStoryboardSegue *)segue
 {
     
     

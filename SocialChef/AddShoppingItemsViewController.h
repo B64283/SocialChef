@@ -16,5 +16,5 @@
 
 - (IBAction)saveItemButton:(id)sender;
 
-@property (strong, nonatomic)IBOutlet UIButton *backTo;
+@property (strong, nonatomic)IBOutlet UIBarButtonItem *backTo;
 @end
