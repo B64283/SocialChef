@@ -18,6 +18,12 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *userNameLable;
 
+@property (strong, nonatomic) IBOutlet UIButton *starButton1;
+@property (strong, nonatomic) IBOutlet UIButton *starButton2;
+@property (strong, nonatomic) IBOutlet UIButton *starButton3;
+@property (strong, nonatomic) IBOutlet UIButton *starButton4;
+@property (strong, nonatomic) IBOutlet UIButton *starButton5;
+
 
 
 
@@ -86,12 +92,107 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     
-
-    
-    
     
     
 }
+
+
+-(IBAction)onClick:(id)sender
+{
+    UIButton *bttn = (UIButton *)sender;
+    if (bttn != nil)
+        
+    {
+        if  (bttn.tag == 1)
+        {
+            
+            _starButton1 = (UIButton *)[self.view viewWithTag:1];
+            _starButton2 = (UIButton *)[self.view viewWithTag:2];
+            _starButton3 = (UIButton *)[self.view viewWithTag:3];
+            _starButton4 = (UIButton *)[self.view viewWithTag:4];
+            _starButton5 = (UIButton *)[self.view viewWithTag:5];
+            [_starButton1 setImage:[UIImage imageNamed:@"selectedStar.png"] forState:UIControlStateNormal];
+            [_starButton2 setImage:[UIImage imageNamed:@"GrayStar.png"] forState:UIControlStateNormal];
+            [_starButton3 setImage:[UIImage imageNamed:@"GrayStar.png"] forState:UIControlStateNormal];
+            [_starButton4 setImage:[UIImage imageNamed:@"GrayStar.png"] forState:UIControlStateNormal];
+            [_starButton5 setImage:[UIImage imageNamed:@"GrayStar.png"] forState:UIControlStateNormal];
+    
+        }
+        else if (bttn.tag == 2)
+        {
+            _starButton1 = (UIButton *)[self.view viewWithTag:1];
+            _starButton2 = (UIButton *)[self.view viewWithTag:2];
+            _starButton3 = (UIButton *)[self.view viewWithTag:3];
+            _starButton4 = (UIButton *)[self.view viewWithTag:4];
+            _starButton5 = (UIButton *)[self.view viewWithTag:5];
+            [_starButton1 setImage:[UIImage imageNamed:@"selectedStar.png"] forState:UIControlStateNormal];
+            [_starButton2 setImage:[UIImage imageNamed:@"selectedStar.png"] forState:UIControlStateNormal];
+            [_starButton3 setImage:[UIImage imageNamed:@"GrayStar.png"] forState:UIControlStateNormal];
+            [_starButton4 setImage:[UIImage imageNamed:@"GrayStar.png"] forState:UIControlStateNormal];
+            [_starButton5 setImage:[UIImage imageNamed:@"GrayStar.png"] forState:UIControlStateNormal];
+
+        }
+        else if (bttn.tag == 3)
+        {
+            _starButton1 = (UIButton *)[self.view viewWithTag:1];
+            _starButton2 = (UIButton *)[self.view viewWithTag:2];
+            _starButton3 = (UIButton *)[self.view viewWithTag:3];
+            _starButton4 = (UIButton *)[self.view viewWithTag:4];
+            _starButton5 = (UIButton *)[self.view viewWithTag:5];
+            [_starButton1 setImage:[UIImage imageNamed:@"selectedStar.png"] forState:UIControlStateNormal];
+            [_starButton2 setImage:[UIImage imageNamed:@"selectedStar.png"] forState:UIControlStateNormal];
+            [_starButton3 setImage:[UIImage imageNamed:@"selectedStar.png"] forState:UIControlStateNormal];
+            [_starButton4 setImage:[UIImage imageNamed:@"GrayStar.png"] forState:UIControlStateNormal];
+            [_starButton5 setImage:[UIImage imageNamed:@"GrayStar.png"] forState:UIControlStateNormal];
+            
+
+        }
+        else if (bttn.tag == 4)
+        {
+            _starButton1 = (UIButton *)[self.view viewWithTag:1];
+            _starButton2 = (UIButton *)[self.view viewWithTag:2];
+            _starButton3 = (UIButton *)[self.view viewWithTag:3];
+            _starButton4 = (UIButton *)[self.view viewWithTag:4];
+            _starButton5 = (UIButton *)[self.view viewWithTag:5];
+            [_starButton1 setImage:[UIImage imageNamed:@"selectedStar.png"] forState:UIControlStateNormal];
+            [_starButton2 setImage:[UIImage imageNamed:@"selectedStar.png"] forState:UIControlStateNormal];
+            [_starButton3 setImage:[UIImage imageNamed:@"selectedStar.png"] forState:UIControlStateNormal];
+            [_starButton4 setImage:[UIImage imageNamed:@"selectedStar.png"] forState:UIControlStateNormal];
+            [_starButton5 setImage:[UIImage imageNamed:@"GrayStar.png"] forState:UIControlStateNormal];
+            
+
+            
+     
+        }
+        else if (bttn.tag == 5)
+        {
+            
+            _starButton1 = (UIButton *)[self.view viewWithTag:1];
+            _starButton2 = (UIButton *)[self.view viewWithTag:2];
+            _starButton3 = (UIButton *)[self.view viewWithTag:3];
+            _starButton4 = (UIButton *)[self.view viewWithTag:4];
+            _starButton5 = (UIButton *)[self.view viewWithTag:5];
+            [_starButton1 setImage:[UIImage imageNamed:@"selectedStar.png"] forState:UIControlStateNormal];
+            [_starButton2 setImage:[UIImage imageNamed:@"selectedStar.png"] forState:UIControlStateNormal];
+            [_starButton3 setImage:[UIImage imageNamed:@"selectedStar.png"] forState:UIControlStateNormal];
+            [_starButton4 setImage:[UIImage imageNamed:@"selectedStar.png"] forState:UIControlStateNormal];
+            [_starButton5 setImage:[UIImage imageNamed:@"selectedStar.png"] forState:UIControlStateNormal];
+            
+
+            
+
+            
+            
+            
+            
+        }
+    }
+    
+}
+
+
+
+
 
 
 - (IBAction)showComments:(id)sender {

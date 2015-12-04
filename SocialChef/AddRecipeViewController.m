@@ -124,65 +124,30 @@
 //SAVE DATA
 -(IBAction)Sharerecipe:(id)sender{
     
+   
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Hey There Chef!" message:@"Are You Ready To Save Your recipe?" preferredStyle:UIAlertControllerStyleAlert];
     
-    if (imageView.image) {
-        NSData *imageData = UIImagePNGRepresentation(imageView.image);
-        PFFile *photoFile = [PFFile fileWithData:imageData];
-        PFObject *photo = [PFObject objectWithClassName:@"Takenphoto"];
-        photo [@"Takenimage"] = photoFile;
-        photo [@"whoIsuser"] = [PFUser currentUser];
-        
-        photo [@"title"] = self.recipeTitle.text;
-        photo [@"serving"] = self.recipeServings.text;
-        
-        photo [@"ingred1"] = self.ingredItem1.text;
-        photo [@"ingred2"] = self.ingredItem2.text;
-        photo [@"ingred3"] = self.ingredItem3.text;
-        photo [@"ingred4"] = self.ingredItem4.text;
-        photo [@"ingred5"] = self.ingredItem5.text;
-        photo [@"ingred6"] = self.ingredItem6.text;
-        photo [@"ingred7"] = self.ingredItem7.text;
-        photo [@"ingred8"] = self.ingredItem8.text;
-        photo [@"ingred9"] = self.ingredItem9.text;
-        photo [@"ingred10"] = self.ingredItem10.text;
-        photo [@"ingred11"] = self.ingredItem11.text;
-        photo [@"ingred12"] = self.ingredItem12.text;
-        photo [@"ingred13"] = self.ingredItem13.text;
-        photo [@"ingred14"] = self.ingredItem14.text;
-        photo [@"ingred15"] = self.ingredItem15.text;
-        photo [@"ingred16"] = self.ingredItem16.text;
-        photo [@"ingred17"] = self.ingredItem17.text;
-        photo [@"ingred18"] = self.ingredItem18.text;
-        
-        photo [@"stepOne"] = self.stepOne.text;
-        photo [@"stepTwo"] = self.stepTwo.text;
-        photo [@"stepThree"] = self.stepThree.text;
-        
-
-        
-        
-        [photo addUniqueObjectsFromArray:@[@"ingred1", @"ingred2", @"ingred3",@"ingred4", @"ingred5", @"ingred6",@"ingred7", @"ingred8", @"ingred9",@"ingred10", @"ingred11", @"ingred12",@"ingred13", @"ingred14", @"ingred15",@"ingred16", @"ingred17", @"ingred18"] forKey:@"ingredientsArray"];
-        
-        [photo saveInBackground];
-        
-        [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        
-            if (!succeeded) {
-                [self showError];
-            }
-            
-        }];
-        
-        
-        
-    }
-    else{
-        [self showError];
-        
-    }
+    [self presentViewController:alertController animated:YES completion:nil];
+    //For multiple buttons you can use :
     
-    [self.tabBarController setSelectedIndex:0];
-
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self performSelector:@selector(saveToParse)];
+    }]];
+    
+    
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Not Yet" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+    }]];
+    
+     
+    
+    
+    
+    
+  //  [self performSelector:@selector(saveToParse)];
+    
+    
 
 }
 
@@ -260,6 +225,119 @@
 
 
 
+
+
+
+
+
+-(void)closeAlertview
+{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+- (void)saveToParse
+{
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    if (imageView.image) {
+        NSData *imageData = UIImagePNGRepresentation(imageView.image);
+        PFFile *photoFile = [PFFile fileWithData:imageData];
+        PFObject *photo = [PFObject objectWithClassName:@"Takenphoto"];
+        photo [@"Takenimage"] = photoFile;
+        photo [@"whoIsuser"] = [PFUser currentUser];
+        
+        photo [@"title"] = self.recipeTitle.text;
+        photo [@"serving"] = self.recipeServings.text;
+        
+        photo [@"ingred1"] = self.ingredItem1.text;
+        photo [@"ingred2"] = self.ingredItem2.text;
+        photo [@"ingred3"] = self.ingredItem3.text;
+        photo [@"ingred4"] = self.ingredItem4.text;
+        photo [@"ingred5"] = self.ingredItem5.text;
+        photo [@"ingred6"] = self.ingredItem6.text;
+        photo [@"ingred7"] = self.ingredItem7.text;
+        photo [@"ingred8"] = self.ingredItem8.text;
+        photo [@"ingred9"] = self.ingredItem9.text;
+        photo [@"ingred10"] = self.ingredItem10.text;
+        photo [@"ingred11"] = self.ingredItem11.text;
+        photo [@"ingred12"] = self.ingredItem12.text;
+        photo [@"ingred13"] = self.ingredItem13.text;
+        photo [@"ingred14"] = self.ingredItem14.text;
+        photo [@"ingred15"] = self.ingredItem15.text;
+        photo [@"ingred16"] = self.ingredItem16.text;
+        photo [@"ingred17"] = self.ingredItem17.text;
+        photo [@"ingred18"] = self.ingredItem18.text;
+        
+        photo [@"stepOne"] = self.stepOne.text;
+        photo [@"stepTwo"] = self.stepTwo.text;
+        photo [@"stepThree"] = self.stepThree.text;
+        
+        
+        
+        
+        [photo addUniqueObjectsFromArray:@[@"ingred1", @"ingred2", @"ingred3",@"ingred4", @"ingred5", @"ingred6",@"ingred7", @"ingred8", @"ingred9",@"ingred10", @"ingred11", @"ingred12",@"ingred13", @"ingred14", @"ingred15",@"ingred16", @"ingred17", @"ingred18"] forKey:@"ingredientsArray"];
+        
+        [photo saveInBackground];
+        
+        [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            
+            if (!succeeded) {
+                [self showError];
+            }
+            
+        }];
+        
+        
+        
+    }
+    else{
+        [self showError];
+        
+    }
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@" Success!" message:@"You Shared You Recipe?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    //For multiple buttons you can use :
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Great!" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self closeAlertview];
+    }]];
+    
+
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
 
 
 

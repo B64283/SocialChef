@@ -40,6 +40,14 @@
 		24EC94431C0FD29200B2F149 /* imagePlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 24EC94421C0FD29100B2F149 /* imagePlaceholder.png */; };
 		24EC94461C103C3400B2F149 /* ShoppingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC94451C103C3400B2F149 /* ShoppingListViewController.m */; };
 		24EC94491C103DD600B2F149 /* AddShoppingItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC94481C103DD600B2F149 /* AddShoppingItemsViewController.m */; };
+		24EC944C1C10CCBB00B2F149 /* TimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC944B1C10CCBB00B2F149 /* TimerViewController.m */; };
+		24EC94501C10CFDD00B2F149 /* Metal-backgrounds-vector.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 24EC944F1C10CFDD00B2F149 /* Metal-backgrounds-vector.jpg */; };
+		24EC94521C10D6A800B2F149 /* Alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 24EC94511C10D6A800B2F149 /* Alarm.wav */; };
+		24EC94541C1169AF00B2F149 /* GrayStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 24EC94531C1169AF00B2F149 /* GrayStar.png */; };
+		24EC94561C1169B600B2F149 /* selectedStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 24EC94551C1169B600B2F149 /* selectedStar.png */; };
+		24EC94581C116B4E00B2F149 /* ProfileHolder.png in Resources */ = {isa = PBXBuildFile; fileRef = 24EC94571C116B4E00B2F149 /* ProfileHolder.png */; };
+		24EC945B1C11A11300B2F149 /* SigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC945A1C11A11300B2F149 /* SigninViewController.m */; };
+		24EC945E1C11A12F00B2F149 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC945D1C11A12F00B2F149 /* RegisterViewController.m */; };
 		24F90D321BF2B9B100A6EA3B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F90D311BF2B9B100A6EA3B /* main.m */; };
 		24F90D351BF2B9B100A6EA3B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F90D341BF2B9B100A6EA3B /* AppDelegate.m */; };
 		24F90D381BF2B9B100A6EA3B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F90D371BF2B9B100A6EA3B /* ViewController.m */; };
@@ -155,6 +163,17 @@
 		24EC94451C103C3400B2F149 /* ShoppingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListViewController.m; sourceTree = "<group>"; };
 		24EC94471C103DD600B2F149 /* AddShoppingItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddShoppingItemsViewController.h; sourceTree = "<group>"; };
 		24EC94481C103DD600B2F149 /* AddShoppingItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddShoppingItemsViewController.m; sourceTree = "<group>"; };
+		24EC944A1C10CCBB00B2F149 /* TimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerViewController.h; sourceTree = "<group>"; };
+		24EC944B1C10CCBB00B2F149 /* TimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerViewController.m; sourceTree = "<group>"; };
+		24EC944F1C10CFDD00B2F149 /* Metal-backgrounds-vector.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Metal-backgrounds-vector.jpg"; sourceTree = "<group>"; };
+		24EC94511C10D6A800B2F149 /* Alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Alarm.wav; sourceTree = "<group>"; };
+		24EC94531C1169AF00B2F149 /* GrayStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GrayStar.png; sourceTree = "<group>"; };
+		24EC94551C1169B600B2F149 /* selectedStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectedStar.png; sourceTree = "<group>"; };
+		24EC94571C116B4E00B2F149 /* ProfileHolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileHolder.png; sourceTree = "<group>"; };
+		24EC94591C11A11300B2F149 /* SigninViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigninViewController.h; sourceTree = "<group>"; };
+		24EC945A1C11A11300B2F149 /* SigninViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigninViewController.m; sourceTree = "<group>"; };
+		24EC945C1C11A12F00B2F149 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		24EC945D1C11A12F00B2F149 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		24F90D2D1BF2B9B100A6EA3B /* SocialChef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialChef.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F90D311BF2B9B100A6EA3B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		24F90D331BF2B9B100A6EA3B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -224,6 +243,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24F90D6D1BF31F8100A6EA3B /* AudioToolbox.framework in Frameworks */,
 				2484CED41BFC5FC000AFF478 /* MobileCoreServices.framework in Frameworks */,
 				24F90D811BF3204100A6EA3B /* libsqlite3.tbd in Frameworks */,
 				24F90D7F1BF3200B00A6EA3B /* libz.tbd in Frameworks */,
@@ -240,7 +260,6 @@
 				24F90D711BF31F9B00A6EA3B /* CoreGraphics.framework in Frameworks */,
 				24F90D6F1BF31F8D00A6EA3B /* CFNetwork.framework in Frameworks */,
 				24F90D831BF3236F00A6EA3B /* FBSDKCoreKit.framework in Frameworks */,
-				24F90D6D1BF31F8100A6EA3B /* AudioToolbox.framework in Frameworks */,
 				24F90D6B1BF31F7700A6EA3B /* Accounts.framework in Frameworks */,
 				24F90D691BF31ED500A6EA3B /* Parse.framework in Frameworks */,
 				24F90D851BF3238D00A6EA3B /* FBSDKLoginKit.framework in Frameworks */,
@@ -298,10 +317,15 @@
 				24F90DA21BF460C000A6EA3B /* Social-ChefIconFix.png */,
 				24F90D991BF407AF00A6EA3B /* Social-414Chef.png */,
 				24F929D21BFDCE610009A598 /* Screen Shot 2015-11-19 at 1.29.40 AM.png */,
+				24EC94571C116B4E00B2F149 /* ProfileHolder.png */,
 				24F929D81BFE36B40009A598 /* house-7.png */,
+				24EC94551C1169B600B2F149 /* selectedStar.png */,
+				24EC94531C1169AF00B2F149 /* GrayStar.png */,
 				24EC94421C0FD29100B2F149 /* imagePlaceholder.png */,
 				24F929D91BFE36B40009A598 /* clock-timer-7.png */,
+				24EC944F1C10CFDD00B2F149 /* Metal-backgrounds-vector.jpg */,
 				24F929DA1BFE36B40009A598 /* shopping-cart-7.png */,
+				24EC94511C10D6A800B2F149 /* Alarm.wav */,
 				240BEF931BFA6B37004E35FA /* socialIcon.png */,
 				24EC94341C0B0C2C00B2F149 /* BlackNavagation.png */,
 				240BEF8F1BFA5F19004E35FA /* NewRed.png */,
@@ -359,6 +383,10 @@
 			isa = PBXGroup;
 			children = (
 				24F90D391BF2B9B100A6EA3B /* Main.storyboard */,
+				24EC94591C11A11300B2F149 /* SigninViewController.h */,
+				24EC945A1C11A11300B2F149 /* SigninViewController.m */,
+				24EC945C1C11A12F00B2F149 /* RegisterViewController.h */,
+				24EC945D1C11A12F00B2F149 /* RegisterViewController.m */,
 				24EC943C1C0D48A200B2F149 /* AddInfoViewController.h */,
 				24EC943D1C0D48A200B2F149 /* AddInfoViewController.m */,
 				24EC94391C0D485C00B2F149 /* ShoppingViewController.h */,
@@ -389,6 +417,8 @@
 				240BEF7B1BF5D128004E35FA /* MainFeedCustomClass.m */,
 				24F90DA41BF4669400A6EA3B /* MainFeedTableViewController.h */,
 				24F90DA51BF4669400A6EA3B /* MainFeedTableViewController.m */,
+				24EC944A1C10CCBB00B2F149 /* TimerViewController.h */,
+				24EC944B1C10CCBB00B2F149 /* TimerViewController.m */,
 				24EC94361C0D471300B2F149 /* CustomShoppingCell.h */,
 				24EC94371C0D471300B2F149 /* CustomShoppingCell.m */,
 				24EC94441C103C3400B2F149 /* ShoppingListViewController.h */,
@@ -546,20 +576,25 @@
 				24F929DC1BFE36B40009A598 /* clock-timer-7.png in Resources */,
 				240BEF821BF5DB94004E35FA /* IMG_1701.jpg in Resources */,
 				240BEF7E1BF5DB79004E35FA /* IMG_Scallopinni.jpg in Resources */,
+				24EC94561C1169B600B2F149 /* selectedStar.png in Resources */,
 				24F929DB1BFE36B40009A598 /* house-7.png in Resources */,
 				240BEF841BF5E3E8004E35FA /* MeImage.jpg in Resources */,
 				240BEF801BF5DB8F004E35FA /* IMG_1732.jpg in Resources */,
+				24EC94581C116B4E00B2F149 /* ProfileHolder.png in Resources */,
 				24F90D431BF2B9B100A6EA3B /* LaunchScreen.storyboard in Resources */,
 				24F90D981BF3EFEC00A6EA3B /* 600Social-Chef.png in Resources */,
 				240BEF961BFA7A8D004E35FA /* socialButton.png in Resources */,
+				24EC94541C1169AF00B2F149 /* GrayStar.png in Resources */,
 				24F90D9A1BF407AF00A6EA3B /* Social-414Chef.png in Resources */,
 				24F90D9E1BF4107700A6EA3B /* dreamstime_l_57968381.jpg in Resources */,
 				24F90D921BF3E4B800A6EA3B /* Untitled-1.png in Resources */,
 				24F90D401BF2B9B100A6EA3B /* Assets.xcassets in Resources */,
+				24EC94521C10D6A800B2F149 /* Alarm.wav in Resources */,
 				24F90D901BF3E2BD00A6EA3B /* dreamstime_l_38524672.jpg in Resources */,
 				24F90DA31BF460C000A6EA3B /* Social-ChefIconFix.png in Resources */,
 				240BEF761BF57145004E35FA /* Social-Chefwhite.png in Resources */,
 				240BEF861BF5E4E4004E35FA /* jess.jpg in Resources */,
+				24EC94501C10CFDD00B2F149 /* Metal-backgrounds-vector.jpg in Resources */,
 				240BEF981BFA7D8F004E35FA /* launchscreen.png in Resources */,
 				240BEF741BF57060004E35FA /* Social-Chef.png in Resources */,
 				24F929DD1BFE36B40009A598 /* shopping-cart-7.png in Resources */,
@@ -605,15 +640,18 @@
 				24EC94461C103C3400B2F149 /* ShoppingListViewController.m in Sources */,
 				24EC94381C0D471400B2F149 /* CustomShoppingCell.m in Sources */,
 				24F90DA61BF4669400A6EA3B /* MainFeedTableViewController.m in Sources */,
+				24EC944C1C10CCBB00B2F149 /* TimerViewController.m in Sources */,
 				24F90D3E1BF2B9B100A6EA3B /* SocialChef.xcdatamodeld in Sources */,
 				240BEF7C1BF5D128004E35FA /* MainFeedCustomClass.m in Sources */,
 				24EC94411C0E228B00B2F149 /* LikesButton.m in Sources */,
+				24EC945B1C11A11300B2F149 /* SigninViewController.m in Sources */,
 				24F90D381BF2B9B100A6EA3B /* ViewController.m in Sources */,
 				24F90D351BF2B9B100A6EA3B /* AppDelegate.m in Sources */,
 				2484CECF1BFBB8B600AFF478 /* AddRecipeViewController.m in Sources */,
 				2484CECC1BFBB77700AFF478 /* AddIngredientsViewController.m in Sources */,
 				240BEF791BF5AB65004E35FA /* CustomCell.m in Sources */,
 				24EC94331C0B023600B2F149 /* FollowButton.m in Sources */,
+				24EC945E1C11A12F00B2F149 /* RegisterViewController.m in Sources */,
 				24EC943B1C0D485C00B2F149 /* ShoppingViewController.m in Sources */,
 				24EC943E1C0D48A200B2F149 /* AddInfoViewController.m in Sources */,
 				24F929E71C05AF0D0009A598 /* NewCommentCell.m in Sources */,
@@ -769,7 +807,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SocialChef/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fullsail.demoApp.SocialChef;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -789,7 +827,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SocialChef/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fullsail.demoApp.SocialChef;
 				PRODUCT_NAME = "$(TARGET_NAME)";
