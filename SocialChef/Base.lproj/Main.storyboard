@@ -614,9 +614,6 @@
                                     <outlet property="delegate" destination="bf7-Ob-Gq1" id="M16-kh-5sz"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="launchscreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="arv-T7-4cz">
-                                <rect key="frame" x="8" y="8" width="92" height="50"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opR-jk-52c">
                                 <rect key="frame" x="312" y="18" width="52" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -1003,7 +1000,7 @@
             </objects>
             <point key="canvasLocation" x="184.5" y="-781.5"/>
         </scene>
-        <!--Main Feed Table View Controller-->
+        <!--Main Feed-->
         <scene sceneID="MYp-FQ-uM2">
             <objects>
                 <tableViewController id="uIk-o9-oFh" customClass="MainFeedTableViewController" sceneMemberID="viewController">
@@ -1106,8 +1103,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="DF9-aS-EzU">
-                        <nil key="title"/>
+                    <navigationItem key="navigationItem" title="Main Feed" id="DF9-aS-EzU">
                         <barButtonItem key="leftBarButtonItem" image="circle-user-7.png" id="ZPW-BL-vUJ">
                             <color key="tintColor" red="1" green="0.34360344370000001" blue="0.069599872059999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -1116,16 +1112,6 @@
                                 </segue>
                             </connections>
                         </barButtonItem>
-                        <view key="titleView" contentMode="scaleToFill" id="kYx-Zb-Y2P">
-                            <rect key="frame" x="84" y="6" width="207" height="33"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Social-414Chef.png" translatesAutoresizingMaskIntoConstraints="NO" id="MAA-HG-Fii">
-                                    <rect key="frame" x="-3" y="-2" width="213" height="35"/>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="UCv-JB-aPM">
                             <color key="tintColor" red="1" green="0.34360344370000001" blue="0.069599872059999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -1824,16 +1810,6 @@
                                 <segue destination="JsQ-Io-Juq" kind="unwind" unwindAction="backTotheStart:" id="Q8A-kP-Asj"/>
                             </connections>
                         </barButtonItem>
-                        <view key="titleView" contentMode="scaleToFill" id="jk6-SX-1ZV">
-                            <rect key="frame" x="84" y="6" width="207" height="33"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Social-414Chef.png" translatesAutoresizingMaskIntoConstraints="NO" id="bUj-p2-RhU">
-                                    <rect key="frame" x="0.0" y="0.0" width="202" height="30"/>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
                     </navigationItem>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
@@ -1900,7 +1876,6 @@
         <image name="NewRed.png" width="33" height="34"/>
         <image name="ProfileHolder.png" width="91" height="79"/>
         <image name="Screen Shot 2015-11-19 at 1.29.40 AM.png" width="219" height="140"/>
-        <image name="Social-414Chef.png" width="414" height="70"/>
         <image name="circle-user-7.png" width="30" height="30"/>
         <image name="clock-timer-7.png" width="29" height="30"/>
         <image name="dreamstime_l_38524672.jpg" width="2737" height="1825"/>

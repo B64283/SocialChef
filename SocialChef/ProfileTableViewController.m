@@ -101,10 +101,10 @@
 
 -(PFQuery *)queryForTable {
     
-    if (![PFUser currentUser] || ![PFFacebookUtils isLinkedWithUser: [PFUser currentUser]]){
-        return nil;
-    
-        }
+//    if (![PFUser currentUser] || ![PFFacebookUtils isLinkedWithUser: [PFUser currentUser]]){
+//        return nil;
+//    
+//        }
     
     PFQuery *followingQuery = [PFQuery queryWithClassName:@"Activity"];
     [followingQuery whereKey:@"FromUser" equalTo:[PFUser currentUser]];
