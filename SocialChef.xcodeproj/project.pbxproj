@@ -48,6 +48,9 @@
 		24EC94581C116B4E00B2F149 /* ProfileHolder.png in Resources */ = {isa = PBXBuildFile; fileRef = 24EC94571C116B4E00B2F149 /* ProfileHolder.png */; };
 		24EC945B1C11A11300B2F149 /* SigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC945A1C11A11300B2F149 /* SigninViewController.m */; };
 		24EC945E1C11A12F00B2F149 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC945D1C11A12F00B2F149 /* RegisterViewController.m */; };
+		24EC94611C13D30000B2F149 /* FindFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC94601C13D30000B2F149 /* FindFriendViewController.m */; };
+		24EC94641C13D84900B2F149 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC94631C13D84900B2F149 /* SettingsViewController.m */; };
+		24EC94661C15078600B2F149 /* MePic.png in Resources */ = {isa = PBXBuildFile; fileRef = 24EC94651C15078600B2F149 /* MePic.png */; };
 		24F90D321BF2B9B100A6EA3B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F90D311BF2B9B100A6EA3B /* main.m */; };
 		24F90D351BF2B9B100A6EA3B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F90D341BF2B9B100A6EA3B /* AppDelegate.m */; };
 		24F90D381BF2B9B100A6EA3B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F90D371BF2B9B100A6EA3B /* ViewController.m */; };
@@ -174,6 +177,11 @@
 		24EC945A1C11A11300B2F149 /* SigninViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigninViewController.m; sourceTree = "<group>"; };
 		24EC945C1C11A12F00B2F149 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		24EC945D1C11A12F00B2F149 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		24EC945F1C13D30000B2F149 /* FindFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindFriendViewController.h; sourceTree = "<group>"; };
+		24EC94601C13D30000B2F149 /* FindFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindFriendViewController.m; sourceTree = "<group>"; };
+		24EC94621C13D84900B2F149 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		24EC94631C13D84900B2F149 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		24EC94651C15078600B2F149 /* MePic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MePic.png; sourceTree = "<group>"; };
 		24F90D2D1BF2B9B100A6EA3B /* SocialChef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialChef.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F90D311BF2B9B100A6EA3B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		24F90D331BF2B9B100A6EA3B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -319,6 +327,7 @@
 				24F929D21BFDCE610009A598 /* Screen Shot 2015-11-19 at 1.29.40 AM.png */,
 				24EC94571C116B4E00B2F149 /* ProfileHolder.png */,
 				24F929D81BFE36B40009A598 /* house-7.png */,
+				24EC94651C15078600B2F149 /* MePic.png */,
 				24EC94551C1169B600B2F149 /* selectedStar.png */,
 				24EC94531C1169AF00B2F149 /* GrayStar.png */,
 				24EC94421C0FD29100B2F149 /* imagePlaceholder.png */,
@@ -383,6 +392,10 @@
 			isa = PBXGroup;
 			children = (
 				24F90D391BF2B9B100A6EA3B /* Main.storyboard */,
+				24EC94621C13D84900B2F149 /* SettingsViewController.h */,
+				24EC94631C13D84900B2F149 /* SettingsViewController.m */,
+				24EC945F1C13D30000B2F149 /* FindFriendViewController.h */,
+				24EC94601C13D30000B2F149 /* FindFriendViewController.m */,
 				24EC94591C11A11300B2F149 /* SigninViewController.h */,
 				24EC945A1C11A11300B2F149 /* SigninViewController.m */,
 				24EC945C1C11A12F00B2F149 /* RegisterViewController.h */,
@@ -534,6 +547,11 @@
 					24F90D2C1BF2B9B100A6EA3B = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = DUTJGRZM3B;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					24F90D481BF2B9B100A6EA3B = {
 						CreatedOnToolsVersion = 7.1;
@@ -572,6 +590,7 @@
 			files = (
 				24F929E11BFE3D5E0009A598 /* circle-user-7.png in Resources */,
 				240BEF8E1BFA5F0B004E35FA /* BlackHeart.png in Resources */,
+				24EC94661C15078600B2F149 /* MePic.png in Resources */,
 				240BEF941BFA6B37004E35FA /* socialIcon.png in Resources */,
 				24F929DC1BFE36B40009A598 /* clock-timer-7.png in Resources */,
 				240BEF821BF5DB94004E35FA /* IMG_1701.jpg in Resources */,
@@ -639,10 +658,12 @@
 				24EC94491C103DD600B2F149 /* AddShoppingItemsViewController.m in Sources */,
 				24EC94461C103C3400B2F149 /* ShoppingListViewController.m in Sources */,
 				24EC94381C0D471400B2F149 /* CustomShoppingCell.m in Sources */,
+				24EC94641C13D84900B2F149 /* SettingsViewController.m in Sources */,
 				24F90DA61BF4669400A6EA3B /* MainFeedTableViewController.m in Sources */,
 				24EC944C1C10CCBB00B2F149 /* TimerViewController.m in Sources */,
 				24F90D3E1BF2B9B100A6EA3B /* SocialChef.xcdatamodeld in Sources */,
 				240BEF7C1BF5D128004E35FA /* MainFeedCustomClass.m in Sources */,
+				24EC94611C13D30000B2F149 /* FindFriendViewController.m in Sources */,
 				24EC94411C0E228B00B2F149 /* LikesButton.m in Sources */,
 				24EC945B1C11A11300B2F149 /* SigninViewController.m in Sources */,
 				24F90D381BF2B9B100A6EA3B /* ViewController.m in Sources */,
@@ -732,6 +753,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -754,6 +776,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "3707976b-427d-458a-aeb4-a52c2b7fda0f";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -775,6 +798,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -790,6 +814,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "3707976b-427d-458a-aeb4-a52c2b7fda0f";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

@@ -20,7 +20,7 @@ NSArray *userStringArray;
 
 @property (weak, nonatomic)IBOutlet UITextField *userPassword;
 
--(IBAction)signInAction:(id)sender;
+-(IBAction)signInAct:(id)sender;
 
 
 

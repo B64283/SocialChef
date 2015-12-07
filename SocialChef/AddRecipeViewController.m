@@ -262,7 +262,10 @@
     
     
     if (imageView.image) {
-        NSData *imageData = UIImagePNGRepresentation(imageView.image);
+        
+       
+        
+        NSData *imageData = UIImageJPEGRepresentation(imageView.image, 1.0);
         PFFile *photoFile = [PFFile fileWithData:imageData];
         PFObject *photo = [PFObject objectWithClassName:@"Takenphoto"];
         photo [@"Takenimage"] = photoFile;

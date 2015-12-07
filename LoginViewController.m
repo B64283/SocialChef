@@ -11,7 +11,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 
-@interface LoginViewController ()
+@interface LoginViewController () 
 
 @end
 
@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self _loadData];
+    
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"Social-414Chef"] forBarMetrics:UIBarMetricsDefault];
     
             // do stuff with the user
@@ -46,7 +46,7 @@
                 
                 
             }if (user){
-                
+                [self _loadData];
                 [self performSegueWithIdentifier:@"Signin" sender:self];
             }
         }];

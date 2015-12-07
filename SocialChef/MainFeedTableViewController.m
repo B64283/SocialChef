@@ -16,6 +16,7 @@
 
 @interface MainFeedTableViewController ()
 @property (nonatomic, strong)NSMutableArray *followingArray;
+@property (nonatomic, strong)NSMutableArray *likesArray;
 @property (nonatomic, strong)NSMutableArray *userStrArray;
 @end
 
@@ -34,7 +35,21 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-}
+    PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
+    [PFUser currentUser];
+    [query whereKey:@"Takenphoto" equalTo:@"Takenimage"];
+    
+    [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
+        if (!error) {
+            // The count request succeeded. Log the count
+            NSLog(@"Sean has played %d games", count);
+        } else {
+            // The request failed
+        }
+    }];
+    
+    // Associate the device with a user
+    }
 
 
 
@@ -199,6 +214,34 @@
         
     }];
     
+   PFQuery *queryLike = [PFQuery queryWithClassName:@"Activity"];
+    [queryLike whereKey:@"FromUser"  equalTo:[PFUser currentUser]];
+    [queryLike whereKey:@"Type"  equalTo:@"like"];
+    [queryLike includeKey:@"ToUser"];
+    [queryLike findObjectsInBackgroundWithBlock:^(NSArray * objects, NSError * error) {
+        
+        if (!error) {
+            self.likesArray = [NSMutableArray array];
+            if (objects.count > 0) {
+                
+                for (PFObject *activity in objects) {
+                    PFUser *user = activity[@"ToUser"];
+                    
+                    //get object id from each user object
+                    
+                    //from parse: (you should check to see whether users Contains a PFuser with an object ID matches your current user)
+                    [self.likesArray addObject:user.objectId];
+                    
+                    
+                }
+            }
+            [self.tableView reloadData];
+        }
+        
+    }];
+
+    
+    
     
 }
 
@@ -278,7 +321,24 @@
     
     
     
-    
+    if (!self.likesArray || [user.objectId isEqualToString:[PFUser currentUser].objectId] ) {
+        likesButton.hidden = YES;
+        
+        
+    }else{
+        likesButton.hidden = NO;
+        NSInteger indexOfMatchedObject = [self.likesArray indexOfObject:user.objectId];
+        
+        if (indexOfMatchedObject == NSNotFound) {
+            likesButton.selected = NO;
+            
+            
+        }else{
+            
+            likesButton.selected = YES;
+        }
+    }
+
     
     
     // update state of following button we dont want user to follow their self
@@ -446,7 +506,19 @@
         followActivity [@"Type"] = @"follow";
         [followActivity saveEventually];
         
+        
+        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+        [currentInstallation addUniqueObject:@"global" forKey:@"channels"];
+        [currentInstallation saveInBackground];
+        
+        // Send a notification to all devices subscribed to the "Giants" channel.
+        PFPush *push = [[PFPush alloc] init];
+        [push setChannel:@"global"];
+        [push setMessage:@"Sean Just followed You"];
+        [push sendPushInBackground];
     }
+    
+    
     
     
     
@@ -483,14 +555,71 @@
 
 -(void)likesButton:(LikesButton *)button didTapWithSectionIndex:(NSInteger)index {
     
-
+    PFObject *photo = [self.objects objectAtIndex:index];
+    PFUser *user = photo [@"whoIsuser"];
+    
+    if (!button.selected) {
+        [self likeUser:user];
+        
+    }else{
+        
+        [self UnLikeUser:user];
+    }
+    
+    //refresh tableView to show change
+    [self.tableView reloadData];
 
 
 
 }
 
 
+// follow USER
+-(void)likeUser:(PFUser *)user {
+    if (![user.objectId isEqualToString:[PFUser currentUser].objectId]) {
+        
+        //update array to make changes happen
+        [self.likesArray addObject:user.objectId];
+        
+        PFObject *followActivity = [PFObject objectWithClassName:@"Activity"];
+        followActivity [@"FromUser"] = [PFUser currentUser];
+        followActivity [@"ToUser"] = user;
+        followActivity [@"Type"] = @"like";
+        [followActivity saveEventually];
+        
+    }
+    
+    
+    
+}
 
+
+
+// Unfollow User
+-(void)UnLikeUser:(PFUser *)user {
+    
+    //update array to make changes happen
+    [self.likesArray removeObject:user.objectId];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Activity"];
+    [query whereKey:@"FromUser" equalTo:[PFUser currentUser]];
+    [query whereKey:@"ToUser" equalTo:user];
+    [query whereKey:@"Type" equalTo:@"like"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * followActivities, NSError * error)
+     
+     {
+         if (!error) {
+             for (PFObject *followActivity in followActivities) {
+                 [followActivity deleteEventually];
+             }
+         }
+     }];
+    
+    
+    
+    
+    
+}
 
 
 

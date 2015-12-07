@@ -21,10 +21,9 @@
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
         // do stuff with the user
-        [self performSegueWithIdentifier:@"Signin" sender:self];
-    } else {
-        // show the signup or login screen
+        [self performSegueWithIdentifier:@"SignWoFB" sender:self];
     }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,7 +39,7 @@
     [_userPassword resignFirstResponder];
 }
 
-- (IBAction)signInAction:(id)sender{
+- (IBAction)signInAct:(id)sender{
     
     
     
@@ -76,8 +75,6 @@
     
     
 }
-
-
 
 -(IBAction)backSt:(UIStoryboardSegue *)segue
 
