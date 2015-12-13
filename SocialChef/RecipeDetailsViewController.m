@@ -10,9 +10,10 @@
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import "MainFeedTableViewController.h"
 #import <Parse/Parse.h>
+#import "CommentCell.h"
 
 @interface RecipeDetailsViewController ()
-
+@property (weak, nonatomic) IBOutlet UITableView* myCommentTableView;
 @property (weak, nonatomic) IBOutlet PFImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet PFImageView *recipeImageView;
 
@@ -34,7 +35,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    [self performSelector:@selector(retrieveFromParse)];
+    [self.myCommentTableView reloadData];
     self.getObjectQuery = [PFQuery queryWithClassName:@"Takenphoto"];
     
     NSString *titleLableString = [self.getObject objectForKey:@"title"];
@@ -89,12 +91,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    
-    
-    
-}
+
 
 
 -(IBAction)onClick:(id)sender
@@ -191,24 +188,188 @@
 }
 
 
-
-
-
-
-- (IBAction)showComments:(id)sender {
+- (void)retrieveFromParse
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"nSavedItems"];
+    [query orderByAscending:@"createdAt"];
+    [query fromLocalDatastore];
     
-    
-    UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"This is where the user will add comments on their friends recipes" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    
-    if(eventAlertView != nil)
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            
+            userStrArray = [[NSMutableArray alloc]initWithArray:objects];
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
         
-    {
-        [eventAlertView show];
-    }
-
+        
+        [_myCommentTableView reloadData];
+        
+    }];
     
     
 }
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [self performSelector:@selector(retrieveFromParse)];
+    [self.myCommentTableView reloadData];
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
+{
+    return 1;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    return [userStrArray count];
+    
+}
+
+
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell"];
+    if (cell != nil)
+    {
+        PFObject *tempObject = [userStrArray objectAtIndex:indexPath.row];
+        
+        
+        cell.commentText = [tempObject objectForKey:@"comment"];
+        
+        
+        
+    }
+    
+    [cell refreshCell];
+    return cell;
+    
+    
+}
+
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{    //are we in delete mode
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        PFObject *tempObject = [userStrArray objectAtIndex:indexPath.row];
+        
+        [tempObject deleteInBackground];
+        
+        
+        [tempObject unpinInBackground];
+        
+        [userStrArray removeObjectAtIndex:indexPath.row];
+        
+        [_myCommentTableView reloadData];
+        
+        
+        
+        
+    }
+}
+
+
+
+
+
+- (IBAction)sendCommentButton:(id)sender {
+    
+    
+    [self performSelector:@selector(submitForm)];
+    
+    [self performSelector:@selector(retrieveFromParse)];
+    [self.myCommentTableView reloadData];
+    //[self.navigationController popViewControllerAnimated:YES];
+}
+
+
+
+-(void)submitForm {
+    
+    
+    PFObject *privateNote = [PFObject objectWithClassName:@"nSavedItems"];
+    // privateNote[@"content"] = @"This note is private!";
+    
+    //[privateNote saveInBackground];
+    
+    //PFObject *gameScore = [PFObject objectWithClassName:@"savedItems"];
+        privateNote[@"comment"] = _comment.text;
+    
+    privateNote.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
+    [privateNote saveEventually];
+    [privateNote pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            
+            //[self dismissViewControllerAnimated:YES completion:nil];
+            // The object has been saved.
+            UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"Comment Saved!" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            //[self performSelector:@selector(backTothe:)];
+            if(eventAlertView != nil)
+                
+            {
+                [eventAlertView show];
+                
+            }
+            
+        } else {
+            // There was a problem, check error.description
+            
+            UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@" There was an error" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            
+            if(eventAlertView != nil)
+                
+            {
+                [eventAlertView show];
+                
+            }
+            
+        }
+    }];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*

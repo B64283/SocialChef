@@ -47,7 +47,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             
-            userStrArray = [[NSMutableArray alloc]initWithArray:objects];
+            _userStrArray = [[NSMutableArray alloc]initWithArray:objects];
             
         } else {
             // Log details of the failure
@@ -78,7 +78,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return [userStrArray count];
+    return [_userStrArray count];
     
 }
 
@@ -117,14 +117,14 @@
     
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        PFObject *tempObject = [userStrArray objectAtIndex:indexPath.row];
+        PFObject *tempObject = [_userStrArray objectAtIndex:indexPath.row];
         
         [tempObject deleteInBackground];
         
         
         [tempObject unpinInBackground];
         
-        [userStrArray removeObjectAtIndex:indexPath.row];
+        [_userStrArray removeObjectAtIndex:indexPath.row];
         
         [_myShoppingTableView reloadData];
         

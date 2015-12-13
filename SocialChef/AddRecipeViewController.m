@@ -40,6 +40,9 @@
     barButton.title = @"Back";
     self.navigationController.navigationBar.topItem.backBarButtonItem = barButton;
     [self performSelector:@selector(retrieveFromParse)];
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

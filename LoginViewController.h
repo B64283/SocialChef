@@ -9,7 +9,16 @@
 #import "ViewController.h"
 #import <Parse/Parse.h>
 @interface LoginViewController : ViewController <NSURLConnectionDataDelegate>
+{
 
+NSArray *userStringArray;
+
+}
+@property (weak, nonatomic)IBOutlet UITextField *userNameSin;
+
+@property (weak, nonatomic)IBOutlet UITextField *userPassword;
+
+-(IBAction)signInAct:(id)sender;
 
 
 

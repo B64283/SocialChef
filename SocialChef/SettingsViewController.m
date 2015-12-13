@@ -35,7 +35,7 @@
 -(IBAction)signOut:(id)sender{
     
     [PFUser logOut];
-    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication]delegate];
+    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     
     [appDelegate presentLoginViewControllerAnimated:YES];
     

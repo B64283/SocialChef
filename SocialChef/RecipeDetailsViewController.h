@@ -10,7 +10,7 @@
 #import "MainFeedCustomClass.h"
 #import <Parse/Parse.h>
 
-@interface RecipeDetailsViewController : UIViewController
+@interface RecipeDetailsViewController : UIViewController <UITableViewDelegate, UIAlertViewDelegate, UITableViewDataSource>
 
 
 {
@@ -48,7 +48,7 @@
     
     
     
-    
+NSMutableArray *userStrArray; 
     
     
         
@@ -56,15 +56,16 @@
     
     
 }
-
+@property (strong, nonatomic) NSMutableArray* userStrArray;
 @property (strong, nonatomic)IBOutlet UIBarButtonItem *back;
 @property (weak, nonatomic) PFObject *getObject;
 @property (weak, nonatomic) PFQuery *getObjectQuery;
 
+@property (weak, nonatomic)IBOutlet UITextField *comment;
 
 
 
-
+- (IBAction)sendCommentButton:(id)sender;
 
 
 -(IBAction)showComments:(id)sender;

@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <Parse/Parse.h>
 @interface CommentCell : UITableViewCell
+{
 
+    
+    
+    IBOutlet UILabel * commentLable;
+
+
+
+}
+
+-(void)refreshCell;
+
+
+@property(nonatomic, strong) NSString *commentText;
 @end

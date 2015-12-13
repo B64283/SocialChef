@@ -25,15 +25,11 @@
 
 - (void)viewDidLoad {
     
-    
+    //self.searchResults = [NSMutableArray array];
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"BlackNavagation"] forBarMetrics:UIBarMetricsDefault];
     [super viewDidLoad];
-    // Uncomment the following line to preserve selection between presentations.
-    //self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
     [PFUser currentUser];
@@ -50,6 +46,34 @@
     
     // Associate the device with a user
     }
+
+
+//- (void)filterResults:(NSString *)searchTerm {
+//    
+//    [self.searchResults removeAllObjects];
+//    
+//    PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
+//    [query whereKeyExists:@"title"];  //this is based on whatever query you are trying to accomplish
+//    
+//    [query whereKey:@"title" containsString:searchTerm];
+//    
+//    NSArray *results  = [query findObjects];
+//    
+//    NSLog(@"%@", results);
+//    NSLog(@"%lu", (unsigned long)results.count);
+//    
+//    [self.searchResults addObjectsFromArray:results];
+//}
+//
+//
+//- (BOOL)searchDisplayController:(UISearchController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+//    [self filterResults:searchString];
+//    return YES;
+//}
+
+
+
+
 
 
 
@@ -256,7 +280,8 @@
 
     }
     else{
-        return nil;
+        
+        return NULL;
 
     }
 }
@@ -281,89 +306,196 @@
     
     static NSString *CellIdentifier = @"SectionHeaderCell";
     UITableViewCell *sectionHeaderView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    PFImageView *profileImageView = (PFImageView * )[sectionHeaderView viewWithTag:1];
-    UILabel *userNameLable = (UILabel *)[sectionHeaderView viewWithTag:2];
-    UILabel *titleLable = (UILabel *)[sectionHeaderView viewWithTag:3];
     
-    
-    
-    
-    
-    
-    PFObject *photo = [self.objects objectAtIndex:section];
-    PFUser *user = [photo objectForKey:@"whoIsuser"];
-    PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
- 
-    
-    //
-    NSString *title = photo[@"title"];
-    NSString *titleServing = photo[@"serving"];
-    
-    
-    userNameLable.text = user.username;
-    
-    titleLable.text = title;
-    
-    profileImageView.file = profilePicture;
-    [profileImageView loadInBackground];
-    
-    
-    FollowButton *followButton = (FollowButton *)[sectionHeaderView viewWithTag: 4];
-    followButton.delegate = self;
-    
-    followButton.sectionIndex = section;
-    
-    //Likes button
-    LikesButton *likesButton = (LikesButton *)[sectionHeaderView viewWithTag: 5];
-    likesButton.delegate = self;
-    
-    likesButton.sectionIndex = section;
-    
-    
-    
-    if (!self.likesArray || [user.objectId isEqualToString:[PFUser currentUser].objectId] ) {
-        likesButton.hidden = YES;
+    //if (tableView != self.searchDisplayController.searchResultsTableView) {
+       
+        PFImageView *profileImageView = (PFImageView * )[sectionHeaderView viewWithTag:1];
+        UILabel *userNameLable = (UILabel *)[sectionHeaderView viewWithTag:2];
+        UILabel *titleLable = (UILabel *)[sectionHeaderView viewWithTag:3];
         
         
-    }else{
-        likesButton.hidden = NO;
-        NSInteger indexOfMatchedObject = [self.likesArray indexOfObject:user.objectId];
         
-        if (indexOfMatchedObject == NSNotFound) {
-            likesButton.selected = NO;
+        
+        
+        
+        PFObject *photo = [self.objects objectAtIndex:section];
+        PFUser *user = [photo objectForKey:@"whoIsuser"];
+        PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
+        
+        
+        //
+        NSString *title = photo[@"title"];
+        //NSString *titleServing = photo[@"serving"];
+        
+        
+        userNameLable.text = user.username;
+        
+        titleLable.text = title;
+        
+        profileImageView.file = profilePicture;
+        [profileImageView loadInBackground];
+        
+        
+        FollowButton *followButton = (FollowButton *)[sectionHeaderView viewWithTag: 4];
+        followButton.delegate = self;
+        
+        followButton.sectionIndex = section;
+        
+        //Likes button
+        LikesButton *likesButton = (LikesButton *)[sectionHeaderView viewWithTag: 5];
+        likesButton.delegate = self;
+        
+        likesButton.sectionIndex = section;
+        
+        
+        
+        if (!self.likesArray || [user.objectId isEqualToString:[PFUser currentUser].objectId] ) {
+            likesButton.hidden = YES;
             
             
         }else{
+            likesButton.hidden = NO;
+            NSInteger indexOfMatchedObject = [self.likesArray indexOfObject:user.objectId];
             
-            likesButton.selected = YES;
+            if (indexOfMatchedObject == NSNotFound) {
+                likesButton.selected = NO;
+                
+                
+            }else{
+                
+                likesButton.selected = YES;
+            }
         }
-    }
+        
+        
+        
+        // update state of following button we dont want user to follow their self
+        
+        if (!self.followingArray || [user.objectId isEqualToString:[PFUser currentUser].objectId] ) {
+            followButton.hidden = YES;
+            
+            
+        }else{
+            followButton.hidden = NO;
+            NSInteger indexOfMatchedObject = [self.followingArray indexOfObject:user.objectId];
+            
+            if (indexOfMatchedObject == NSNotFound) {
+                followButton.selected = NO;
+                
+                
+            }else{
+                
+                followButton.selected = YES;
+            }
+        }
+
+     return sectionHeaderView;
+
+}
+    
+    
+    //}
+   // if ([tableView isEqual:self.searchDisplayController.searchResultsTableView]) {
+        
+        
+//        PFImageView *profileImageView = (PFImageView * )[sectionHeaderView viewWithTag:1];
+//        UILabel *userNameLable = (UILabel *)[sectionHeaderView viewWithTag:2];
+//        UILabel *titleLable = (UILabel *)[sectionHeaderView viewWithTag:3];
+//        
+//        
+//        
+//        
+//        
+//        
+//        PFObject *photo = [self.objects objectAtIndex:section];
+//        PFUser *user = [photo objectForKey:@"whoIsuser"];
+//        PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
+//        
+//        
+//        //
+//        NSString *title = photo[@"title"];
+//        NSString *titleServing = photo[@"serving"];
+//        
+//        
+//        userNameLable.text = user.username;
+//        
+//        titleLable.text = title;
+//        
+//        profileImageView.file = profilePicture;
+//        [profileImageView loadInBackground];
+//        
+//        
+//        FollowButton *followButton = (FollowButton *)[sectionHeaderView viewWithTag: 4];
+//        followButton.delegate = self;
+//        
+//        followButton.sectionIndex = section;
+//        
+//        //Likes button
+//        LikesButton *likesButton = (LikesButton *)[sectionHeaderView viewWithTag: 5];
+//        likesButton.delegate = self;
+//        
+//        likesButton.sectionIndex = section;
+//        
+//        
+//        
+//        if (!self.likesArray || [user.objectId isEqualToString:[PFUser currentUser].objectId] ) {
+//            likesButton.hidden = YES;
+//            
+//            
+//        }else{
+//            
+//            likesButton.hidden = NO;
+//            NSInteger indexOfMatchedObject = [self.likesArray indexOfObject:user.objectId];
+//            
+//            if (indexOfMatchedObject == NSNotFound) {
+//                likesButton.selected = NO;
+//                
+//                
+//            }else{
+//                
+//                likesButton.selected = YES;
+//            }
+//        }
+//        
+//        
+//        
+//        // update state of following button we dont want user to follow their self
+//        
+//        if (!self.followingArray || [user.objectId isEqualToString:[PFUser currentUser].objectId] ) {
+//            followButton.hidden = YES;
+//            
+//            
+//        }else{
+//            followButton.hidden = NO;
+//            NSInteger indexOfMatchedObject = [self.followingArray indexOfObject:user.objectId];
+//            
+//            if (indexOfMatchedObject == NSNotFound) {
+//                followButton.selected = NO;
+//                
+//                
+//            }else{
+//                
+//                followButton.selected = YES;
+//            }
+//        }
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+
+    
 
     
     
-    // update state of following button we dont want user to follow their self
     
-    if (!self.followingArray || [user.objectId isEqualToString:[PFUser currentUser].objectId] ) {
-        followButton.hidden = YES;
-        
-        
-    }else{
-        followButton.hidden = NO;
-        NSInteger indexOfMatchedObject = [self.followingArray indexOfObject:user.objectId];
-        
-        if (indexOfMatchedObject == NSNotFound) {
-            followButton.selected = NO;
-            
-            
-        }else{
-            
-            followButton.selected = YES;
-        }
-    }
-    
-    
-    return sectionHeaderView;
-}
+
+
 
 
 
@@ -383,7 +515,17 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    if (tableView == self.tableView) {
+        //if (tableView == self.searchDisplayController.searchResultsTableView) {
+        
+        return 1;
+        
+    } else {
+        
+        return self.searchResults.count;
+        
+    }
+
 }
 
 

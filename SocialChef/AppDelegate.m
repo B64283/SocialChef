@@ -49,7 +49,7 @@
                                                                              categories:nil];
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
-    
+    [self.window makeKeyAndVisible];
     return YES;
     
 }
@@ -194,7 +194,7 @@
     LoginViewController *loginVC = [[LoginViewController alloc]init];
     //loginVC.delegate = self;
     
-    [self.window.rootViewController presentViewController:loginVC animated:animated completion:nil];
+    [self.window.rootViewController presentViewController:loginVC animated:NO completion:NULL];
     
     
     

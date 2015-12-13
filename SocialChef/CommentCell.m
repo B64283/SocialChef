@@ -9,7 +9,7 @@
 #import "CommentCell.h"
 
 @implementation CommentCell
-
+@synthesize  commentText;
 - (void)awakeFromNib {
     // Initialization code
 }
@@ -19,5 +19,16 @@
 
     // Configure the view for the selected state
 }
+
+
+
+
+
+-(void)refreshCell
+
+{
+    commentLable.text = commentText;
+}
+
 
 @end

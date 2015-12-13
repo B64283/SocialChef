@@ -60,6 +60,10 @@
 @property (weak, nonatomic)IBOutlet UITextView *stepTwo;
 @property (weak, nonatomic)IBOutlet UITextView *stepThree;
 
+@property (weak, nonatomic)IBOutlet UIView *myView;
+@property (weak, nonatomic)IBOutlet UIScrollView *scrollView;
+
+
 
 
 

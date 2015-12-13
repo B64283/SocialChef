@@ -13,6 +13,88 @@
 
 @interface LoginViewController () 
 
+//@end
+//
+//@implementation LoginViewController
+//
+//- (void)viewDidLoad {
+//    [super viewDidLoad];
+//    
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"Social-414Chef"] forBarMetrics:UIBarMetricsDefault];
+//    
+//            // do stuff with the user
+//        
+//        FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+//        loginButton.center = self.view.center;
+//        [self.view addSubview:loginButton];
+//    
+//    if ([PFUser currentUser]) {
+//        
+//        [self performSegueWithIdentifier:@"Signin" sender:self];
+//
+//        
+//    }
+//    
+//    else if (![PFUser currentUser]) {
+//
+//        
+//        NSArray *permissions = [NSArray arrayWithObjects:@"public_profile", @"email", @"user_friends", nil];
+//        
+//        
+//        [PFFacebookUtils logInInBackgroundWithReadPermissions:permissions block:^(PFUser *user, NSError *error) {
+//            if (!user) {
+//                NSLog(@"Uh oh. The user cancelled the Facebook login.");
+//                
+//                
+//            }if (user){
+//                
+//                [self _loadData];
+//    [self performSegueWithIdentifier:@"Signin" sender:self];
+//        }
+//            
+//        }];
+//        
+//        //    // Request new Publish Permissions
+//        //    [PFFacebookUtils linkUserInBackground:[PFUser currentUser]
+//        //                   withPublishPermissions:@[ @"publish_actions"]
+//        //                                    block:^(BOOL succeeded, NSError *error) {
+//        //                                        if (succeeded) {
+//        //                                            NSLog(@"User now has read and publish permissions!");
+//        //                                        }
+//        //                                    }];
+//        
+//
+//    }
+//    
+//    
+//
+//}
+//
+//-(void)viewDidAppear:(BOOL)animated {
+//    if ([PFUser currentUser]) {
+//        [self performSegueWithIdentifier:@"Signin" sender:self];
+//        
+//
+//    }
+//    
+//    
+//    
+//}
+//
+//-(void)viewWillAppear:(BOOL)animated{
+//    
+//    if ([PFUser currentUser]) {
+//        [self performSegueWithIdentifier:@"Signin" sender:self];
+//        
+//        
+//    }
+//
+//    
+//    
+//}
+
+
+@property (weak, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
 @end
 
 @implementation LoginViewController
@@ -22,50 +104,167 @@
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"Social-414Chef"] forBarMetrics:UIBarMetricsDefault];
     
-            // do stuff with the user
-        
-        FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-        loginButton.center = self.view.center;
-        [self.view addSubview:loginButton];
     
+    
+    // do stuff with the user
+    UIButton *myLoginButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    myLoginButton.backgroundColor=[UIColor darkGrayColor];
+    myLoginButton.frame=CGRectMake(0,0,180,40);
+    myLoginButton.center = self.view.center;
+    [myLoginButton setTitle: @"FaceBook Login" forState: UIControlStateNormal];
+    
+    // Handle clicks on the button
+    [myLoginButton
+     addTarget:self
+     action:@selector(loginButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    
+    // Add the button to the view
+    [self.view addSubview:myLoginButton];
     if ([PFUser currentUser]) {
+        [self _loadData];
         [self performSegueWithIdentifier:@"Signin" sender:self];
-
+        
         
     }
     
-    else if (![PFUser currentUser]) {
-
-        
-        NSArray *permissions = [NSArray arrayWithObjects:@"public_profile", @"email", @"user_friends", nil];
-        
-        
-        [PFFacebookUtils logInInBackgroundWithReadPermissions:permissions block:^(PFUser *user, NSError *error) {
-            if (!user) {
-                NSLog(@"Uh oh. The user cancelled the Facebook login.");
-                
-                
-            }if (user){
-                [self _loadData];
-                [self performSegueWithIdentifier:@"Signin" sender:self];
-            }
-        }];
-        
-        //    // Request new Publish Permissions
-        //    [PFFacebookUtils linkUserInBackground:[PFUser currentUser]
-        //                   withPublishPermissions:@[ @"publish_actions"]
-        //                                    block:^(BOOL succeeded, NSError *error) {
-        //                                        if (succeeded) {
-        //                                            NSLog(@"User now has read and publish permissions!");
-        //                                        }
-        //                                    }];
-        
-
-    }
+    //    else if (![PFUser currentUser]) {
+    //
+    //
+    //        NSArray *permissions = [NSArray arrayWithObjects:@"public_profile", @"email", @"user_friends", nil];
+    //
+    //
+    //        [PFFacebookUtils logInInBackgroundWithReadPermissions:permissions block:^(PFUser *user, NSError *error) {
+    //            if (!user) {
+    //                NSLog(@"Uh oh. The user cancelled the Facebook login.");
+    //
+    //
+    //            }if (user){
+    //
+    //    [self performSegueWithIdentifier:@"Signin" sender:self];
+    //        }
+    //
+    //        }];
+    
+    //    // Request new Publish Permissions
+    //    [PFFacebookUtils linkUserInBackground:[PFUser currentUser]
+    //                   withPublishPermissions:@[ @"publish_actions"]
+    //                                    block:^(BOOL succeeded, NSError *error) {
+    //                                        if (succeeded) {
+    //                                            NSLog(@"User now has read and publish permissions!");
+    //                                        }
+    //                                    }];
     
     
-
 }
+
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [_userNameSin resignFirstResponder];
+    [_userPassword resignFirstResponder];
+}
+
+- (IBAction)signInAct:(id)sender{
+    
+    
+    
+    [PFUser logInWithUsernameInBackground:_userNameSin.text password:_userPassword.text
+                                    block:^(PFUser *userS, NSError *error) {
+                                        
+                                        if (userS) {
+                                            
+                                            // Do stuff after successful login.
+                                            UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"Sign in successful!" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                            
+                                            if(eventAlertView != nil)
+                                                
+                                            {
+                                                [eventAlertView show];
+                                                
+                                            }
+                                            [self performSegueWithIdentifier:@"Signin" sender:self];
+                                        } else {
+                                            // The login failed. Check error to see why.
+                                            UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"  Sign in unsuccessful. Please enter correct name and password" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                            if(eventAlertView != nil)
+                                                
+                                            {
+                                                [eventAlertView show];
+                                            }
+                                            
+                                            
+                                        }
+                                    }];
+    
+    
+    
+    
+}
+
+-(IBAction)backSt:(UIStoryboardSegue *)segue
+
+{
+    //AddIngredientsViewController *source = segue.sourceViewController;
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+-(void)loginButtonClicked
+{
+    NSArray *permissions = [NSArray arrayWithObjects:@"public_profile", @"email", @"user_friends", nil];
+    
+    
+    [PFFacebookUtils logInInBackgroundWithReadPermissions:permissions block:^(PFUser *user, NSError *error) {
+        
+        if (error) {
+            NSLog(@"Process error");
+            
+        } else if (user.isNew) {
+            NSLog(@"Cancelled");
+            
+        } else {
+            NSLog(@"Logged in");
+            [self _loadData];
+            [self performSegueWithIdentifier:@"Signin" sender:self];
+
+            
+            
+        }
+    }];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

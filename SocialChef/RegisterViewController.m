@@ -52,6 +52,44 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+-(BOOL)validateChptrVrse:(NSString *)scriptureNumAdd {
+    
+    NSString *numberRegEx = @"^[a-zA-Z][a-zA-Z0-9._-]{0,21}([-.][^_]|[^-.]{2})$";
+    
+    NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", numberRegEx];
+    
+    return [test evaluateWithObject: scriptureNumAdd];
+    
+}
+
+-(BOOL)validateBook:(NSString *)scriptureBookAdd {
+    
+    NSString *bookRegEx = @"^[a-zA-Z][a-zA-Z0-9._-]{0,21}([-.][^_]|[^-.]{2})$";
+    
+    NSPredicate *test2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", bookRegEx];
+    
+    return [test2 evaluateWithObject: scriptureBookAdd];
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -(void)registerNewUser {
     
     PFUser *newUser = [PFUser user];
@@ -106,7 +144,44 @@
 
 - (IBAction)registerButn:(id)sender{
     
-    [self registerNewUser];
+    if ([self validateChptrVrse:[_userName text]] != 1 ) {
+        
+        UIAlertView *alert = [[UIAlertView alloc ]initWithTitle:@"User Name error" message:@"a user name longer than three characters" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil
+                              , nil];
+        [alert show];
+        
+    }
+    
+    if ([self validateBook:[_passWord text]] != 1 ) {
+        
+        
+        UIAlertView *alert3 = [[UIAlertView alloc ]initWithTitle:@"Enter valid email" message:@"Please enter valid Book" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil
+                               , nil];
+        
+        
+        [alert3 show];
+        
+    }
+    if  ([self validateBook:[_userName text]] == 1 && [self validateChptrVrse:[_passWord text]] == 1 ) {
+        
+        
+        [self registerNewUser];
+        
+        
+        
+        
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

@@ -17,6 +17,9 @@
 @property (weak, nonatomic)IBOutlet UITextField *passWord;
 
 - (IBAction)registerButn:(id)sender;
+-(BOOL)validateChptrVrse:(NSString *)userName;
+
+-(BOOL)validateBook:(NSString *)userPasswordBook;
 
 
 
