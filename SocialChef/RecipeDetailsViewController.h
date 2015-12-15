@@ -68,7 +68,7 @@ NSMutableArray *userStrArray;
 - (IBAction)sendCommentButton:(id)sender;
 
 
--(IBAction)showComments:(id)sender;
+//-(IBAction)showComments:(id)sender;
 
 
 @property (nonatomic,strong)MainFeedCustomClass *currentRecipe;

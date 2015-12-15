@@ -191,7 +191,9 @@
 - (void)retrieveFromParse
 {
     PFQuery *query = [PFQuery queryWithClassName:@"nSavedItems"];
-    [query orderByAscending:@"createdAt"];
+    [query whereKey:@"ToUser" equalTo:recipeTitleLable.text];
+    
+    [query orderByDescending:@"createdAt"];
     [query fromLocalDatastore];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -258,32 +260,32 @@
 }
 
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{    //are we in delete mode
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        PFObject *tempObject = [userStrArray objectAtIndex:indexPath.row];
-        
-        [tempObject deleteInBackground];
-        
-        
-        [tempObject unpinInBackground];
-        
-        [userStrArray removeObjectAtIndex:indexPath.row];
-        
-        [_myCommentTableView reloadData];
-        
-        
-        
-        
-    }
-}
+//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return YES;
+//}
+//
+//
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+//{    //are we in delete mode
+//    
+//    if (editingStyle == UITableViewCellEditingStyleDelete)
+//    {
+//        PFObject *tempObject = [userStrArray objectAtIndex:indexPath.row];
+//        
+//        [tempObject deleteInBackground];
+//        
+//        
+//        [tempObject unpinInBackground];
+//        
+//        [userStrArray removeObjectAtIndex:indexPath.row];
+//        
+//        [_myCommentTableView reloadData];
+//        
+//        
+//        
+//        
+//    }
+//}
 
 
 
@@ -304,19 +306,48 @@
 -(void)submitForm {
     
     
-    PFObject *privateNote = [PFObject objectWithClassName:@"nSavedItems"];
-    // privateNote[@"content"] = @"This note is private!";
     
-    //[privateNote saveInBackground];
     
-    //PFObject *gameScore = [PFObject objectWithClassName:@"savedItems"];
-        privateNote[@"comment"] = _comment.text;
+    PFObject *comment = [PFObject objectWithClassName:@"nSavedItems"];
+    comment[@"comment"] = _comment.text;
     
-    privateNote.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
-    [privateNote saveEventually];
-    [privateNote pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    //self.getObjectQuery = [PFQuery queryWithClassName:@"Takenphoto"];
+    
+    // _recipeImageView.image = [self.getObject objectForKey:@"Takenimage"];
+    
+    // NSString *titleLableString = [self.getObject objectForKey:@"title"];
+    
+    
+    
+    
+    //_recipeImageView.image = [self.getObject objectForKey:@"Takenimage"];
+    
+    //PFFile *photo = _recipeImageView;
+    
+    
+    // photo.file = [self.getObject objectForKey:@"Takenimage"];
+    
+    
+    [comment setValue:recipeTitleLable.text forKey:@"ToUser"]; // Set toUser
+    
+    
+    [comment setValue:[PFUser currentUser] forKey:@"FromUser"]; // Set fromUser
+    [comment setValue:@"usercomment" forKey:@"Type"];
+    //[comment setValue:_recipeImageView.image forKey:@"photoKey"];
+    
+    // Set the proper ACLs
+    comment.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
+    [comment.ACL setPublicReadAccess:YES];
+    //comment.ACL = ACL;
+
+    
+
+    [comment saveEventually];
+    [comment pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             
+            [self performSelector:@selector(retrieveFromParse)];
+            [self.myCommentTableView reloadData];
             //[self dismissViewControllerAnimated:YES completion:nil];
             // The object has been saved.
             UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"Comment Saved!" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

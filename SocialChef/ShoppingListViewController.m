@@ -12,13 +12,13 @@
 
 
 @interface ShoppingListViewController ()
-@property (weak, nonatomic) IBOutlet UITableView* myShoppingTableView;
+
 
 @end
 
 @implementation ShoppingListViewController
 
-
+@synthesize myShoppingTableView;
 
 
 
@@ -47,7 +47,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             
-            _userStrArray = [[NSMutableArray alloc]initWithArray:objects];
+            userStringArray = [[NSMutableArray alloc]initWithArray:objects];
             
         } else {
             // Log details of the failure
@@ -55,7 +55,7 @@
         }
         
         
-        [_myShoppingTableView reloadData];
+        [myShoppingTableView reloadData];
         
     }];
     
@@ -78,7 +78,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return [_userStrArray count];
+    return [userStringArray count];
     
 }
 
@@ -91,10 +91,10 @@
     CustomShoppingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShoppingListItemCell"];
     if (cell != nil)
     {
-        PFObject *tempObject = [userStrArray objectAtIndex:indexPath.row];
+        PFObject *tempObject = [userStringArray objectAtIndex:indexPath.row];
         
-        cell.itemNameText = [tempObject objectForKey:@"itemName"];
-        cell.itemNumberText = [tempObject objectForKey:@"itemNumber"];
+        cell.itemNamText = [tempObject objectForKey:@"itemName"];
+        cell.itemAmountText = [tempObject objectForKey:@"itemNumber"];
         
         
         
@@ -117,16 +117,16 @@
     
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        PFObject *tempObject = [_userStrArray objectAtIndex:indexPath.row];
+        PFObject *tempObject = [userStringArray objectAtIndex:indexPath.row];
         
         [tempObject deleteInBackground];
         
         
         [tempObject unpinInBackground];
         
-        [_userStrArray removeObjectAtIndex:indexPath.row];
+        [userStringArray removeObjectAtIndex:indexPath.row];
         
-        [_myShoppingTableView reloadData];
+        [myShoppingTableView reloadData];
         
         
         

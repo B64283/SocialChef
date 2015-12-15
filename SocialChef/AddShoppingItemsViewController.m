@@ -8,7 +8,7 @@
 
 #import "AddShoppingItemsViewController.h"
 #import "ShoppingListViewController.h"
-
+#import <Parse/Parse.h>
 @interface AddShoppingItemsViewController ()
 
 @end

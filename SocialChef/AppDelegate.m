@@ -69,8 +69,15 @@
     // Store the deviceToken in the current installation and save it to Parse.
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
-    currentInstallation.channels = @[ @"global" ];
+    currentInstallation.channels = @[ @"global", @"ToUser", @"FromUser" ];
     [currentInstallation saveInBackground];
+    
+    [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:@"Ativity"];
+    [[PFInstallation currentInstallation] saveEventually];
+    
+    
+    
+    
 }
 
 
@@ -188,13 +195,14 @@
 }
 
 
--(void)presentLoginViewControllerAnimated:(BOOL)animated {
-    
+-(void)presentLoginControllerAnimated:(BOOL)animated {
     
     LoginViewController *loginVC = [[LoginViewController alloc]init];
-    //loginVC.delegate = self;
     
-    [self.window.rootViewController presentViewController:loginVC animated:NO completion:NULL];
+    ///loginVC.delegate = self;
+    
+    
+    
     
     
     

@@ -9,7 +9,7 @@
 #import "CustomShoppingCell.h"
 
 @implementation CustomShoppingCell
-@synthesize itemNameText, itemNumberText;
+@synthesize itemNamText, itemAmountText;
 
 
 
@@ -28,8 +28,8 @@
 -(void)refreshCell
 
 {
-    itemNameLable.text = itemNameText;
-    itemNumberLable.text = itemNumberText;
+    itemNamLable.text = itemNamText;
+    itemAmountLable.text = itemAmountText;
 }
 
 

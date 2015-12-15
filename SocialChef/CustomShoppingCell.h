@@ -12,8 +12,8 @@
 @interface CustomShoppingCell : UITableViewCell
 {
 
-IBOutlet UILabel * itemNameLable;
-IBOutlet UILabel * itemNumberLable;
+IBOutlet UILabel * itemNamLable;
+IBOutlet UILabel * itemAmountLable;
 
 
 
@@ -21,6 +21,6 @@ IBOutlet UILabel * itemNumberLable;
 
 -(void)refreshCell;
 
-@property(nonatomic, strong) NSString *itemNameText;
-@property(nonatomic, strong) NSString *itemNumberText;
+@property(nonatomic, strong) NSString *itemNamText;
+@property(nonatomic, strong) NSString *itemAmountText;
 @end

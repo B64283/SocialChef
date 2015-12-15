@@ -35,9 +35,13 @@
 -(IBAction)signOut:(id)sender{
     
     [PFUser logOut];
-    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+[self performSegueWithIdentifier:@"BacktoLogin" sender:self];  
     
-    [appDelegate presentLoginViewControllerAnimated:YES];
+    
+    //    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+//    NSLog(@"Storyboard: %@", self.storyboard);
+//    
+//    [appDelegate presentLoginControllerAnimated:YES];
     
     
     

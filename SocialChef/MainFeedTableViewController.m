@@ -656,8 +656,27 @@
         // Send a notification to all devices subscribed to the "Giants" channel.
         PFPush *push = [[PFPush alloc] init];
         [push setChannel:@"global"];
-        [push setMessage:@"Sean Just followed You"];
+        [push setMessage:@"User is now following You"];
         [push sendPushInBackground];
+  
+//        [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:@"Activity"];
+//        [[PFInstallation currentInstallation] saveEventually];
+//        
+//        PFQuery *userQuery = [PFInstallation query];
+//        [userQuery whereKey:@"FromUser" equalTo:@"ToUser"];
+//        // Create our Installation query
+//        
+//        
+//       
+//        
+//        // Send push notification to query
+//        PFPush *push = [[PFPush alloc] init];
+//        [push setQuery:userQuery]; // Set our Installation query
+//        [push setMessage:@"Willie Hayes injured by own pop fly."];
+//        [push sendPushInBackground];
+    
+    
+    
     }
     
     

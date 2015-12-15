@@ -15,15 +15,15 @@
 
 {
     
-    NSMutableArray *userStrArray;
+    NSMutableArray *userStringArray;
     
 }
 
 
 
-@property (strong, nonatomic) NSMutableArray* userStrArray;
+//@property (strong, nonatomic) NSMutableArray* userStringArray;
 
-
+@property (weak, nonatomic) IBOutlet UITableView* myShoppingTableView;
 
 
 @end
