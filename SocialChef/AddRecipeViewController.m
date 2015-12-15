@@ -78,6 +78,53 @@
 }
 
 
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [_recipeTitle resignFirstResponder];
+    [_recipeServings resignFirstResponder];
+    [_ingredItem1 resignFirstResponder];
+    [_ingredItem2 resignFirstResponder];
+    [_ingredItem3 resignFirstResponder];
+    [_ingredItem4 resignFirstResponder];
+    [_ingredItem5 resignFirstResponder];
+    [_ingredItem6 resignFirstResponder];
+    [_ingredItem7 resignFirstResponder];
+    [_ingredItem8 resignFirstResponder];
+    [_ingredItem9 resignFirstResponder];
+    [_ingredItem10 resignFirstResponder];
+    [_ingredItem11 resignFirstResponder];
+    [_ingredItem12 resignFirstResponder];
+    [_ingredItem13 resignFirstResponder];
+    [_ingredItem14 resignFirstResponder];
+    [_ingredItem15 resignFirstResponder];
+    [_ingredItem16 resignFirstResponder];
+    [_ingredItem17 resignFirstResponder];
+    [_ingredItem18 resignFirstResponder];
+    
+    //[_ingredItem1 resignFirstResponder];
+    
+    
+    
+    
+    
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSLog(@"Textfield was dismissed by the delegate");
+    
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
+
+
+
+
+
+
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     if (buttonIndex == 0) {

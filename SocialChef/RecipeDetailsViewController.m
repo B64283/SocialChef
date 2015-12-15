@@ -188,6 +188,9 @@
 }
 
 
+
+
+
 - (void)retrieveFromParse
 {
     PFQuery *query = [PFQuery queryWithClassName:@"nSavedItems"];
@@ -336,12 +339,13 @@
     //[comment setValue:_recipeImageView.image forKey:@"photoKey"];
     
     // Set the proper ACLs
-    comment.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
-    [comment.ACL setPublicReadAccess:YES];
-    //comment.ACL = ACL;
-
     
-
+    
+    
+    PFACL *postACL = [PFACL ACLWithUser:[PFUser currentUser]];
+    [postACL setPublicReadAccess:YES];
+    comment.ACL = postACL;
+    
     [comment saveEventually];
     [comment pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {

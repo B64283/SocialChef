@@ -649,15 +649,60 @@
         [followActivity saveEventually];
         
         
-        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-        [currentInstallation addUniqueObject:@"global" forKey:@"channels"];
-        [currentInstallation saveInBackground];
+        PFQuery *query = [PFQuery queryWithClassName:@"Activity"];
         
-        // Send a notification to all devices subscribed to the "Giants" channel.
+        [query whereKey:@"Type"  equalTo:@"follow"];
+        [query includeKey:@"ToUser"];
+        PFQuery *pushQuery = [PFInstallation query];
+        //[pushQuery whereKey:@"FromUser" equalTo:@""];
+        [pushQuery whereKey:@"FromUser" equalTo:[PFUser currentUser]];
+        
+        
+  
         PFPush *push = [[PFPush alloc] init];
-        [push setChannel:@"global"];
-        [push setMessage:@"User is now following You"];
+        NSString *msgString=[NSString stringWithFormat:@"%@ :%@",
+                             [PFUser currentUser],
+                             @"Is now following you"];
+        
+        [push setQuery:pushQuery]; // Set our Installation query
+        NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+                              msgString, @"alert",
+                              @"Alarm.wav", @"sound",
+                              @"Increment", @"badge",
+                              // @"Optionally a type was set", @"type",
+                              nil];
+        [push setData:data];
         [push sendPushInBackground];
+        
+        
+        
+        // might need to use
+        
+//        
+//        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+//        [currentInstallation addUniqueObject:@"global" forKey:@"channels"];
+//        [currentInstallation saveInBackground];
+//        
+//        // Send a notification to all devices subscribed to the "Giants" channel.
+//        PFPush *push = [[PFPush alloc] init];
+//        [push setChannel:@"global"];
+//        [push setMessage:@"User is now following You"];
+//        [push sendPushInBackground];
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
   
 //        [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:@"Activity"];
 //        [[PFInstallation currentInstallation] saveEventually];
