@@ -195,21 +195,21 @@
 }
 
 
--(void)presentLoginControllerAnimated:(BOOL)animated {
-    
-    LoginViewController *loginVC = [[LoginViewController alloc]init];
-    
-    ///loginVC.delegate = self;
-    
-    
-    
-    
-    
-    
-    
-}
-
-
+//-(void)presentLoginControllerAnimated:(BOOL)animated {
+//    
+//    LoginViewController *loginVC = [[LoginViewController alloc]init];
+//    
+//    ///loginVC.delegate = self;
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+//}
+//
+//
 
 
 

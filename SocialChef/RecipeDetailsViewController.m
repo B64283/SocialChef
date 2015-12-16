@@ -400,27 +400,31 @@
             [self.myCommentTableView reloadData];
             //[self dismissViewControllerAnimated:YES completion:nil];
             // The object has been saved.
-            UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"Comment Saved!" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            //[self performSelector:@selector(backTothe:)];
-            if(eventAlertView != nil)
-                
-            {
-                [eventAlertView show];
-                
-            }
             
-        } else {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Comment Sent" message:@""preferredStyle:UIAlertControllerStyleAlert];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+            //For multiple buttons you can use :
+            
+            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                //[self closeAlertview];
+            }]];
+
+            
+            
+} else {
             // There was a problem, check error.description
             
-            UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@" There was an error" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            
-            if(eventAlertView != nil)
-                
-            {
-                [eventAlertView show];
-                
-            }
-            
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:@"There was an error with your coment"preferredStyle:UIAlertControllerStyleAlert];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    //For multiple buttons you can use :
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //[self closeAlertview];
+    }]];
+
+
         }
     }];
 }

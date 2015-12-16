@@ -18,7 +18,7 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
--(void)presentLoginControllerAnimated:(BOOL)animated;
+//-(void)presentLoginControllerAnimated:(BOOL)animated;
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 

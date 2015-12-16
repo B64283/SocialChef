@@ -125,6 +125,10 @@
         [self performSegueWithIdentifier:@"Signin" sender:self];
         
         
+    }else if (![PFUser currentUser]) {
+        
+        
+        
     }
     
     //    else if (![PFUser currentUser]) {
@@ -249,18 +253,19 @@
     
     [PFFacebookUtils logInInBackgroundWithReadPermissions:permissions block:^(PFUser *user, NSError *error) {
         
-        if (error) {
-            NSLog(@"Process error");
+        if (user.isNew) {
+            NSLog(@"User signed up and logged in through Facebook!");
+            [self _loadData];
+            [self performSegueWithIdentifier:@"Signin" sender:self];
             
-        } else if (user.isNew) {
-            NSLog(@"Cancelled");
-            
-        } else {
+        } else if(user) {
             NSLog(@"Logged in");
             [self _loadData];
             [self performSegueWithIdentifier:@"Signin" sender:self];
-
+        
+        } else {
             
+            NSLog(@"Cancelled");
             
         }
     }];

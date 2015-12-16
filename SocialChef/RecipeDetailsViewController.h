@@ -56,7 +56,7 @@ NSMutableArray *userStrArray;
     
     
 }
-@property (strong, nonatomic) NSMutableArray* userStrArray;
+//@property (strong, nonatomic) NSMutableArray* userStrArray;
 @property (strong, nonatomic)IBOutlet UIBarButtonItem *back;
 @property (weak, nonatomic) PFObject *getObject;
 @property (weak, nonatomic) PFQuery *getObjectQuery;
