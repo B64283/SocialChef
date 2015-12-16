@@ -72,10 +72,10 @@
     currentInstallation.channels = @[ @"global", @"ToUser", @"FromUser" ];
     [currentInstallation saveInBackground];
     
-    [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:@"Ativity"];
-    [[PFInstallation currentInstallation] saveEventually];
-    
-    
+//    [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:@"Ativity"];
+//    [[PFInstallation currentInstallation] saveEventually];
+//    
+//    
     
     
 }

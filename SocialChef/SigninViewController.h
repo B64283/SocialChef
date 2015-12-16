@@ -11,19 +11,19 @@
 
 @interface SigninViewController : UIViewController{
     
-    
-
-NSArray *userStringArray;
-
 }
-@property (weak, nonatomic)IBOutlet UITextField *userNameSin;
 
-@property (weak, nonatomic)IBOutlet UITextField *userPassword;
-
--(IBAction)signInAct:(id)sender;
-
--(IBAction)forgotPassAction:(id)sender;
-
+//NSArray *userStringArray;
+//
+//}
+//@property (weak, nonatomic)IBOutlet UITextField *userNameSin;
+//
+//@property (weak, nonatomic)IBOutlet UITextField *userPassword;
+//
+//-(IBAction)signInAct:(id)sender;
+//
+//-(IBAction)forgotPassAction:(id)sender;
+//
 
 //[PFUser requestPasswordResetForEmailInBackground:@"email@example.com"];
 

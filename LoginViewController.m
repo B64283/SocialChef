@@ -186,37 +186,44 @@
     
     
     [PFUser logInWithUsernameInBackground:_userNameSin.text password:_userPassword.text
-                                    block:^(PFUser *userS, NSError *error) {
+        block:^(PFUser *userS, NSError *error) {
                                         
-                                        if (userS) {
+        if (userS) {
                                             
-                                            // Do stuff after successful login.
-                                            UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"Sign in successful!" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                            
-                                            if(eventAlertView != nil)
-                                                
-                                            {
-                                                [eventAlertView show];
-                                                
-                                            }
-                                            [self performSegueWithIdentifier:@"Signin" sender:self];
-                                        } else {
-                                            // The login failed. Check error to see why.
-                                            UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"  Sign in unsuccessful. Please enter correct name and password" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                            if(eventAlertView != nil)
-                                                
-                                            {
-                                                [eventAlertView show];
-                                            }
-                                            
-                                            
-                                        }
-                                    }];
-    
-    
-    
-    
+            // Do stuff after successful login.
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Signin Succsessful" message:@""preferredStyle:UIAlertControllerStyleAlert];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+            //For multiple buttons you can use :
+            
+            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [self performSegueWithIdentifier:@"Signin" sender:self];
+            }]];
+      
+    } else {
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Signin Error" message:@"Please Enter Correct User Name And Password"preferredStyle:UIAlertControllerStyleAlert];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        //For multiple buttons you can use :
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+           // [self performSegueWithIdentifier:@"Signin" sender:self];
+        }]];
+    }
+
+}];
+            
 }
+
+
+
+
+
+
+
+
 
 -(IBAction)backSt:(UIStoryboardSegue *)segue
 

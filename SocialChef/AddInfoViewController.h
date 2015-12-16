@@ -7,18 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface AddInfoViewController : UIViewController
-
-@property (weak, nonatomic)IBOutlet UITextField *ingredientName;
-@property (weak, nonatomic)IBOutlet UITextField *measureNumber;
-@property (strong, nonatomic)IBOutlet UIBarButtonItem *done;
-
-
-- (IBAction)saveButtn:(id)sender;
-
-
-
+//
+//@interface AddInfoViewController : UIViewController
+//
+//@property (weak, nonatomic)IBOutlet UITextField *ingredientName;
+//@property (weak, nonatomic)IBOutlet UITextField *measureNumber;
+//@property (strong, nonatomic)IBOutlet UIBarButtonItem *done;
+//
+//
+//- (IBAction)saveButtn:(id)sender;
+//
+//
+//
 
 
 

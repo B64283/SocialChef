@@ -90,10 +90,10 @@
                                                     </connections>
                                                 </button>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" rowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9XP-PQ-Xau">
-                                                    <rect key="frame" x="39" y="523" width="375" height="300"/>
+                                                    <rect key="frame" x="39" y="523" width="375" height="210"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="300" id="fPg-ed-Ywz"/>
+                                                        <constraint firstAttribute="height" constant="210" id="fPg-ed-Ywz"/>
                                                     </constraints>
                                                     <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <inset key="separatorInset" minX="43" minY="0.0" maxX="25" maxY="0.0"/>

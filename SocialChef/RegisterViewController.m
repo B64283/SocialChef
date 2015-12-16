@@ -150,6 +150,20 @@
                         
                     } else {   NSString *errorString = [error userInfo][@"error"];   //
                         
+                        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message: errorString preferredStyle:UIAlertControllerStyleAlert];
+                        
+                        [self presentViewController:alertController animated:YES completion:nil];
+                        //For multiple buttons you can use :
+                        
+                        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                            
+                        }]];
+
+                        
+                        
+                        
+                        
+                        
                         NSLog(@"The error is: %@", errorString);
                         //Show the errorString somewhere and let the user try again.
                         
@@ -212,7 +226,7 @@
     if ([self validateUserName:[_userName text]] != 1 ) {
         
         
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"User Name Error" message:@"Enter a user name over three charecters in length."preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"User Name Error" message:@"Enter a user name with 7 charecters in length using letters and numbers."preferredStyle:UIAlertControllerStyleAlert];
         
         [self presentViewController:alertController animated:YES completion:nil];
         //For multiple buttons you can use :
