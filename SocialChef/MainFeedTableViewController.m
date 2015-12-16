@@ -650,12 +650,12 @@
         
         
         PFQuery *query = [PFQuery queryWithClassName:@"Activity"];
-        
+        [query getObjectWithId:@"ToUser"];
         [query whereKey:@"Type"  equalTo:@"follow"];
         [query includeKey:@"ToUser"];
         PFQuery *pushQuery = [PFInstallation query];
-        //[pushQuery whereKey:@"FromUser" equalTo:@""];
-        [pushQuery whereKey:@"FromUser" equalTo:[PFUser currentUser]];
+        [pushQuery whereKey:@"objectId" equalTo:@"ToUser"];
+        //[pushQuery whereKey:@"FromUser" equalTo:[PFUser currentUser]];
         
         
   

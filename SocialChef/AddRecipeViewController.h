@@ -10,13 +10,13 @@
 #import "CustomCell.h"
 #import <Parse/Parse.h>
 
-@interface AddRecipeViewController : UIViewController  <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UIAlertViewDelegate, UITableViewDataSource>
+@interface AddRecipeViewController : UIViewController  <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 
 
 {
    NSMutableArray *userStrIngArray;
-    IBOutlet UIAlertView *alert;
+    //IBOutlet UIAlertView *alert;
     
     __weak IBOutlet UIImageView *imageView;
     
@@ -26,7 +26,7 @@
     
     
 }
-- (id)initWithImage:(UIImage *)aImage;
+//- (id)initWithImage:(UIImage *)aImage;
 
 -(IBAction)TakePhoto:(id)sender;
 -(IBAction)Sharerecipe:(id)sender;
@@ -60,8 +60,8 @@
 @property (weak, nonatomic)IBOutlet UITextView *stepTwo;
 @property (weak, nonatomic)IBOutlet UITextView *stepThree;
 
-@property (weak, nonatomic)IBOutlet UIView *myView;
-@property (weak, nonatomic)IBOutlet UIScrollView *scrollView;
+//@property (weak, nonatomic)IBOutlet UIView *myView;
+//@property (weak, nonatomic)IBOutlet UIScrollView *scrollView;
 
 
 
@@ -79,11 +79,11 @@
 
 @property (strong, nonatomic)IBOutlet UIBarButtonItem *share;
 
-@property (strong, nonatomic) NSMutableArray* userStrIngArray;
+//@property (strong, nonatomic) NSMutableArray* userStrIngArray;
 
-@property (weak, nonatomic) IBOutlet UITableView* myIngredientTableView;
+//@property (weak, nonatomic) IBOutlet UITableView* myIngredientTableView;
 
-@property (weak, nonatomic) IBOutlet UITableView* myDirectionsTableView;
+//@property (weak, nonatomic) IBOutlet UITableView* myDirectionsTableView;
 
 
 

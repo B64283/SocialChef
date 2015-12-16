@@ -48,6 +48,7 @@
 
     PFImageView *photo = _recipeImageView;
     photo.file = [self.getObject objectForKey:@"Takenimage"];
+    
     [photo loadInBackground];
     
     
@@ -80,6 +81,7 @@
     instructions3.text = [self.getObject objectForKey:@"stepThree"];
 
 
+    
 
 
 
@@ -197,7 +199,7 @@
     [query whereKey:@"ToUser" equalTo:recipeTitleLable.text];
     
     [query orderByDescending:@"createdAt"];
-    [query fromLocalDatastore];
+    //[query fromLocalDatastore];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -223,6 +225,17 @@
     [self performSelector:@selector(retrieveFromParse)];
     [self.myCommentTableView reloadData];
 }
+
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [self performSelector:@selector(retrieveFromParse)];
+    [self.myCommentTableView reloadData];
+}
+
+
+
+
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
@@ -344,10 +357,13 @@
     
     PFACL *postACL = [PFACL ACLWithUser:[PFUser currentUser]];
     [postACL setPublicReadAccess:YES];
+    [postACL setPublicWriteAccess:YES];
+
+    
     comment.ACL = postACL;
     
-    [comment saveEventually];
-    [comment pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    //[comment saveEventually];
+    [comment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             
             [self performSelector:@selector(retrieveFromParse)];

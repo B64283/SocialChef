@@ -316,7 +316,6 @@
 				24F90D6A1BF31F7700A6EA3B /* Accounts.framework */,
 			);
 			name = Frameworks;
-			path = SocialChef;
 			sourceTree = "<group>";
 		};
 		240BEF721BF56274004E35FA /* Images */ = {
@@ -364,13 +363,12 @@
 				24F90D911BF3E4B800A6EA3B /* Untitled-1.png */,
 			);
 			name = Images;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		24F90D241BF2B9B100A6EA3B = {
 			isa = PBXGroup;
 			children = (
-				240BEF721BF56274004E35FA /* Images */,
-				240BEF711BF561E9004E35FA /* Frameworks */,
 				24F90D2F1BF2B9B100A6EA3B /* SocialChef */,
 				24F90D4C1BF2B9B100A6EA3B /* SocialChefTests */,
 				24F90D571BF2B9B100A6EA3B /* SocialChefUITests */,
@@ -391,6 +389,8 @@
 		24F90D2F1BF2B9B100A6EA3B /* SocialChef */ = {
 			isa = PBXGroup;
 			children = (
+				240BEF711BF561E9004E35FA /* Frameworks */,
+				240BEF721BF56274004E35FA /* Images */,
 				24F90D391BF2B9B100A6EA3B /* Main.storyboard */,
 				24EC94621C13D84900B2F149 /* SettingsViewController.h */,
 				24EC94631C13D84900B2F149 /* SettingsViewController.m */,

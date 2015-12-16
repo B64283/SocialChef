@@ -39,7 +39,7 @@
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
     barButton.title = @"Back";
     self.navigationController.navigationBar.topItem.backBarButtonItem = barButton;
-    [self performSelector:@selector(retrieveFromParse)];
+   // [self performSelector:@selector(retrieveFromParse)];
     
     
     
@@ -53,29 +53,29 @@
 
 
 
-- (void)retrieveFromParse
-{
-    PFQuery *query = [PFQuery queryWithClassName:@"newSavedItems"];
-    [query orderByAscending:@"createdAt"];
-    [query fromLocalDatastore];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            
-            userStrIngArray = [[NSMutableArray alloc]initWithArray:objects];
-            
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-        
-        
-        [_myIngredientTableView reloadData];
-        
-    }];
-    
-    
-}
+//- (void)retrieveFromParse
+//{
+//    PFQuery *query = [PFQuery queryWithClassName:@"newSavedItems"];
+//    [query orderByAscending:@"createdAt"];
+//    [query fromLocalDatastore];
+//    
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//            
+//            userStrIngArray = [[NSMutableArray alloc]initWithArray:objects];
+//            
+//        } else {
+//            // Log details of the failure
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//        }
+//        
+//        
+//        //[_myIngredientTableView reloadData];
+//        
+//    }];
+//    
+//    
+//}
 
 
 
@@ -125,7 +125,7 @@
 
 
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+-(void)alertView:(UIAlertController *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     if (buttonIndex == 0) {
         
@@ -203,11 +203,15 @@
 
 -(void)showError {
     
-    UIAlertView *Alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"could not upload your photo" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"could not upload your photo"preferredStyle:UIAlertControllerStyleAlert];
     
-    [Alert show];
+    [self presentViewController:alertController animated:YES completion:nil];
+    //For multiple buttons you can use :
     
-    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self closeAlertview];
+    }]];
+
     
     
 }
@@ -215,15 +219,58 @@
 
 -(IBAction)TakePhoto:(id)sender {
     
-    UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"please Take a photo or select from album" message:nil delegate:self cancelButtonTitle:@"Take photo" otherButtonTitles: @"From Album", nil];
     
-    if(eventAlertView != nil)
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"please Take a photo or select from album" message:@"You Shared You Recipe?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    //For multiple buttons you can use :
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Take photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
-    {
-        [eventAlertView show];
-    }
+        //take action
+        picker = [[UIImagePickerController alloc]init];
+        if (picker != nil)
+        {
+            //type of media
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            picker.delegate =self;
+            
+            picker.allowsEditing = YES;
+            
+            ///delete if crash
+            //            picker.mediaTypes = [NSArray arrayWithObjects:(NSString *)kUTTypeImage, nil];
+            
+            [self presentViewController:picker animated:true completion:nil];
+            
+        }
+    
+    
+    }]];
+
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Choose fro album" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        //take action
+        
+        UIImagePickerController *albumPicker = [[UIImagePickerController alloc]init];
+        if (albumPicker != nil)
+        {
+            //type of media
+            albumPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            albumPicker.delegate =self;
+            
+            albumPicker.allowsEditing = true;
+            
+            [self presentViewController:albumPicker animated:true completion:nil];
+        }
+    
+
+        
+//[self closeAlertview];
+        }]];
 
     
+
     
     
 }
