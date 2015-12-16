@@ -9,7 +9,7 @@
 #import "CommentCell.h"
 
 @implementation CommentCell
-@synthesize  commentText;
+@synthesize  commentText, userNameText;
 - (void)awakeFromNib {
     // Initialization code
 }
@@ -27,6 +27,8 @@
 -(void)refreshCell
 
 {
+    
+    userLable.text = userNameText;
     commentLable.text = commentText;
 }
 

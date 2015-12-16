@@ -62,6 +62,9 @@ NSMutableArray *userStrArray;
 @property (weak, nonatomic) PFQuery *getObjectQuery;
 
 @property (weak, nonatomic)IBOutlet UITextField *comment;
+@property (weak, nonatomic)IBOutlet UILabel *user;
+
+//@property (weak, nonatomic)IBOutlet UILabel *userName;
 
 
 

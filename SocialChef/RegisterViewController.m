@@ -7,6 +7,8 @@
 //
 
 #import "RegisterViewController.h"
+#import <Parse/Parse.h>
+
 @interface RegisterViewController ()
 
 @end
@@ -53,31 +55,35 @@
 }
 
 
--(BOOL)validateChptrVrse:(NSString *)scriptureNumAdd {
+-(BOOL)validateUserName:(NSString *)namedd {
     
-    NSString *numberRegEx = @"^[a-zA-Z][a-zA-Z0-9._-]{0,21}([-.][^_]|[^-.]{2})$";
+    NSString *userRegEx = @"^[a-zA-Z][a-zA-Z0-9._-]{0,21}([-.][^_]|[^-.]{2})$";
     
-    NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", numberRegEx];
+    NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", userRegEx];
     
-    return [test evaluateWithObject: scriptureNumAdd];
-    
-}
-
--(BOOL)validateBook:(NSString *)scriptureBookAdd {
-    
-    NSString *bookRegEx = @"^[a-zA-Z][a-zA-Z0-9._-]{0,21}([-.][^_]|[^-.]{2})$";
-    
-    NSPredicate *test2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", bookRegEx];
-    
-    return [test2 evaluateWithObject: scriptureBookAdd];
+    return [test evaluateWithObject: namedd];
     
 }
 
+-(BOOL)validateEmail:(NSString *)emailAdd {
+    
+    NSString *emailRegEx = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    
+    NSPredicate *test2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegEx];
+    
+    return [test2 evaluateWithObject: emailAdd];
+    
+}
 
-
-
-
-
+-(BOOL)validatePass:(NSString *)passAdd{
+    
+    NSString *passRegEx = @"^[a-zA-Z][a-zA-Z0-9._-]{0,21}([-.][^_]|[^-.]{2})$";
+    
+    NSPredicate *test2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", passRegEx];
+    
+    return [test2 evaluateWithObject: passAdd];
+    
+}
 
 
 
@@ -92,47 +98,106 @@
 
 -(void)registerNewUser {
     
-    PFUser *newUser = [PFUser user];
-    newUser.username = _userName.text;
-    newUser.email = _eMail.text;
-    newUser.password = _passWord.text;
+    NSString *userNameText = [self.userName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
-    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
+    
+    NSString *passWordTetxt = [self.passWord.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"username" equalTo:_userName.text];
+    
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (object != nil) {
             
-            // Hooray! Let them use the app now.
-            UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@" Registration successful!" message:@"PLEEASE SIGN IN" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+            //set warning
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"User Name Error" message:@"This UserName is already taken please enter a different name."preferredStyle:UIAlertControllerStyleAlert];
             
-            if(eventAlertView != nil)
+            [self presentViewController:alertController animated:YES completion:nil];
+            //For multiple buttons you can use :
+            
+            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                 
-            {
-                [eventAlertView show];
-                [eventAlertView dismissWithClickedButtonIndex:0 animated:YES];
-                
-                [self.navigationController popViewControllerAnimated:YES];
-            }
+            }]];
+
             
-            
-        } else {
-            
-            // Hooray! Let them use the app now.
-            UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@" Registration Error" message:@"Please try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            
-            if(eventAlertView != nil)
-                
-            {
-                [eventAlertView show];
-                
-            }
+            NSLog(@"User exist");
             
         }
+        else
+        {
+            NSLog(@"User don`t exist");
+            
+            if (userNameText.length !=0 && passWordTetxt.length !=0) {
+                
+                
+                PFUser *newUser = [PFUser user];
+                newUser.username = _userName.text;
+                newUser.email = _eMail.text;
+                newUser.password = _passWord.text;
+                
+                // other fields can be set just like with PFObject
+                // user[@"phone"] = @"415-392-0202";
+                
+                [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (!error) {
+                        // Hooray! Let them use the app now.
+                        
+                        
+                        
+                       [self dismissViewControllerAnimated:YES completion:nil];
+                        
+                        
+                        
+                    } else {   NSString *errorString = [error userInfo][@"error"];   //
+                        
+                        NSLog(@"The error is: %@", errorString);
+                        //Show the errorString somewhere and let the user try again.
+                        
+                    }
+                }];
+            }
+            
+            
+            
+            
+            
+            else{
+                
+                //fields cannot be blank warning
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Fields Error" message:@"Fields Cannot Be Blank."preferredStyle:UIAlertControllerStyleAlert];
+                
+                [self presentViewController:alertController animated:YES completion:nil];
+                //For multiple buttons you can use :
+                
+                [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    
+                }]];
+
+        
+            }
+
+            }
     }];
+
+    
+    
+    
     
     
 }
 
 
 
+
+
+    
+
+
+
+    
+    
+    
+    
 
 
 
@@ -144,27 +209,52 @@
 
 - (IBAction)registerButn:(id)sender{
     
-    if ([self validateChptrVrse:[_userName text]] != 1 ) {
+    if ([self validateUserName:[_userName text]] != 1 ) {
         
-        UIAlertView *alert = [[UIAlertView alloc ]initWithTitle:@"User Name error" message:@"a user name longer than three characters" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil
-                              , nil];
-        [alert show];
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"User Name Error" message:@"Enter a user name over three charecters in length."preferredStyle:UIAlertControllerStyleAlert];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        //For multiple buttons you can use :
+    
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        }]];
+ 
+        }
+    
+    if ([self validatePass:[_passWord text]] != 1 ) {
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Password Error" message:@"Create a password over three charecters in length."preferredStyle:UIAlertControllerStyleAlert];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        //For multiple buttons you can use :
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+        }]];
+
+        
+}
+    
+    if ([self validateEmail:[_eMail text]] != 1 ) {
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Email Error" message:@"Please Enter A Valid Email."preferredStyle:UIAlertControllerStyleAlert];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        //For multiple buttons you can use :
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+        }]];
+ 
         
     }
     
-    if ([self validateBook:[_passWord text]] != 1 ) {
+    
+    if  ([self validateUserName:[_userName text]] == 1 && [self validateEmail:[_eMail text]] == 1 && [self validatePass:[_passWord text]]) {
         
-        
-        UIAlertView *alert3 = [[UIAlertView alloc ]initWithTitle:@"Enter valid email" message:@"Please enter valid Book" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil
-                               , nil];
-        
-        
-        [alert3 show];
-        
-    }
-    if  ([self validateBook:[_userName text]] == 1 && [self validateChptrVrse:[_passWord text]] == 1 ) {
-        
-        
+    
         [self registerNewUser];
         
         
@@ -173,19 +263,7 @@
     }
 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
+    }
 
 
 

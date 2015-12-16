@@ -39,6 +39,7 @@
     [self.myCommentTableView reloadData];
     self.getObjectQuery = [PFQuery queryWithClassName:@"Takenphoto"];
     
+    
     NSString *titleLableString = [self.getObject objectForKey:@"title"];
     
     recipeTitleLable.text = titleLableString;
@@ -260,12 +261,13 @@
     CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell"];
     if (cell != nil)
     {
+        
+        
         PFObject *tempObject = [userStrArray objectAtIndex:indexPath.row];
         
-        
+       
         cell.commentText = [tempObject objectForKey:@"comment"];
-        
-        
+        cell.userNameText = [tempObject objectForKey:@"username"];
         
     }
     
@@ -321,11 +323,40 @@
 
 -(void)submitForm {
     
+    PFQuery *query = [PFQuery queryWithClassName:@"User"];
+    [query whereKey:@"username" equalTo:[PFUser currentUser]];
+    //query[@"username"] = _user.text];
     
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (!error) {
+            NSLog(@"Success");
+            
+            PFObject *comment = [PFObject objectWithClassName:@"User"];
+           
+            
+            
+            comment[@"username"] = _user.text;
+        
+        
+            
+            
+            
+            
+            
+            
+            
+        }
+        else {
+            NSLog(@"Fails");
+        }
+    }];
     
     
     PFObject *comment = [PFObject objectWithClassName:@"nSavedItems"];
     comment[@"comment"] = _comment.text;
+    
+    
+    
     
     //self.getObjectQuery = [PFQuery queryWithClassName:@"Takenphoto"];
     
@@ -361,8 +392,7 @@
 
     
     comment.ACL = postACL;
-    
-    //[comment saveEventually];
+   
     [comment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             

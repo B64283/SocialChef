@@ -43,33 +43,32 @@
     
     
     
-    [PFUser logInWithUsernameInBackground:_userNameSin.text password:_userPassword.text
-                                    block:^(PFUser *userS, NSError *error) {
+    [PFUser logInWithUsernameInBackground:_userNameSin.text password:_userPassword.text block:^(PFUser *userS, NSError *error) {
                                         
-                                        if (userS) {
+    if (userS) {
                                             
-                                            // Do stuff after successful login.
-                                            UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"Sign in successful!" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+// Do stuff after successful login.
+    UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"Sign in successful!" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                                             
-                                            if(eventAlertView != nil)
+    if(eventAlertView != nil)
                                                 
-                                            {
-                                                [eventAlertView show];
-                                                
-                                            }
-                                            [self performSegueWithIdentifier:@"SignWoFB" sender:self];
-                                        } else {
-                                            // The login failed. Check error to see why.
-                                            UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"  Sign in unsuccessful. Please enter correct name and password" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                            if(eventAlertView != nil)
-                                                
-                                            {
-                                                [eventAlertView show];
-                                            }
-                                            
+        {
+                                            [eventAlertView show];
                                             
                                         }
-                                    }];
+                                        [self performSegueWithIdentifier:@"SignWoFB" sender:self];
+                                    } else {
+                                        // The login failed. Check error to see why.
+                                        UIAlertView *eventAlertView = [[UIAlertView alloc]initWithTitle:@"  Sign in unsuccessful. Please enter correct name and password" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                        if(eventAlertView != nil)
+                                            
+                                        {
+                                            [eventAlertView show];
+                                        }
+                                        
+                                        
+                                    }
+                                }];
     
     
     

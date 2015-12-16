@@ -11,7 +11,7 @@
 @interface CommentCell : UITableViewCell
 {
 
-    
+    IBOutlet UILabel * userLable;
     
     IBOutlet UILabel * commentLable;
 
@@ -23,4 +23,5 @@
 
 
 @property(nonatomic, strong) NSString *commentText;
+@property(nonatomic, strong) NSString *userNameText;
 @end

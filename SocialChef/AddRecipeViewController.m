@@ -125,50 +125,50 @@
 
 
 
--(void)alertView:(UIAlertController *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    if (buttonIndex == 0) {
-        
-        picker = [[UIImagePickerController alloc]init];
-        if (picker != nil)
-        {
-            //type of media
-            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            picker.delegate =self;
-            
-            picker.allowsEditing = YES;
-            
-    ///delete if crash
-//            picker.mediaTypes = [NSArray arrayWithObjects:(NSString *)kUTTypeImage, nil];
-            
-            [self presentViewController:picker animated:true completion:nil];
-        }
-
-    
-    
-    
-    }else if (buttonIndex == 1){
-        
-        
-        UIImagePickerController *albumPicker = [[UIImagePickerController alloc]init];
-        if (albumPicker != nil)
-        {
-            //type of media
-            albumPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            albumPicker.delegate =self;
-            
-            albumPicker.allowsEditing = true;
-            
-            [self presentViewController:albumPicker animated:true completion:nil];
-        }
-
-        
-        
-    }
-    
-    
-}
-
+//-(void)alertView:(UIAlertController *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+//    
+//    if (buttonIndex == 0) {
+//        
+//        picker = [[UIImagePickerController alloc]init];
+//        if (picker != nil)
+//        {
+//            //type of media
+//            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//            picker.delegate =self;
+//            
+//            picker.allowsEditing = YES;
+//            
+//    ///delete if crash
+////            picker.mediaTypes = [NSArray arrayWithObjects:(NSString *)kUTTypeImage, nil];
+//            
+//            [self presentViewController:picker animated:true completion:nil];
+//        }
+//
+//    
+//    
+//    
+//    }else if (buttonIndex == 1){
+//        
+//        
+//        UIImagePickerController *albumPicker = [[UIImagePickerController alloc]init];
+//        if (albumPicker != nil)
+//        {
+//            //type of media
+//            albumPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//            albumPicker.delegate =self;
+//            
+//            albumPicker.allowsEditing = true;
+//            
+//            [self presentViewController:albumPicker animated:true completion:nil];
+//        }
+//
+//        
+//        
+//    }
+//    
+//    
+//}
+//
 
 
 //SAVE DATA
