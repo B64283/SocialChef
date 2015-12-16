@@ -19,7 +19,7 @@ NSArray *userStringArray;
 @property (weak, nonatomic)IBOutlet UITextField *userPassword;
 
 -(IBAction)signInAct:(id)sender;
-
+-(IBAction)forgotPassAction:(id)sender;
 
 
 @property (strong,nonatomic)NSMutableData *profilePicData;

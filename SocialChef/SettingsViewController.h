@@ -13,7 +13,7 @@
 
 
 
-
+-(IBAction)signOutChangePass:(id)sender;
 
 -(IBAction)signOut:(id)sender;
 

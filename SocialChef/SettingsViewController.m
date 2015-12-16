@@ -36,16 +36,17 @@
     
     [PFUser logOut];
 [self performSegueWithIdentifier:@"BacktoLogin" sender:self];  
+}
+
+
+-(IBAction)signOutChangePass:(id)sender{
     
-    
-    //    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-//    NSLog(@"Storyboard: %@", self.storyboard);
-//    
-//    [appDelegate presentLoginControllerAnimated:YES];
-    
-    
+     [PFUser logOut];
+    [self performSegueWithIdentifier:@"changepassSegue" sender:self];
     
 }
+
+
 
 
 

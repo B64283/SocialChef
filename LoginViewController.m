@@ -108,8 +108,8 @@
     
     // do stuff with the user
     UIButton *myLoginButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    myLoginButton.backgroundColor=[UIColor darkGrayColor];
-    myLoginButton.frame=CGRectMake(0,0,180,40);
+    myLoginButton.backgroundColor=[UIColor blueColor];
+    myLoginButton.frame=CGRectMake(0,0,160,30);
     myLoginButton.center = self.view.center;
     [myLoginButton setTitle: @"FaceBook Login" forState: UIControlStateNormal];
     
@@ -156,6 +156,23 @@
     
     
 }
+
+
+
+//-(IBAction)forgotPassAction:(id)sender{
+    
+    //[PFUser requestPasswordResetForEmailInBackground:@"email@example.com"];
+    
+    
+//}
+
+
+
+
+
+
+
+
 
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -242,8 +259,12 @@
     }];
 }
 
-
-
+-(IBAction)forgotPassAction:(id)sender{
+    
+    
+    [self performSegueWithIdentifier:@"lossSegue" sender:self];
+    
+}
 
 
 

@@ -26,6 +26,7 @@
 		240BEF961BFA7A8D004E35FA /* socialButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 240BEF951BFA7A8D004E35FA /* socialButton.png */; };
 		240BEF981BFA7D8F004E35FA /* launchscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 240BEF971BFA7D8F004E35FA /* launchscreen.png */; };
 		240BEF9B1BFB13E7004E35FA /* RecipeDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 240BEF9A1BFB13E7004E35FA /* RecipeDetailsViewController.m */; };
+		241EB9C51C218BB000216D0C /* LossPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 241EB9C41C218BB000216D0C /* LossPasswordViewController.m */; };
 		2484CECC1BFBB77700AFF478 /* AddIngredientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2484CECB1BFBB77700AFF478 /* AddIngredientsViewController.m */; };
 		2484CECF1BFBB8B600AFF478 /* AddRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2484CECE1BFBB8B600AFF478 /* AddRecipeViewController.m */; };
 		2484CED21BFBC60A00AFF478 /* CustomIngredientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2484CED11BFBC60A00AFF478 /* CustomIngredientCell.m */; };
@@ -142,6 +143,8 @@
 		240BEF971BFA7D8F004E35FA /* launchscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen.png; sourceTree = "<group>"; };
 		240BEF991BFB13E6004E35FA /* RecipeDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeDetailsViewController.h; sourceTree = "<group>"; };
 		240BEF9A1BFB13E7004E35FA /* RecipeDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeDetailsViewController.m; sourceTree = "<group>"; };
+		241EB9C31C218BB000216D0C /* LossPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LossPasswordViewController.h; sourceTree = "<group>"; };
+		241EB9C41C218BB000216D0C /* LossPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LossPasswordViewController.m; sourceTree = "<group>"; };
 		2484CECA1BFBB77700AFF478 /* AddIngredientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddIngredientsViewController.h; sourceTree = "<group>"; };
 		2484CECB1BFBB77700AFF478 /* AddIngredientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddIngredientsViewController.m; sourceTree = "<group>"; };
 		2484CECD1BFBB8B600AFF478 /* AddRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRecipeViewController.h; sourceTree = "<group>"; };
@@ -392,6 +395,8 @@
 				240BEF711BF561E9004E35FA /* Frameworks */,
 				240BEF721BF56274004E35FA /* Images */,
 				24F90D391BF2B9B100A6EA3B /* Main.storyboard */,
+				241EB9C31C218BB000216D0C /* LossPasswordViewController.h */,
+				241EB9C41C218BB000216D0C /* LossPasswordViewController.m */,
 				24EC94621C13D84900B2F149 /* SettingsViewController.h */,
 				24EC94631C13D84900B2F149 /* SettingsViewController.m */,
 				24EC945F1C13D30000B2F149 /* FindFriendViewController.h */,
@@ -669,6 +674,7 @@
 				24F90D381BF2B9B100A6EA3B /* ViewController.m in Sources */,
 				24F90D351BF2B9B100A6EA3B /* AppDelegate.m in Sources */,
 				2484CECF1BFBB8B600AFF478 /* AddRecipeViewController.m in Sources */,
+				241EB9C51C218BB000216D0C /* LossPasswordViewController.m in Sources */,
 				2484CECC1BFBB77700AFF478 /* AddIngredientsViewController.m in Sources */,
 				240BEF791BF5AB65004E35FA /* CustomCell.m in Sources */,
 				24EC94331C0B023600B2F149 /* FollowButton.m in Sources */,

@@ -22,7 +22,9 @@ NSArray *userStringArray;
 
 -(IBAction)signInAct:(id)sender;
 
+-(IBAction)forgotPassAction:(id)sender;
 
 
+//[PFUser requestPasswordResetForEmailInBackground:@"email@example.com"];
 
 @end
