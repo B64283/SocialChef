@@ -27,6 +27,8 @@
 		240BEF981BFA7D8F004E35FA /* launchscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 240BEF971BFA7D8F004E35FA /* launchscreen.png */; };
 		240BEF9B1BFB13E7004E35FA /* RecipeDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 240BEF9A1BFB13E7004E35FA /* RecipeDetailsViewController.m */; };
 		241EB9C51C218BB000216D0C /* LossPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 241EB9C41C218BB000216D0C /* LossPasswordViewController.m */; };
+		241EB9C71C227E7E00216D0C /* kitchen-cooking-doodle-set-vector-31721609.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 241EB9C61C227E7E00216D0C /* kitchen-cooking-doodle-set-vector-31721609.jpg */; };
+		241EB9C91C2284C000216D0C /* lima-bean-24538118.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 241EB9C81C2284C000216D0C /* lima-bean-24538118.jpg */; };
 		2484CECC1BFBB77700AFF478 /* AddIngredientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2484CECB1BFBB77700AFF478 /* AddIngredientsViewController.m */; };
 		2484CECF1BFBB8B600AFF478 /* AddRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2484CECE1BFBB8B600AFF478 /* AddRecipeViewController.m */; };
 		2484CED21BFBC60A00AFF478 /* CustomIngredientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2484CED11BFBC60A00AFF478 /* CustomIngredientCell.m */; };
@@ -145,6 +147,8 @@
 		240BEF9A1BFB13E7004E35FA /* RecipeDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeDetailsViewController.m; sourceTree = "<group>"; };
 		241EB9C31C218BB000216D0C /* LossPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LossPasswordViewController.h; sourceTree = "<group>"; };
 		241EB9C41C218BB000216D0C /* LossPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LossPasswordViewController.m; sourceTree = "<group>"; };
+		241EB9C61C227E7E00216D0C /* kitchen-cooking-doodle-set-vector-31721609.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "kitchen-cooking-doodle-set-vector-31721609.jpg"; sourceTree = "<group>"; };
+		241EB9C81C2284C000216D0C /* lima-bean-24538118.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "lima-bean-24538118.jpg"; sourceTree = "<group>"; };
 		2484CECA1BFBB77700AFF478 /* AddIngredientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddIngredientsViewController.h; sourceTree = "<group>"; };
 		2484CECB1BFBB77700AFF478 /* AddIngredientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddIngredientsViewController.m; sourceTree = "<group>"; };
 		2484CECD1BFBB8B600AFF478 /* AddRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRecipeViewController.h; sourceTree = "<group>"; };
@@ -325,6 +329,8 @@
 			isa = PBXGroup;
 			children = (
 				24F90DA21BF460C000A6EA3B /* Social-ChefIconFix.png */,
+				241EB9C61C227E7E00216D0C /* kitchen-cooking-doodle-set-vector-31721609.jpg */,
+				241EB9C81C2284C000216D0C /* lima-bean-24538118.jpg */,
 				24F90D991BF407AF00A6EA3B /* Social-414Chef.png */,
 				24F929D21BFDCE610009A598 /* Screen Shot 2015-11-19 at 1.29.40 AM.png */,
 				24EC94571C116B4E00B2F149 /* ProfileHolder.png */,
@@ -608,6 +614,7 @@
 				24F90D431BF2B9B100A6EA3B /* LaunchScreen.storyboard in Resources */,
 				24F90D981BF3EFEC00A6EA3B /* 600Social-Chef.png in Resources */,
 				240BEF961BFA7A8D004E35FA /* socialButton.png in Resources */,
+				241EB9C91C2284C000216D0C /* lima-bean-24538118.jpg in Resources */,
 				24EC94541C1169AF00B2F149 /* GrayStar.png in Resources */,
 				24F90D9A1BF407AF00A6EA3B /* Social-414Chef.png in Resources */,
 				24F90D9E1BF4107700A6EA3B /* dreamstime_l_57968381.jpg in Resources */,
@@ -626,6 +633,7 @@
 				240BEF881BF86ADA004E35FA /* heart.png in Resources */,
 				240BEF8C1BF876FB004E35FA /* whiteCircle.png in Resources */,
 				24F929D31BFDCE610009A598 /* Screen Shot 2015-11-19 at 1.29.40 AM.png in Resources */,
+				241EB9C71C227E7E00216D0C /* kitchen-cooking-doodle-set-vector-31721609.jpg in Resources */,
 				24F929D71BFDE2200009A598 /* Following.png in Resources */,
 				24F929D51BFDE2180009A598 /* Follow.png in Resources */,
 				24F929DF1BFE38770009A598 /* gear-7.png in Resources */,
