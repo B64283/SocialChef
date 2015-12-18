@@ -115,7 +115,12 @@
     
     
     
-    PFQuery *superQuery = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:phototsFromCurrentUserQuery, photosFromFollowedUsersQuery,nil]];
+    PFQuery *superQuery = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects: photosFromFollowedUsersQuery,nil]];
+    
+    
+   //left this out
+    //phototsFromCurrentUserQuery,
+    
     
     //get user profile info from userclass
     [superQuery includeKey:@"whoIsuser"];

@@ -57,7 +57,7 @@
 
 -(BOOL)validateUserName:(NSString *)namedd {
     
-    NSString *userRegEx = @"^[a-zA-Z][a-zA-Z0-9._-]{0,21}([-.][^_]|[^-.]{2})$";
+    NSString *userRegEx = @"^[a-zA-Z][a-zA-Z0-9._-]{0,21}([-.][^_]|[^-.]{4})$";
     
     NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", userRegEx];
     
@@ -77,7 +77,7 @@
 
 -(BOOL)validatePass:(NSString *)passAdd{
     
-    NSString *passRegEx = @"^[a-zA-Z][a-zA-Z0-9._-]{0,21}([-.][^_]|[^-.]{2})$";
+    NSString *passRegEx = @"^[a-zA-Z][a-zA-Z0-9._-]{0,21}([-.][^_]|[^-.]{7})$";
     
     NSPredicate *test2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", passRegEx];
     
@@ -141,10 +141,19 @@
                 [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (!error) {
                         // Hooray! Let them use the app now.
+                        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You are now registered!" message:@"Welcome to Social Chef! Please sign in!"preferredStyle:UIAlertControllerStyleAlert];
+                        
+                        [self presentViewController:alertController animated:YES completion:nil];
+                        //For multiple buttons you can use :
+                        
+                        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                             [self dismissViewControllerAnimated:YES completion:nil];
+                            
+                        }]];
+
                         
                         
-                        
-                       [self dismissViewControllerAnimated:YES completion:nil];
+                      
                         
                         
                         
@@ -226,7 +235,7 @@
     if ([self validateUserName:[_userName text]] != 1 ) {
         
         
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"User Name Error" message:@"Enter a user name with 7 charecters in length using letters and numbers."preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"User Name Error" message:@"Enter a user name with 4 or more charecters in length starting with letters."preferredStyle:UIAlertControllerStyleAlert];
         
         [self presentViewController:alertController animated:YES completion:nil];
         //For multiple buttons you can use :
@@ -236,20 +245,6 @@
         }]];
  
         }
-    
-    if ([self validatePass:[_passWord text]] != 1 ) {
-        
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Password Error" message:@"Create a password over three charecters in length."preferredStyle:UIAlertControllerStyleAlert];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
-        //For multiple buttons you can use :
-        
-        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
-        }]];
-
-        
-}
     
     if ([self validateEmail:[_eMail text]] != 1 ) {
         
@@ -261,6 +256,31 @@
         [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
         }]];
+
+        
+}
+    
+if ([self validatePass:[_passWord text]] != 1 ) {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Password Error" message:@"Create a password with over 7 charecters in length."preferredStyle:UIAlertControllerStyleAlert];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    //For multiple buttons you can use :
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+    }]];
+
+
+
+
+
+
+
+
+
+
+
  
         
     }

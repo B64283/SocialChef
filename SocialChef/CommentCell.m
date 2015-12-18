@@ -7,9 +7,10 @@
 //
 
 #import "CommentCell.h"
-
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import <Parse/Parse.h>
 @implementation CommentCell
-@synthesize  commentText, userNameText;
+@synthesize  commentText, userNameText, userPic;
 - (void)awakeFromNib {
     // Initialization code
 }
@@ -30,6 +31,8 @@
     
     userLable.text = userNameText;
     commentLable.text = commentText;
+    _userCommentProfilePic.file = userPic;
+    
 }
 
 

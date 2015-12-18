@@ -10,11 +10,24 @@
 
 #import "RecipeDetailsViewController.h"
 #import "AddRecipeViewController.h"
+#import <ParseUI/ParseUI.h>
+
+
+
+@interface MainFeedTableViewController () <UISearchBarDelegate, UISearchDisplayDelegate>
+{
+    
+    
+    
+}
+@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) UISearchController *searchController;
+@property (nonatomic, strong) NSMutableArray *searchResults;
 
 
 
 
-@interface MainFeedTableViewController ()
+
 @property (nonatomic, strong)NSMutableArray *followingArray;
 @property (nonatomic, strong)NSMutableArray *likesArray;
 @property (nonatomic, strong)NSMutableArray *userStrArray;
@@ -25,10 +38,18 @@
 
 - (void)viewDidLoad {
     
-    //self.searchResults = [NSMutableArray array];
+    self.searchResults = [NSMutableArray array];
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"BlackNavagation"] forBarMetrics:UIBarMetricsDefault];
     [super viewDidLoad];
+
+    
+    
+    
+    //self.searchResults = [NSMutableArray array];
+    
+    
+    
     
     
     PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
@@ -66,10 +87,12 @@
 //}
 //
 //
-//- (BOOL)searchDisplayController:(UISearchController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
 //    [self filterResults:searchString];
 //    return YES;
 //}
+//
+//
 
 
 
@@ -307,11 +330,22 @@
     static NSString *CellIdentifier = @"SectionHeaderCell";
     UITableViewCell *sectionHeaderView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    //if (tableView != self.searchDisplayController.searchResultsTableView) {
+    if (!sectionHeaderView)
+    {
+        sectionHeaderView = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SectionHeaderCell"];
+    
+    // Configure the cell
+
+    
+    }
+    
+    if (tableView == self.tableView) {
        
         PFImageView *profileImageView = (PFImageView * )[sectionHeaderView viewWithTag:1];
         UILabel *userNameLable = (UILabel *)[sectionHeaderView viewWithTag:2];
         UILabel *titleLable = (UILabel *)[sectionHeaderView viewWithTag:3];
+        
+        
         
         
         
@@ -367,7 +401,7 @@
             }
         }
         
-        
+    
         
         // update state of following button we dont want user to follow their self
         
@@ -388,23 +422,19 @@
                 followButton.selected = YES;
             }
         }
-
-     return sectionHeaderView;
-
-}
+  // return sectionHeaderView;
+        
     
-    
-    //}
-   // if ([tableView isEqual:self.searchDisplayController.searchResultsTableView]) {
+
+
+    //if (tableView == self.searchDisplayController.searchResultsTableView) {
         
         
+        
+//        
 //        PFImageView *profileImageView = (PFImageView * )[sectionHeaderView viewWithTag:1];
 //        UILabel *userNameLable = (UILabel *)[sectionHeaderView viewWithTag:2];
 //        UILabel *titleLable = (UILabel *)[sectionHeaderView viewWithTag:3];
-//        
-//        
-//        
-//        
 //        
 //        
 //        PFObject *photo = [self.objects objectAtIndex:section];
@@ -414,7 +444,7 @@
 //        
 //        //
 //        NSString *title = photo[@"title"];
-//        NSString *titleServing = photo[@"serving"];
+//        //NSString *titleServing = photo[@"serving"];
 //        
 //        
 //        userNameLable.text = user.username;
@@ -423,7 +453,6 @@
 //        
 //        profileImageView.file = profilePicture;
 //        [profileImageView loadInBackground];
-//        
 //        
 //        FollowButton *followButton = (FollowButton *)[sectionHeaderView viewWithTag: 4];
 //        followButton.delegate = self;
@@ -478,9 +507,14 @@
 //                followButton.selected = YES;
 //            }
 //        }
-        
-        
-        
+//        
+    }
+    
+    
+    
+    return sectionHeaderView;
+    
+}
         
         
         
@@ -649,15 +683,24 @@
         [followActivity saveEventually];
         
         
-        PFQuery *query = [PFQuery queryWithClassName:@"Activity"];
-        [query getObjectWithId:@"ToUser"];
-        [query whereKey:@"Type"  equalTo:@"follow"];
-        [query includeKey:@"ToUser"];
+        
+        
+        
+        
+        
+        
         PFQuery *pushQuery = [PFInstallation query];
-        [pushQuery whereKey:@"objectId" equalTo:@"ToUser"];
+        
+        PFInstallation *installation = [PFInstallation currentInstallation];
+        installation[@"User"] = user;
+        [installation saveInBackground];
+        
+        [pushQuery whereKey:@"User" equalTo:user];
+        
         //[pushQuery whereKey:@"FromUser" equalTo:[PFUser currentUser]];
         
-        
+        //[PFPush sendPushMessageToQueryInBackground:pushQuery
+                                      // withMessage:@"Hello World!"];
   
         PFPush *push = [[PFPush alloc] init];
         NSString *msgString=[NSString stringWithFormat:@"%@ :%@",
@@ -665,15 +708,15 @@
                              @"Is now following you"];
         
         [push setQuery:pushQuery]; // Set our Installation query
-        NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+        NSDictionary *data1 = [NSDictionary dictionaryWithObjectsAndKeys:
                               msgString, @"alert",
-                              @"Alarm.wav", @"sound",
+                              @"default", @"sound",
                               @"Increment", @"badge",
                               // @"Optionally a type was set", @"type",
                               nil];
-        [push setData:data];
+        [push setData:data1];
         [push sendPushInBackground];
-        
+//
         
         
         // might need to use

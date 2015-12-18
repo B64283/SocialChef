@@ -13,85 +13,6 @@
 #import "AppDelegate.h"
 @interface LoginViewController () 
 
-//@end
-//
-//@implementation LoginViewController
-//
-//- (void)viewDidLoad {
-//    [super viewDidLoad];
-//    
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"Social-414Chef"] forBarMetrics:UIBarMetricsDefault];
-//    
-//            // do stuff with the user
-//        
-//        FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-//        loginButton.center = self.view.center;
-//        [self.view addSubview:loginButton];
-//    
-//    if ([PFUser currentUser]) {
-//        
-//        [self performSegueWithIdentifier:@"Signin" sender:self];
-//
-//        
-//    }
-//    
-//    else if (![PFUser currentUser]) {
-//
-//        
-//        NSArray *permissions = [NSArray arrayWithObjects:@"public_profile", @"email", @"user_friends", nil];
-//        
-//        
-//        [PFFacebookUtils logInInBackgroundWithReadPermissions:permissions block:^(PFUser *user, NSError *error) {
-//            if (!user) {
-//                NSLog(@"Uh oh. The user cancelled the Facebook login.");
-//                
-//                
-//            }if (user){
-//                
-//                [self _loadData];
-//    [self performSegueWithIdentifier:@"Signin" sender:self];
-//        }
-//            
-//        }];
-//        
-//        //    // Request new Publish Permissions
-//        //    [PFFacebookUtils linkUserInBackground:[PFUser currentUser]
-//        //                   withPublishPermissions:@[ @"publish_actions"]
-//        //                                    block:^(BOOL succeeded, NSError *error) {
-//        //                                        if (succeeded) {
-//        //                                            NSLog(@"User now has read and publish permissions!");
-//        //                                        }
-//        //                                    }];
-//        
-//
-//    }
-//    
-//    
-//
-//}
-//
-//-(void)viewDidAppear:(BOOL)animated {
-//    if ([PFUser currentUser]) {
-//        [self performSegueWithIdentifier:@"Signin" sender:self];
-//        
-//
-//    }
-//    
-//    
-//    
-//}
-//
-//-(void)viewWillAppear:(BOOL)animated{
-//    
-//    if ([PFUser currentUser]) {
-//        [self performSegueWithIdentifier:@"Signin" sender:self];
-//        
-//        
-//    }
-//
-//    
-//    
-//}
 
 
 @property (weak, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
@@ -130,33 +51,6 @@
         
         
     }
-    
-    //    else if (![PFUser currentUser]) {
-    //
-    //
-    //        NSArray *permissions = [NSArray arrayWithObjects:@"public_profile", @"email", @"user_friends", nil];
-    //
-    //
-    //        [PFFacebookUtils logInInBackgroundWithReadPermissions:permissions block:^(PFUser *user, NSError *error) {
-    //            if (!user) {
-    //                NSLog(@"Uh oh. The user cancelled the Facebook login.");
-    //
-    //
-    //            }if (user){
-    //
-    //    [self performSegueWithIdentifier:@"Signin" sender:self];
-    //        }
-    //
-    //        }];
-    
-    //    // Request new Publish Permissions
-    //    [PFFacebookUtils linkUserInBackground:[PFUser currentUser]
-    //                   withPublishPermissions:@[ @"publish_actions"]
-    //                                    block:^(BOOL succeeded, NSError *error) {
-    //                                        if (succeeded) {
-    //                                            NSLog(@"User now has read and publish permissions!");
-    //                                        }
-    //                                    }];
     
     
 }
@@ -321,6 +215,8 @@
             //large&return_ssl_resources=1
             
             NSURLRequest *pictureURLRequest = [NSURLRequest requestWithURL:pictureURL];
+            
+    //ive tried to remedy this to no avail
             [NSURLConnection connectionWithRequest:pictureURLRequest delegate:self];
             
             
@@ -337,6 +233,7 @@
             NSURLRequest *urlRequest = [NSURLRequest requestWithURL:pictureURL];
             
             // Run network request asynchronously
+             //ive tried to remedy this to no avail
             [NSURLConnection sendAsynchronousRequest:urlRequest
                                                queue:[NSOperationQueue mainQueue]
                                    completionHandler:

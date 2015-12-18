@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import <ParseUI/ParseUI.h>
 @interface CommentCell : UITableViewCell
 {
 
@@ -21,7 +23,9 @@
 
 -(void)refreshCell;
 
-
+@property (weak, nonatomic)IBOutlet PFImageView *userCommentProfilePic;
 @property(nonatomic, strong) NSString *commentText;
 @property(nonatomic, strong) NSString *userNameText;
+@property(nonatomic, strong) PFFile *userPic;
+
 @end

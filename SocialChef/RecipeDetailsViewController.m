@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet PFImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet PFImageView *recipeImageView;
 
-@property (weak, nonatomic) IBOutlet UILabel *userNameLable;
+//@property (weak, nonatomic) IBOutlet UILabel *userNameLable;
 
 @property (strong, nonatomic) IBOutlet UIButton *starButton1;
 @property (strong, nonatomic) IBOutlet UIButton *starButton2;
@@ -44,14 +44,24 @@
     
     recipeTitleLable.text = titleLableString;
     
+   
     
-    //_recipeImageView.image = [self.getObject objectForKey:@"Takenimage"];
+   // NSString *nameLableString = [self.getObject objectForKey:@"whoIsuser"];
+    
+    //userNameLable.text = nameLableString;
+    
+    
+    //_profileImageView.image = [self.getObject objectForKey:@"whoIsuser"];
 
     PFImageView *photo = _recipeImageView;
     photo.file = [self.getObject objectForKey:@"Takenimage"];
     
     [photo loadInBackground];
     
+//    PFImageView *name = _recipeImageView;
+//    photo.file = [self.getObject objectForKey:@"whoIsUser"];
+//    
+//    [photo loadInBackground];
     
     
    
@@ -354,7 +364,7 @@
     
     PFObject *comment = [PFObject objectWithClassName:@"nSavedItems"];
     comment[@"comment"] = _comment.text;
-    
+    //comment[@"username"] = _user.text;
     
     
     

@@ -12,10 +12,12 @@
 #import "FollowButton.h"
 #import "LikesButton.h"
 
-@interface MainFeedTableViewController : PFQueryTableViewController <FollowButtonDelegate, LikesButtonDelegate, UISearchDisplayDelegate, UISearchBarDelegate, UISearchResultsUpdating>
+@interface MainFeedTableViewController : PFQueryTableViewController <FollowButtonDelegate, LikesButtonDelegate, UITableViewDelegate>
 {
    
-    IBOutlet UITableView *searchResultsTableView; 
+    IBOutlet UITableView *searchResultsTableView;
+
+    
 }
 
 - (NSIndexPath *)_indexPathForPaginationCell;
@@ -28,9 +30,7 @@
 
    
     
-@property (nonatomic, strong) UISearchBar *searchBar;
-@property (nonatomic, strong) UISearchController *searchController;
-@property (nonatomic, strong) NSMutableArray *searchResults;
+
 
 
 

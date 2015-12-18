@@ -35,6 +35,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+   
+    UITapGestureRecognizer *tapScroll = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapped)];
+    tapScroll.cancelsTouchesInView = NO;
+    [Myscroll addGestureRecognizer:tapScroll];
+    
+   
+    
+    
     
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
     barButton.title = @"Back";
@@ -51,36 +59,18 @@
 }
 
 
+- (void) tapped {
+    [self.view endEditing:YES];
+}
 
 
-//- (void)retrieveFromParse
-//{
-//    PFQuery *query = [PFQuery queryWithClassName:@"newSavedItems"];
-//    [query orderByAscending:@"createdAt"];
-//    [query fromLocalDatastore];
-//    
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (!error) {
-//            
-//            userStrIngArray = [[NSMutableArray alloc]initWithArray:objects];
-//            
-//        } else {
-//            // Log details of the failure
-//            NSLog(@"Error: %@ %@", error, [error userInfo]);
-//        }
-//        
-//        
-//        //[_myIngredientTableView reloadData];
-//        
-//    }];
-//    
-//    
-//}
 
 
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    //[self.view endEditing:YES];
+    
     [_recipeTitle resignFirstResponder];
     [_recipeServings resignFirstResponder];
     [_ingredItem1 resignFirstResponder];
@@ -110,14 +100,43 @@
     
 }
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    NSLog(@"Textfield was dismissed by the delegate");
-    
-    
-    [textField resignFirstResponder];
-    return YES;
-}
+
+
+//- (void)retrieveFromParse
+//{
+//    PFQuery *query = [PFQuery queryWithClassName:@"newSavedItems"];
+//    [query orderByAscending:@"createdAt"];
+//    [query fromLocalDatastore];
+//    
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//            
+//            userStrIngArray = [[NSMutableArray alloc]initWithArray:objects];
+//            
+//        } else {
+//            // Log details of the failure
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//        }
+//        
+//        
+//        //[_myIngredientTableView reloadData];
+//        
+//    }];
+//    
+//    
+//}
+
+
+
+
+//-(BOOL)textFieldShouldReturn:(UITextField *)textField
+//{
+//    NSLog(@"Textfield was dismissed by the delegate");
+//    
+//    
+//    [textField resignFirstResponder];
+//    return YES;
+//}
 
 
 

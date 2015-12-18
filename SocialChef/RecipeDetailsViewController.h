@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MainFeedCustomClass.h"
 #import <Parse/Parse.h>
-
+#import <ParseUI/ParseUI.h>
 @interface RecipeDetailsViewController : UIViewController <UITableViewDelegate, UIAlertViewDelegate, UITableViewDataSource>
 
 
@@ -19,6 +19,7 @@
     IBOutlet UILabel *likesLable1;
     
     IBOutlet UILabel *recipeTitleLable;
+    IBOutlet UILabel *userNameLable;
     
     IBOutlet UILabel *servingLable;
     IBOutlet UILabel *ingredientsLable1;
@@ -63,6 +64,8 @@ NSMutableArray *userStrArray;
 
 @property (weak, nonatomic)IBOutlet UITextField *comment;
 @property (weak, nonatomic)IBOutlet UILabel *user;
+@property (weak, nonatomic)IBOutlet PFImageView *userPic;
+
 
 //@property (weak, nonatomic)IBOutlet UILabel *userName;
 

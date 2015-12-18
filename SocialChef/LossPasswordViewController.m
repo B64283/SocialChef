@@ -38,7 +38,9 @@
                     //For multiple buttons you can use :
                     
                     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                        [self closeAlertview];
+                        ///[self closeAlertview];
+                        
+                        [self performSegueWithIdentifier:@"fromchangePass" sender:self];
                     }]];
                     
 

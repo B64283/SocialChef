@@ -10,7 +10,7 @@
 #import "CustomCell.h"
 #import <Parse/Parse.h>
 
-@interface AddRecipeViewController : UIViewController  <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface AddRecipeViewController : UIViewController  <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
 
 
 
@@ -20,6 +20,7 @@
     
     __weak IBOutlet UIImageView *imageView;
     
+   __weak IBOutlet UIScrollView *Myscroll;
     UIImagePickerController *picker;
     
     UIImage *image;
