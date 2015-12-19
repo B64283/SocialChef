@@ -24,13 +24,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-//-(IBAction)backTotheSettings:(UIStoryboardSegue *)segue
-//
-//{
-//    //AddIngredientsViewController *source = segue.sourceViewController;
-//    
-//    
-//}
+-(IBAction)backTotheSett:(UIStoryboardSegue *)segue
+
+{
+    //AddIngredientsViewController *source = segue.sourceViewController;
+    
+    
+}
 
 -(IBAction)signOut:(id)sender{
     

@@ -1095,7 +1095,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6f-lL-GJt">
                                 <rect key="frame" x="141" y="217" width="93" height="30"/>
                                 <state key="normal" title="Log Out">
-                                    <color key="titleColor" red="0.47787217430000001" green="1" blue="0.13093769150000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="0.010552537324287514" blue="0.048069290215941418" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="signOut:" destination="2pT-SE-t5u" eventType="touchUpInside" id="iLV-9w-9Me"/>
@@ -2286,44 +2286,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lima-bean-24538118.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="PKS-pZ-729">
                                 <rect key="frame" x="-128" y="0.0" width="576" height="757"/>
                             </imageView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oe2-vd-qlS">
-                                <rect key="frame" x="0.0" y="46" width="375" height="621"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="bFG-oC-Rui">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="621"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MePic.png" translatesAutoresizingMaskIntoConstraints="NO" id="CBi-EW-H2h">
-                                            <rect key="frame" x="0.0" y="0.0" width="108" height="98"/>
-                                        </imageView>
-                                        <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sls-tL-FtQ">
-                                            <rect key="frame" x="67" y="223" width="240" height="175"/>
-                                        </view>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Matthew Darke, developer of Social Chef has come a long way to bring you this unique social sharing experience! Please enjoy!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HZN-ty-pJd">
-                                            <rect key="frame" x="107" y="0.0" width="268" height="98"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="textColor" red="1" green="0.34360344370000001" blue="0.069599872059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
-                                        <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5kV-Yc-C7H">
-                                            <rect key="frame" x="67" y="223" width="240" height="175"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4Y-vF-1jf">
-                                                    <rect key="frame" x="-9" y="-9" width="258" height="192"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="launchscreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="cWW-rG-hfF">
-                                                    <rect key="frame" x="5" y="-1" width="231" height="176"/>
-                                                </imageView>
-                                            </subviews>
-                                        </view>
-                                    </subviews>
-                                </view>
-                                <blurEffect style="light"/>
-                            </visualEffectView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KbC-Gj-HxI">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="47"/>
                                 <color key="backgroundColor" red="0.70825868604253706" green="1" blue="0.55552387006282578" alpha="0.89000000000000001" colorSpace="calibratedRGB"/>
@@ -2336,9 +2298,38 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="djv-W3-vcD" kind="unwind" unwindAction="backTotheSettings:" id="10W-SE-18M"/>
+                                    <segue destination="djv-W3-vcD" kind="unwind" unwindAction="backTotheSett:" id="ubs-Dv-nGe"/>
                                 </connections>
                             </button>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oe2-vd-qlS">
+                                <rect key="frame" x="20" y="46" width="335" height="608"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="bFG-oC-Rui">
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="608"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sls-tL-FtQ">
+                                            <rect key="frame" x="22" y="44" width="285" height="324"/>
+                                        </view>
+                                        <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5kV-Yc-C7H">
+                                            <rect key="frame" x="8" y="150" width="327" height="175"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HZN-ty-pJd">
+                                                    <rect key="frame" x="11" y="14" width="297" height="115"/>
+                                                    <color key="backgroundColor" red="0.91940115519999999" green="1" blue="0.92310744109999998" alpha="0.62" colorSpace="calibratedRGB"/>
+                                                    <string key="text">Matthew Darke is the developer of Social Chef. He has come a long way to bring you this unique social sharing experience! Please enjoy!</string>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="launchscreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="cWW-rG-hfF">
+                                            <rect key="frame" x="52" y="376" width="231" height="176"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -2347,7 +2338,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3iJ-5X-wHL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="djv-W3-vcD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="735.5" y="-1709.5"/>
+            <point key="canvasLocation" x="742.5" y="-1826.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nNs-pT-OTg">
@@ -2372,7 +2363,6 @@
         <image name="BlackHeart.png" width="33" height="34"/>
         <image name="Commenticon.png" width="33" height="34"/>
         <image name="GrayStar.png" width="55" height="55"/>
-        <image name="MePic.png" width="457" height="458"/>
         <image name="Metal-backgrounds-vector.jpg" width="500" height="523"/>
         <image name="NewRed.png" width="33" height="34"/>
         <image name="ProfileHolder.png" width="91" height="79"/>
@@ -2390,7 +2380,7 @@
         <image name="whiteCircle.png" width="90" height="93"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GQf-CU-jjk"/>
-        <segue reference="8tq-tL-TRB"/>
+        <segue reference="VY5-0p-cYS"/>
+        <segue reference="RGX-j4-mod"/>
     </inferredMetricsTieBreakers>
 </document>
