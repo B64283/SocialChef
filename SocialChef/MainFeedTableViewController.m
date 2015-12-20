@@ -658,7 +658,10 @@
     
     if (!button.selected) {
         [self followUser:user];
-    
+       
+        
+        
+        
     }else{
         [self UnfollowUser:user];
     }
@@ -685,38 +688,36 @@
         
         
         
+        PFQuery * pushQuery = [PFInstallation query];
+        //PFUser * userReceivingPush;
+        [pushQuery whereKey:@"owner1" equalTo:user];
         
-        
-        
-        
-        PFQuery *pushQuery = [PFInstallation query];
-        
-        PFInstallation *installation = [PFInstallation currentInstallation];
-        installation[@"User"] = user;
-        [installation saveInBackground];
-        
-        [pushQuery whereKey:@"User" equalTo:user];
-        
-        //[pushQuery whereKey:@"FromUser" equalTo:[PFUser currentUser]];
-        
-        //[PFPush sendPushMessageToQueryInBackground:pushQuery
-                                      // withMessage:@"Hello World!"];
-  
-        PFPush *push = [[PFPush alloc] init];
-        NSString *msgString=[NSString stringWithFormat:@"%@ :%@",
-                             [PFUser currentUser],
-                             @"Is now following you"];
-        
-        [push setQuery:pushQuery]; // Set our Installation query
-        NSDictionary *data1 = [NSDictionary dictionaryWithObjectsAndKeys:
-                              msgString, @"alert",
+        NSString * alert = [NSString stringWithFormat:@"You have a new message from %@!", [PFUser currentUser].username];
+        NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+                              alert, @"alert",
                               @"default", @"sound",
                               @"Increment", @"badge",
-                              // @"Optionally a type was set", @"type",
                               nil];
-        [push setData:data1];
-        [push sendPushInBackground];
-//
+        [PFPush sendPushDataToQueryInBackground:pushQuery withData:data block:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                
+            }
+            else {
+            }
+        }];
+        
+        
+        
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
         
         
         // might need to use
