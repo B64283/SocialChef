@@ -44,7 +44,9 @@
     
     PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
 
-    
+    _profileImageView.file = profilePicture;
+    [_profileImageView loadInBackground];
+
     NSString *titleLableString = [self.getObject objectForKey:@"title"];
     
     recipeTitleLable.text = titleLableString;
