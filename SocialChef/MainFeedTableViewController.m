@@ -698,6 +698,10 @@
         [followActivity saveEventually];
         
         
+        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+        [currentInstallation setObject:[PFUser currentUser] forKey:@"owner1"];
+        [currentInstallation saveInBackground];
+        
         
         
         PFQuery * pushQuery = [PFInstallation query];

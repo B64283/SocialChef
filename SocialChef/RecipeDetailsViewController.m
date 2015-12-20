@@ -291,9 +291,11 @@
        
         cell.commentText = [tempObject objectForKey:@"comment"];
         cell.userNameText = [tempObject objectForKey:@"name"];
+        cell.userPic = [tempObject objectForKey:@"pic"];
+    
+       // _userPic.file = profilePicture;
+        [_userPic loadInBackground];
         
-    
-    
     }
     
     [cell refreshCell];
@@ -376,16 +378,33 @@
     }];
     
     
+    
+    
+    
+    
     PFObject *comment = [PFObject objectWithClassName:@"nSavedItems"];
     comment[@"comment"] = _comment.text;
     
     NSString *Usrnm = [PFUser currentUser].username;
     
-   // [PFUser currentUser].username;
+    comment[@"name"] = Usrnm;
     
-        comment[@"name"] = Usrnm;
     
     PFUser *user = [PFUser currentUser];
+    
+    PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
+    
+    comment[@"pic"] = profilePicture;
+    
+    
+    
+    
+
+    
+    
+    
+    
+    //PFUser *user = [PFUser currentUser];
     if (![user.objectId isEqualToString:[PFUser currentUser].objectId]) {
     
     //comment[@"username"] = _user.text;
