@@ -692,7 +692,7 @@
         //PFUser * userReceivingPush;
         [pushQuery whereKey:@"owner1" equalTo:user];
         
-        NSString * alert = [NSString stringWithFormat:@"You have a new message from %@!", [PFUser currentUser].username];
+        NSString * alert = [NSString stringWithFormat:@" %@! Is now following YOU", [PFUser currentUser].username];
         NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
                               alert, @"alert",
                               @"default", @"sound",
