@@ -277,8 +277,10 @@
         
        
         cell.commentText = [tempObject objectForKey:@"comment"];
-        cell.userNameText = [tempObject objectForKey:@"username"];
+        cell.userNameText = [tempObject objectForKey:@"name"];
         
+    
+    
     }
     
     [cell refreshCell];
@@ -341,12 +343,11 @@
         if (!error) {
             NSLog(@"Success");
             
-            PFObject *comment = [PFObject objectWithClassName:@"User"];
+            //PFObject *comment = [PFObject objectWithClassName:@"User"];
            
             
             
-            comment[@"username"] = _user.text;
-        
+           // comment[@"username"] = _user.text;
         
             
             
@@ -364,8 +365,38 @@
     
     PFObject *comment = [PFObject objectWithClassName:@"nSavedItems"];
     comment[@"comment"] = _comment.text;
-    //comment[@"username"] = _user.text;
     
+    NSString *Usrnm = [PFUser currentUser].username;
+    
+   // [PFUser currentUser].username;
+    
+        comment[@"name"] = Usrnm;
+    
+    PFUser *user = [PFUser currentUser];
+    if (![user.objectId isEqualToString:[PFUser currentUser].objectId]) {
+    
+    //comment[@"username"] = _user.text;
+    PFQuery * pushQuery = [PFInstallation query];
+    //PFUser * userReceivingPush;
+    
+    
+    
+    [pushQuery whereKey:@"owner1" equalTo:user];
+    
+    NSString * alert = [NSString stringWithFormat:@" %@! Commented on your Recipe", [PFUser currentUser].username];
+    NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+                          alert, @"alert",
+                          @"default", @"sound",
+                          @"Increment", @"badge",
+                          nil];
+    [PFPush sendPushDataToQueryInBackground:pushQuery withData:data block:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            
+        }
+        else {
+        }
+    }];
+    }
     
     
     //self.getObjectQuery = [PFQuery queryWithClassName:@"Takenphoto"];
