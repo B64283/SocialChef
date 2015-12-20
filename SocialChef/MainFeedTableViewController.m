@@ -195,6 +195,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         PFObject *photo = [self.objects objectAtIndex:indexPath.section];
         PFQuery *photoQ = [self.objects objectAtIndex:indexPath.section];
+        PFQuery *photoZ = [self.objects objectAtIndex:indexPath.section];
         if (photo) {
             RecipeDetailsViewController *photoDetailsVC = [segue destinationViewController];
             
@@ -208,9 +209,20 @@
         
                photoDetailsVCQ.getObjectQuery = photoQ;
 
-       
+           }
+         if (photoZ) {
         
-//        PFObject *post = [self.objects objectAtIndex:indexPath.section];
+             RecipeDetailsViewController *photoDetailsVCZ = [segue destinationViewController];
+             
+             
+             photoDetailsVCZ.getObjectQuery = photoZ;
+             
+             
+             
+             
+             
+             
+             //PFObject *post = [self.objects objectAtIndex:indexPath.section];
 //        
 //        PFQuery *Qpost = [self.objects objectAtIndex:indexPath.section];
 //        

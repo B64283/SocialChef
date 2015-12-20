@@ -19,7 +19,7 @@
     IBOutlet UILabel *likesLable1;
     
     IBOutlet UILabel *recipeTitleLable;
-    IBOutlet UILabel *userNameLable;
+    IBOutlet UILabel *usrNameLable;
     
     IBOutlet UILabel *servingLable;
     IBOutlet UILabel *ingredientsLable1;

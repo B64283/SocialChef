@@ -209,7 +209,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dft-rK-FHh">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dft-rK-FHh">
                                         <rect key="frame" x="121" y="4" width="195" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" red="1" green="0.4041457389" blue="0.030492591950000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -660,7 +660,7 @@
                         <outlet property="starButton3" destination="Hh0-ca-dtj" id="xb6-Ke-hv1"/>
                         <outlet property="starButton4" destination="eGM-dK-IRv" id="a0U-0m-QPA"/>
                         <outlet property="starButton5" destination="CkT-wY-ere" id="NEY-65-jGH"/>
-                        <outlet property="userNameLable" destination="Dft-rK-FHh" id="Cmw-gF-9pP"/>
+                        <outlet property="usrNameLable" destination="Dft-rK-FHh" id="S4E-Lv-aRj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5v-wJ-FtN" userLabel="First Responder" sceneMemberID="firstResponder"/>

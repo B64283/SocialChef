@@ -38,15 +38,26 @@
     [self performSelector:@selector(retrieveFromParse)];
     [self.myCommentTableView reloadData];
     self.getObjectQuery = [PFQuery queryWithClassName:@"Takenphoto"];
+    self.getObjectQuery = [PFQuery queryWithClassName:@"User"];
     
+    PFUser *user = [self.getObject objectForKey:@"whoIsuser"];
+    
+    PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
+
     
     NSString *titleLableString = [self.getObject objectForKey:@"title"];
     
     recipeTitleLable.text = titleLableString;
     
-   
+   NSString *userNameLableString = [self.getObject objectForKey:@"whoIsuser"];
     
-   // NSString *nameLableString = [self.getObject objectForKey:@"whoIsuser"];
+    usrNameLable.text = user.username;
+    
+    //usrNameLable.text = userNameLableString;
+    NSLog(@" user name is: %@", userNameLableString);
+    
+    
+    // NSString *nameLableString = [self.getObject objectForKey:@"whoIsuser"];
     
     //userNameLable.text = nameLableString;
     
