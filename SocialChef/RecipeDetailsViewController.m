@@ -351,12 +351,13 @@
 - (IBAction)sendCommentButton:(id)sender {
     
    
-    PFQuery *phototsFromCurrentUserQuery = [PFQuery queryWithClassName:@"nSavedItems"];
-    [phototsFromCurrentUserQuery whereKey:@"comment" equalTo:[PFUser currentUser].username];
+    //PFQuery *phototsFromCurrentUserQuery = [PFQuery queryWithClassName:@"nSavedItems"];
+    PFQuery *query = [PFQuery queryWithClassName:@"nSavedItems"];
+    [query whereKey:@"FromUser" equalTo:[PFUser currentUser]];
+    [query whereKey:@"ToUser" equalTo:recipeTitleLable.text];
+    //[query whereKey:@"" equalTo:@"usercomment"];
     
-    
-    
-    [phototsFromCurrentUserQuery countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
+    [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
         if (!error) {
             // The count request succeeded. Log the count
             NSLog(@"Sean has commented%d times", count);
@@ -367,14 +368,14 @@
             // The request failed
         }
         
-        if (count<3) {
+        if (count<1) {
             [self performSelector:@selector(submitForm)];
             
             [self performSelector:@selector(retrieveFromParse)];
         }
         else{
             
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"Users can only comment three times"preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"Users can only comment once"preferredStyle:UIAlertControllerStyleAlert];
             
             [self presentViewController:alertController animated:YES completion:nil];
             //For multiple buttons you can use :
