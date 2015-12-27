@@ -352,7 +352,7 @@
     
    
     PFQuery *phototsFromCurrentUserQuery = [PFQuery queryWithClassName:@"nSavedItems"];
-    [phototsFromCurrentUserQuery whereKey:@"ToUser" equalTo:recipeTitleLable.text];
+    [phototsFromCurrentUserQuery whereKey:@"comment" equalTo:[PFUser currentUser].username];
     
     
     
@@ -367,14 +367,14 @@
             // The request failed
         }
         
-        if (count<1) {
+        if (count<3) {
             [self performSelector:@selector(submitForm)];
             
             [self performSelector:@selector(retrieveFromParse)];
         }
         else{
             
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"Users can only comment once to prevent spam"preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"Users can only comment three times"preferredStyle:UIAlertControllerStyleAlert];
             
             [self presentViewController:alertController animated:YES completion:nil];
             //For multiple buttons you can use :
