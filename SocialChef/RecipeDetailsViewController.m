@@ -375,7 +375,7 @@
         }
         else{
             
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"Users can only comment once"preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"Due to spam users can only comment once"preferredStyle:UIAlertControllerStyleAlert];
             
             [self presentViewController:alertController animated:YES completion:nil];
             //For multiple buttons you can use :
