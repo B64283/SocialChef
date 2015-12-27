@@ -298,11 +298,15 @@
         cell.userPic = [tempObject objectForKey:@"pic"];
     
        // _userPic.file = profilePicture;
-       
+        if (_userPic == NULL) {
+            
+        }
+        else
+        {
         
-        [_userPic loadInBackground];
+            [_userPic loadInBackground];
         
-        
+        }
         
     }
     
@@ -346,12 +350,57 @@
 
 - (IBAction)sendCommentButton:(id)sender {
     
+   
+    PFQuery *phototsFromCurrentUserQuery = [PFQuery queryWithClassName:@"nSavedItems"];
+    [phototsFromCurrentUserQuery whereKey:@"FromUser" equalTo:[PFUser currentUser]];
     
-    [self performSelector:@selector(submitForm)];
     
-    [self performSelector:@selector(retrieveFromParse)];
+    
+    [phototsFromCurrentUserQuery countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
+        if (!error) {
+            // The count request succeeded. Log the count
+            NSLog(@"Sean has commented%d times", count);
+            
+            //_recipeNumberLable.text = [NSString stringWithFormat:@"%d", count];
+            
+        } else {
+            // The request failed
+        }
+        
+        if (count<113) {
+            [self performSelector:@selector(submitForm)];
+            
+            [self performSelector:@selector(retrieveFromParse)];
+        }
+        else{
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"Users can only comment three times"preferredStyle:UIAlertControllerStyleAlert];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+            //For multiple buttons you can use :
+            
+            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                //[self closeAlertview];
+            }]];
+            
+        }
+        
+        
+    }];
+    
+    
+    
     [self.myCommentTableView reloadData];
-    //[self.navigationController popViewControllerAnimated:YES];
+
+    
+    
+    
+    
+    
+    
+    
+    
+   
 }
 
 
@@ -367,11 +416,11 @@
             NSLog(@"Success");
             
             //PFObject *comment = [PFObject objectWithClassName:@"User"];
-           
             
             
-           // comment[@"username"] = _user.text;
-        
+            
+            // comment[@"username"] = _user.text;
+            
             
             
             
@@ -386,70 +435,54 @@
     }];
     
     
-    
-    
-    
-    
     PFObject *comment = [PFObject objectWithClassName:@"nSavedItems"];
     comment[@"comment"] = _comment.text;
     
     NSString *Usrnm = [PFUser currentUser].username;
     
-    comment[@"name"] = Usrnm;
+    // [PFUser currentUser].username;
     
+    comment[@"name"] = Usrnm;
     
     PFUser *user = [PFUser currentUser];
     
     PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
     
-    comment[@"pic"] = profilePicture;
-    
-    
-    
-    
-    //this might not b working
-    
-    [profilePicture saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (!error) {
-            PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
-            
-            comment[@"pic"] = profilePicture;
-
-        }
+    if (profilePicture !=NULL) {
         
-        
-    }];
+        comment[@"pic"] = profilePicture;
+    }
     
     
-
+    
     
     
     
     
     //PFUser *user = [PFUser currentUser];
     if (![user.objectId isEqualToString:[PFUser currentUser].objectId]) {
-    
-    //comment[@"username"] = _user.text;
-    PFQuery * pushQuery = [PFInstallation query];
-    //PFUser * userReceivingPush;
-    
-    
-    
-    [pushQuery whereKey:@"owner1" equalTo:user];
-    
-    NSString * alert = [NSString stringWithFormat:@" %@! Commented on your Recipe", [PFUser currentUser].username];
-    NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
-                          alert, @"alert",
-                          @"default", @"sound",
-                          @"Increment", @"badge",
-                          nil];
-    [PFPush sendPushDataToQueryInBackground:pushQuery withData:data block:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            
-        }
-        else {
-        }
-    }];
+        
+        //comment[@"username"] = _user.text;
+        PFQuery * pushQuery = [PFInstallation query];
+        //PFUser * userReceivingPush;
+        
+        
+        
+        [pushQuery whereKey:@"owner1" equalTo:user];
+        
+        NSString * alert = [NSString stringWithFormat:@" %@! Commented on your Recipe", [PFUser currentUser].username];
+        NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+                              alert, @"alert",
+                              @"default", @"sound",
+                              @"Increment", @"badge",
+                              nil];
+        [PFPush sendPushDataToQueryInBackground:pushQuery withData:data block:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                
+            }
+            else {
+            }
+        }];
     }
     
     
@@ -484,10 +517,10 @@
     PFACL *postACL = [PFACL ACLWithUser:[PFUser currentUser]];
     [postACL setPublicReadAccess:YES];
     [postACL setPublicWriteAccess:YES];
-
+    
     
     comment.ACL = postACL;
-   
+    
     [comment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             
@@ -504,30 +537,25 @@
             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                 //[self closeAlertview];
             }]];
-
             
             
-} else {
+            
+        } else {
             // There was a problem, check error.description
             
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:@"There was an error with your coment"preferredStyle:UIAlertControllerStyleAlert];
-    
-    [self presentViewController:alertController animated:YES completion:nil];
-    //For multiple buttons you can use :
-    
-    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        //[self closeAlertview];
-    }]];
-
-
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:@"There was an error with your coment"preferredStyle:UIAlertControllerStyleAlert];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+            //For multiple buttons you can use :
+            
+            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                //[self closeAlertview];
+            }]];
+            
+            
         }
     }];
 }
-
-
-
-
-
 
 
 
