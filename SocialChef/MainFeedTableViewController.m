@@ -14,15 +14,13 @@
 
 
 
-@interface MainFeedTableViewController () <UISearchBarDelegate, UISearchDisplayDelegate>
+@interface MainFeedTableViewController ()
 {
     
     
     
 }
-@property (nonatomic, strong) UISearchBar *searchBar;
-@property (nonatomic, strong) UISearchController *searchController;
-@property (nonatomic, strong) NSMutableArray *searchResults;
+
 
 
 
@@ -39,7 +37,7 @@
 - (void)viewDidLoad {
     
     self.searchResults = [NSMutableArray array];
-    
+    //self.tableView.tableHeaderView = self.searchBar;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"BlackNavagation"] forBarMetrics:UIBarMetricsDefault];
     [super viewDidLoad];
 
@@ -69,30 +67,30 @@
     }
 
 
-//- (void)filterResults:(NSString *)searchTerm {
-//    
-//    [self.searchResults removeAllObjects];
-//    
-//    PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
-//    [query whereKeyExists:@"title"];  //this is based on whatever query you are trying to accomplish
-//    
-//    [query whereKey:@"title" containsString:searchTerm];
-//    
-//    NSArray *results  = [query findObjects];
-//    
-//    NSLog(@"%@", results);
-//    NSLog(@"%lu", (unsigned long)results.count);
-//    
-//    [self.searchResults addObjectsFromArray:results];
-//}
-//
-//
-//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-//    [self filterResults:searchString];
-//    return YES;
-//}
-//
-//
+- (void)filterResults:(NSString *)searchTerm {
+    
+    [self.searchResults removeAllObjects];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
+    [query whereKeyExists:@"title"];  //this is based on whatever query you are trying to accomplish
+    
+    [query whereKey:@"title" containsString:searchTerm];
+    
+    NSArray *results  = [query findObjects];
+    
+    NSLog(@"%@", results);
+    NSLog(@"%lu",results.count);
+    
+    [_searchResults addObjectsFromArray:results];
+}
+
+
+- (BOOL)searchDisplayController:(UISearchController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    [self filterResults:searchString];
+    return YES;
+}
+
+
 
 
 
@@ -108,7 +106,7 @@
         self.parseClassName = @"Takenphoto";
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = YES;
-        self.objectsPerPage = 8;
+        self.objectsPerPage = 200;
     }
     
     return self;
@@ -342,7 +340,7 @@
     static NSString *CellIdentifier = @"SectionHeaderCell";
     UITableViewCell *sectionHeaderView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if (!sectionHeaderView)
+    if (sectionHeaderView == nil)
     {
         sectionHeaderView = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SectionHeaderCell"];
     
@@ -351,7 +349,7 @@
     
     }
     
-    if (tableView == self.tableView) {
+   // if (tableView == self.tableView) {
        
         PFImageView *profileImageView = (PFImageView * )[sectionHeaderView viewWithTag:1];
         UILabel *userNameLable = (UILabel *)[sectionHeaderView viewWithTag:2];
@@ -439,16 +437,16 @@
     
 
 
-    //if (tableView == self.searchDisplayController.searchResultsTableView) {
-        
-        
-        
+//    if (tableView == self.searchController.searchResultsTableView) {
 //        
+//        
+//        
+////
 //        PFImageView *profileImageView = (PFImageView * )[sectionHeaderView viewWithTag:1];
 //        UILabel *userNameLable = (UILabel *)[sectionHeaderView viewWithTag:2];
 //        UILabel *titleLable = (UILabel *)[sectionHeaderView viewWithTag:3];
 //        
-//        
+//    
 //        PFObject *photo = [self.objects objectAtIndex:section];
 //        PFUser *user = [photo objectForKey:@"whoIsuser"];
 //        PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
@@ -465,7 +463,7 @@
 //        
 //        profileImageView.file = profilePicture;
 //        [profileImageView loadInBackground];
-//        
+////
 //        FollowButton *followButton = (FollowButton *)[sectionHeaderView viewWithTag: 4];
 //        followButton.delegate = self;
 //        
@@ -518,10 +516,10 @@
 //                
 //                followButton.selected = YES;
 //            }
-//        }
+//       }
 //        
-    }
-    
+//    }
+//    
     
     
     return sectionHeaderView;
@@ -568,7 +566,7 @@
         
     } else {
         
-        return self.searchResults.count;
+        return _searchResults.count;
         
     }
 

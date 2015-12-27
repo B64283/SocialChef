@@ -12,7 +12,7 @@
 #import "FollowButton.h"
 #import "LikesButton.h"
 
-@interface MainFeedTableViewController : PFQueryTableViewController <FollowButtonDelegate, LikesButtonDelegate, UITableViewDelegate>
+@interface MainFeedTableViewController : PFQueryTableViewController <FollowButtonDelegate, LikesButtonDelegate, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 {
    
     IBOutlet UITableView *searchResultsTableView;
@@ -24,9 +24,11 @@
 
 
     
-    
-    
-    
+@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) UISearchController *searchController;
+@property (nonatomic, strong) NSMutableArray *searchResults;
+
+
 
    
     

@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <Parse/Parse.h>
-@interface LoginViewController : ViewController <NSURLConnectionDataDelegate>
+@interface LoginViewController : ViewController <NSURLConnectionDataDelegate, FBSDKGraphRequestConnectionDelegate>
+
 {
 
 NSArray *userStringArray;

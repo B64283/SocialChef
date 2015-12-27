@@ -36,7 +36,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self performSelector:@selector(retrieveFromParse)];
+    [_userPic loadInBackground];
     [self.myCommentTableView reloadData];
+
     self.getObjectQuery = [PFQuery queryWithClassName:@"Takenphoto"];
     self.getObjectQuery = [PFQuery queryWithClassName:@"User"];
     
@@ -76,7 +78,7 @@
 //    
 //    [photo loadInBackground];
     
-    
+    [_userPic loadInBackground];
    
     
     //_userNameLable.text = [self.getObject objectForKey:@"whoIsuser"];
@@ -247,6 +249,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     [self performSelector:@selector(retrieveFromParse)];
+    //[_userPic loadInBackground];
     [self.myCommentTableView reloadData];
 }
 
@@ -254,6 +257,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     
     [self performSelector:@selector(retrieveFromParse)];
+    [_userPic loadInBackground];
     [self.myCommentTableView reloadData];
 }
 
@@ -294,7 +298,11 @@
         cell.userPic = [tempObject objectForKey:@"pic"];
     
        // _userPic.file = profilePicture;
+       
+        
         [_userPic loadInBackground];
+        
+        
         
     }
     
@@ -397,6 +405,20 @@
     comment[@"pic"] = profilePicture;
     
     
+    
+    
+    //this might not b working
+    
+    [profilePicture saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (!error) {
+            PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
+            
+            comment[@"pic"] = profilePicture;
+
+        }
+        
+        
+    }];
     
     
 

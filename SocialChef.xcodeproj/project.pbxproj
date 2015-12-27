@@ -29,6 +29,8 @@
 		241EB9C51C218BB000216D0C /* LossPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 241EB9C41C218BB000216D0C /* LossPasswordViewController.m */; };
 		241EB9C71C227E7E00216D0C /* kitchen-cooking-doodle-set-vector-31721609.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 241EB9C61C227E7E00216D0C /* kitchen-cooking-doodle-set-vector-31721609.jpg */; };
 		241EB9C91C2284C000216D0C /* lima-bean-24538118.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 241EB9C81C2284C000216D0C /* lima-bean-24538118.jpg */; };
+		246591091C2FB5BC000F2CB3 /* NewUsernameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 246591081C2FB5BC000F2CB3 /* NewUsernameViewController.m */; };
+		2465910C1C2FC143000F2CB3 /* NewEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2465910B1C2FC143000F2CB3 /* NewEmailViewController.m */; };
 		2484CECC1BFBB77700AFF478 /* AddIngredientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2484CECB1BFBB77700AFF478 /* AddIngredientsViewController.m */; };
 		2484CECF1BFBB8B600AFF478 /* AddRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2484CECE1BFBB8B600AFF478 /* AddRecipeViewController.m */; };
 		2484CED21BFBC60A00AFF478 /* CustomIngredientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2484CED11BFBC60A00AFF478 /* CustomIngredientCell.m */; };
@@ -149,6 +151,10 @@
 		241EB9C41C218BB000216D0C /* LossPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LossPasswordViewController.m; sourceTree = "<group>"; };
 		241EB9C61C227E7E00216D0C /* kitchen-cooking-doodle-set-vector-31721609.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "kitchen-cooking-doodle-set-vector-31721609.jpg"; sourceTree = "<group>"; };
 		241EB9C81C2284C000216D0C /* lima-bean-24538118.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "lima-bean-24538118.jpg"; sourceTree = "<group>"; };
+		246591071C2FB5BC000F2CB3 /* NewUsernameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUsernameViewController.h; sourceTree = "<group>"; };
+		246591081C2FB5BC000F2CB3 /* NewUsernameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUsernameViewController.m; sourceTree = "<group>"; };
+		2465910A1C2FC143000F2CB3 /* NewEmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewEmailViewController.h; sourceTree = "<group>"; };
+		2465910B1C2FC143000F2CB3 /* NewEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewEmailViewController.m; sourceTree = "<group>"; };
 		2484CECA1BFBB77700AFF478 /* AddIngredientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddIngredientsViewController.h; sourceTree = "<group>"; };
 		2484CECB1BFBB77700AFF478 /* AddIngredientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddIngredientsViewController.m; sourceTree = "<group>"; };
 		2484CECD1BFBB8B600AFF478 /* AddRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRecipeViewController.h; sourceTree = "<group>"; };
@@ -401,6 +407,10 @@
 				240BEF711BF561E9004E35FA /* Frameworks */,
 				240BEF721BF56274004E35FA /* Images */,
 				24F90D391BF2B9B100A6EA3B /* Main.storyboard */,
+				2465910A1C2FC143000F2CB3 /* NewEmailViewController.h */,
+				2465910B1C2FC143000F2CB3 /* NewEmailViewController.m */,
+				246591071C2FB5BC000F2CB3 /* NewUsernameViewController.h */,
+				246591081C2FB5BC000F2CB3 /* NewUsernameViewController.m */,
 				241EB9C31C218BB000216D0C /* LossPasswordViewController.h */,
 				241EB9C41C218BB000216D0C /* LossPasswordViewController.m */,
 				24EC94621C13D84900B2F149 /* SettingsViewController.h */,
@@ -670,7 +680,9 @@
 			files = (
 				24EC94491C103DD600B2F149 /* AddShoppingItemsViewController.m in Sources */,
 				24EC94461C103C3400B2F149 /* ShoppingListViewController.m in Sources */,
+				246591091C2FB5BC000F2CB3 /* NewUsernameViewController.m in Sources */,
 				24EC94381C0D471400B2F149 /* CustomShoppingCell.m in Sources */,
+				2465910C1C2FC143000F2CB3 /* NewEmailViewController.m in Sources */,
 				24EC94641C13D84900B2F149 /* SettingsViewController.m in Sources */,
 				24F90DA61BF4669400A6EA3B /* MainFeedTableViewController.m in Sources */,
 				24EC944C1C10CCBB00B2F149 /* TimerViewController.m in Sources */,
