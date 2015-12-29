@@ -1481,7 +1481,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="7Nx-CZ-u5N" id="U3n-P9-P0r"/>
-                        <outlet property="searchResultsTableView" destination="8V3-1c-P7I" id="RZD-Be-HZj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ARz-tz-GB3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2015,7 +2014,7 @@
                                                 <segue destination="r0v-Y4-ifU" kind="unwind" unwindAction="backTotheStart:" id="5GL-na-qut"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Save" style="plain" id="wOC-3T-lJj">
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="wOC-3T-lJj">
                                             <color key="tintColor" red="1" green="0.4041457389" blue="0.030492591950000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="Sharerecipe:" destination="CDi-QS-X2P" id="pCV-x1-1ny"/>
