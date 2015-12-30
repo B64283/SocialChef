@@ -2343,26 +2343,28 @@
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Find Friends" translatesAutoresizingMaskIntoConstraints="NO" id="iKq-WT-9oI">
-                                    <rect key="frame" x="0.0" y="78" width="375" height="44"/>
-                                    <color key="barTintColor" red="1" green="0.48777609389999999" blue="0.054809416270000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Followers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTy-4Z-kxA">
                                     <rect key="frame" x="238" y="51" width="73" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <searchBar contentMode="redraw" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="MYN-vb-Cla">
+                                    <rect key="frame" x="0.0" y="78" width="375" height="44"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="0vf-SU-hdx" id="aqy-PX-Puq"/>
+                                    </connections>
+                                </searchBar>
                             </subviews>
                             <color key="backgroundColor" red="0.93333333330000001" green="0.92941176469999998" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoadMoreCell" rowHeight="41" id="XYJ-89-DgN">
-                                <rect key="frame" x="0.0" y="150" width="375" height="41"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoadMoreCell" rowHeight="51" id="XYJ-89-DgN">
+                                <rect key="frame" x="0.0" y="150" width="375" height="51"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XYJ-89-DgN" id="axI-0O-2xB">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Load More" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmw-Lw-aGQ">
@@ -2375,13 +2377,13 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SectionHeaderCell" rowHeight="98" id="Wjm-26-kHl">
-                                <rect key="frame" x="0.0" y="191" width="375" height="98"/>
+                                <rect key="frame" x="0.0" y="201" width="375" height="98"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wjm-26-kHl" id="13F-Pu-UPY">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XsA-al-KTg" customClass="PFImageView">
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ProfileHolder.png" translatesAutoresizingMaskIntoConstraints="NO" id="XsA-al-KTg" customClass="PFImageView">
                                             <rect key="frame" x="8" y="8" width="87" height="87"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0n-hT-f2F">
@@ -2417,7 +2419,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageCell" rowHeight="217" id="Ift-bw-fOv">
-                                <rect key="frame" x="0.0" y="289" width="375" height="217"/>
+                                <rect key="frame" x="0.0" y="299" width="375" height="217"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ift-bw-fOv" id="M9S-wK-DC1">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
@@ -2469,13 +2471,23 @@
                         <outlet property="followerNumberLable" destination="obr-dy-i1u" id="pug-Jj-Wy3"/>
                         <outlet property="followingNumberLable" destination="LXK-ag-rli" id="qMu-Ir-f47"/>
                         <outlet property="profileImageView" destination="3MM-hn-hxN" id="Xg2-Lu-fbO"/>
+                        <outlet property="searchDisplayController" destination="8HF-yc-1V6" id="NYA-wR-MCL"/>
                         <outlet property="userNameLable" destination="5nC-Pd-ecw" id="DsB-pp-gq0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tr4-b8-bwI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="QlK-1G-MEV" userLabel="Exit" sceneMemberID="exit"/>
+                <searchDisplayController id="8HF-yc-1V6">
+                    <connections>
+                        <outlet property="delegate" destination="0vf-SU-hdx" id="z7u-dF-6AC"/>
+                        <outlet property="searchBar" destination="MYN-vb-Cla" id="kz0-kY-LzL"/>
+                        <outlet property="searchContentsController" destination="0vf-SU-hdx" id="6Vj-Wo-Mbh"/>
+                        <outlet property="searchResultsDataSource" destination="0vf-SU-hdx" id="TAC-62-w8U"/>
+                        <outlet property="searchResultsDelegate" destination="0vf-SU-hdx" id="M9s-et-sLm"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1507.5" y="-1005.5"/>
+            <point key="canvasLocation" x="839.5" y="-17.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="19u-bJ-LI8">

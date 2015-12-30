@@ -89,10 +89,6 @@
         isFiltered = true;
         searchResults = [[NSMutableArray alloc] init];
         
-        
-        
-            
-        
         [self.tableView reloadData];
         
     }
@@ -120,16 +116,20 @@
     
     NSArray *results = [query findObjects];
     
+    query.limit = 50;
     
     
     [searchResults addObjectsFromArray:results];
-    NSLog(@"%@", searchResults);
-    NSLog(@"%lu",searchResults.count);
-}
+    
+    
+    }
 
 
 - (BOOL)searchDisplayController:(UISearchController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     [self filterResults:searchString];
+    
+   [self.tableView reloadData];
+    
     return YES;
 }
 
@@ -159,7 +159,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [self.tableView reloadData];
     [self loadObjects];
 }
 
@@ -385,16 +385,19 @@
     }
     
     static NSString *CellIdentifier = @"SectionHeaderCell";
-    UITableViewCell *sectionHeaderView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    
+    UITableViewCell *sectionHeaderView = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     
     if (sectionHeaderView == nil)
     {
-        sectionHeaderView = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SectionHeaderCell"];
+//
+      sectionHeaderView = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+            }
     
-    // Configure the cell
-
     
-    }
     
  if (tableView == self.tableView) {
        
@@ -480,32 +483,40 @@
             }
         }
   // return sectionHeaderView;
-        
- 
-
-
     if (isFiltered == TRUE) {
         
         PFImageView *profileImageView = (PFImageView * )[sectionHeaderView viewWithTag:1];
-        UILabel *userNameLable = (UILabel *)[sectionHeaderView viewWithTag:2];
+        //UILabel *userNameLable = (UILabel *)[sectionHeaderView viewWithTag:2];
         UILabel *titleLable = (UILabel *)[sectionHeaderView viewWithTag:3];
         
     
-        PFObject *photo = [searchResults objectAtIndex:section];
-        PFUser *user = [photo objectForKey:@"whoIsuser"];
+        PFUser *obj2 = [searchResults objectAtIndex:section];
+        NSLog(@"%@", searchResults);
+        NSLog(@"%lu",searchResults.count);
+        PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
+        PFObject *searchedUser = [query getObjectWithId:obj2.objectId];
+        NSString *title = [searchedUser objectForKey:@"title"];
         
-        PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
+        
+        
+
+        
+        
+        //PFObject *photo = [searchResults objectAtIndex:section];
+        PFUser *user = [searchedUser objectForKey:@"whoIsuser"];
+        
+        PFFile *profilePicture = [searchedUser objectForKey:@"profilePhoto"];
         
         
         //
-        NSString *title = photo[@"title"];
+       // NSString *title = photo[@"title"];
         //NSString *titleServing = photo[@"serving"];
         
         
-        userNameLable.text = user.username;
+        //userNameLable.text = searchedUser;
         
         titleLable.text = title;
-        
+        //[searchedUser fetchIfNeededInBackground];
         
         profileImageView.file = profilePicture;
         [profileImageView loadInBackground];
@@ -561,7 +572,7 @@
                 followButton.selected = YES;
             }
        }
-        return sectionHeaderView;
+        //return sectionHeaderView;
     }
     
  }
@@ -608,9 +619,9 @@
         
         return 1;
         
-    } else {
+    }else {
         
-        return searchResults.count;
+        return [searchResults count];
         
     }
 
@@ -621,6 +632,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
     
     if (indexPath.section == self.objects.count) {
+        
         UITableViewCell *cell = [self tableView:tableView cellForNextPageAtIndexPath:indexPath];
         return cell;
     }
@@ -628,7 +640,10 @@
     static NSString *CellIdentifier = @"ImageCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
+    if (cell == nil) {
+        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"ImageCell"];
+    }
     PFImageView *photo = (PFImageView *)[cell viewWithTag:1];
      photo.file = object [@"Takenimage"];
     [photo loadInBackground];
@@ -640,7 +655,7 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == self.objects.count || searchResults.count) {
+    if (section == self.objects.count) {
         
         return 0.0f;
     
