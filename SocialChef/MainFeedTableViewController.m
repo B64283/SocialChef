@@ -357,10 +357,7 @@
 
     }
     else{
-   
-
-
-      return nil;
+        return nil;
     }
     
 }
@@ -368,6 +365,7 @@
 
 
 - (NSIndexPath *)_indexPathForPaginationCell {
+    
     return [NSIndexPath indexPathForRow:0 inSection:[self.objects count]];
     
 }
@@ -404,14 +402,6 @@
         PFImageView *profileImageView = (PFImageView * )[sectionHeaderView viewWithTag:1];
         UILabel *userNameLable = (UILabel *)[sectionHeaderView viewWithTag:2];
         UILabel *titleLable = (UILabel *)[sectionHeaderView viewWithTag:3];
-        
-        
-        
-        
-        
-        
-        
-        
         PFObject *photo = [self.objects objectAtIndex:section];
         PFUser *user = [photo objectForKey:@"whoIsuser"];
         PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
@@ -646,6 +636,7 @@
     }
     PFImageView *photo = (PFImageView *)[cell viewWithTag:1];
      photo.file = object [@"Takenimage"];
+    [object fetchIfNeeded];
     [photo loadInBackground];
     
     

@@ -27,11 +27,11 @@
 		241EB9C51C218BB000216D0C /* LossPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 241EB9C41C218BB000216D0C /* LossPasswordViewController.m */; };
 		241EB9C71C227E7E00216D0C /* kitchen-cooking-doodle-set-vector-31721609.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 241EB9C61C227E7E00216D0C /* kitchen-cooking-doodle-set-vector-31721609.jpg */; };
 		241EB9C91C2284C000216D0C /* lima-bean-24538118.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 241EB9C81C2284C000216D0C /* lima-bean-24538118.jpg */; };
+		2444AAFE1C35B61100A64751 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2444AAFD1C35B61100A64751 /* ParseUI.framework */; };
+		2444AB011C35B68A00A64751 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2444AB001C35B68A00A64751 /* FBSDKShareKit.framework */; };
 		246591091C2FB5BC000F2CB3 /* NewUsernameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 246591081C2FB5BC000F2CB3 /* NewUsernameViewController.m */; };
 		2465910C1C2FC143000F2CB3 /* NewEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2465910B1C2FC143000F2CB3 /* NewEmailViewController.m */; };
-		246591101C321EDF000F2CB3 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2465910F1C321EDF000F2CB3 /* FBSDKShareKit.framework */; };
 		246591121C3228D8000F2CB3 /* whiteCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 246591111C3228D8000F2CB3 /* whiteCircle.png */; };
-		246591161C323B07000F2CB3 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246591151C323B07000F2CB3 /* ParseUI.framework */; };
 		2484CECC1BFBB77700AFF478 /* AddIngredientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2484CECB1BFBB77700AFF478 /* AddIngredientsViewController.m */; };
 		2484CECF1BFBB8B600AFF478 /* AddRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2484CECE1BFBB8B600AFF478 /* AddRecipeViewController.m */; };
 		2484CED21BFBC60A00AFF478 /* CustomIngredientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2484CED11BFBC60A00AFF478 /* CustomIngredientCell.m */; };
@@ -147,13 +147,13 @@
 		241EB9C41C218BB000216D0C /* LossPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LossPasswordViewController.m; sourceTree = "<group>"; };
 		241EB9C61C227E7E00216D0C /* kitchen-cooking-doodle-set-vector-31721609.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "kitchen-cooking-doodle-set-vector-31721609.jpg"; sourceTree = "<group>"; };
 		241EB9C81C2284C000216D0C /* lima-bean-24538118.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "lima-bean-24538118.jpg"; sourceTree = "<group>"; };
+		2444AAFD1C35B61100A64751 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		2444AB001C35B68A00A64751 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		246591071C2FB5BC000F2CB3 /* NewUsernameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUsernameViewController.h; sourceTree = "<group>"; };
 		246591081C2FB5BC000F2CB3 /* NewUsernameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUsernameViewController.m; sourceTree = "<group>"; };
 		2465910A1C2FC143000F2CB3 /* NewEmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewEmailViewController.h; sourceTree = "<group>"; };
 		2465910B1C2FC143000F2CB3 /* NewEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewEmailViewController.m; sourceTree = "<group>"; };
-		2465910F1C321EDF000F2CB3 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		246591111C3228D8000F2CB3 /* whiteCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteCircle.png; sourceTree = "<group>"; };
-		246591151C323B07000F2CB3 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		2484CECA1BFBB77700AFF478 /* AddIngredientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddIngredientsViewController.h; sourceTree = "<group>"; };
 		2484CECB1BFBB77700AFF478 /* AddIngredientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddIngredientsViewController.m; sourceTree = "<group>"; };
 		2484CECD1BFBB8B600AFF478 /* AddRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRecipeViewController.h; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 				24F90D7D1BF31FF600A6EA3B /* SystemConfiguration.framework in Frameworks */,
 				24F90D7B1BF31FE000A6EA3B /* StoreKit.framework in Frameworks */,
 				24F90D791BF31FD200A6EA3B /* Social.framework in Frameworks */,
-				246591161C323B07000F2CB3 /* ParseUI.framework in Frameworks */,
+				2444AAFE1C35B61100A64751 /* ParseUI.framework in Frameworks */,
 				24F90D771BF31FC500A6EA3B /* Security.framework in Frameworks */,
 				24F90D751BF31FBA00A6EA3B /* QuartzCore.framework in Frameworks */,
 				24F90D731BF31FA800A6EA3B /* CoreLocation.framework in Frameworks */,
@@ -277,7 +277,7 @@
 				24F90D6F1BF31F8D00A6EA3B /* CFNetwork.framework in Frameworks */,
 				24F90D831BF3236F00A6EA3B /* FBSDKCoreKit.framework in Frameworks */,
 				24F90D6B1BF31F7700A6EA3B /* Accounts.framework in Frameworks */,
-				246591101C321EDF000F2CB3 /* FBSDKShareKit.framework in Frameworks */,
+				2444AB011C35B68A00A64751 /* FBSDKShareKit.framework in Frameworks */,
 				24F90D691BF31ED500A6EA3B /* Parse.framework in Frameworks */,
 				24F90D851BF3238D00A6EA3B /* FBSDKLoginKit.framework in Frameworks */,
 				24F90D671BF31EB800A6EA3B /* Bolts.framework in Frameworks */,
@@ -304,13 +304,14 @@
 		240BEF711BF561E9004E35FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2444AAFF1C35B65B00A64751 /* New Group */,
 				2484CED31BFC5FC000AFF478 /* MobileCoreServices.framework */,
 				24F90D801BF3204100A6EA3B /* libsqlite3.tbd */,
-				246591151C323B07000F2CB3 /* ParseUI.framework */,
 				24F90D7E1BF3200B00A6EA3B /* libz.tbd */,
+				2444AB001C35B68A00A64751 /* FBSDKShareKit.framework */,
+				2444AAFD1C35B61100A64751 /* ParseUI.framework */,
 				24F90D681BF31ED500A6EA3B /* Parse.framework */,
 				24F90D661BF31EB800A6EA3B /* Bolts.framework */,
-				2465910F1C321EDF000F2CB3 /* FBSDKShareKit.framework */,
 				24F90D8A1BF33E1B00A6EA3B /* ParseFacebookUtilsV4.framework */,
 				24F90D881BF33DCB00A6EA3B /* ParseFacebookUtils.framework */,
 				24F90D841BF3238D00A6EA3B /* FBSDKLoginKit.framework */,
@@ -375,6 +376,13 @@
 			);
 			name = Images;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		2444AAFF1C35B65B00A64751 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		24F90D241BF2B9B100A6EA3B = {
