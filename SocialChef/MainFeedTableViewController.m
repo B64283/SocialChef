@@ -76,25 +76,25 @@
 
 
 //search bar methid
--(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text
-{
-    if(text.length == 0)
-    {
-        isFiltered = FALSE;
-        [self.tableView reloadData];
-        
-    }
-    else
-    {
-        isFiltered = true;
-        searchResults = [[NSMutableArray alloc] init];
-        
-        [self.tableView reloadData];
-        
-    }
-    
-    
-}
+//-(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text
+//{
+//    if(text.length == 0)
+//    {
+//        isFiltered = FALSE;
+//        [self.tableView reloadData];
+//        
+//    }
+//    else
+//    {
+//        isFiltered = true;
+//        searchResults = [[NSMutableArray alloc] init];
+//        
+//        [self.tableView reloadData];
+//        
+//    }
+//    
+//    
+//}
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -104,36 +104,36 @@
 }
 
 
-- (void)filterResults:(NSString *)searchTerm {
-    
-    [searchResults removeAllObjects];
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
-    [query whereKeyExists:@"title"];  //this is based on whatever query you are trying to accomplish
-    
-    [query whereKey:@"title" containsString:searchTerm];
-    
-    
-    NSArray *results = [query findObjects];
-    
-    query.limit = 50;
-    
-    
-    [searchResults addObjectsFromArray:results];
-    
-    
-    }
-
-
-- (BOOL)searchDisplayController:(UISearchController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-    [self filterResults:searchString];
-    
-   [self.tableView reloadData];
-    
-    return YES;
-}
-
-
+//- (void)filterResults:(NSString *)searchTerm {
+//    
+//    [searchResults removeAllObjects];
+//    
+//    PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
+//    [query whereKeyExists:@"title"];  //this is based on whatever query you are trying to accomplish
+//    
+//    [query whereKey:@"title" containsString:searchTerm];
+//    
+//    
+//    NSArray *results = [query findObjects];
+//    
+//    query.limit = 50;
+//    
+//    
+//    [searchResults addObjectsFromArray:results];
+//    
+//    
+//    }
+//
+//
+//- (BOOL)searchDisplayController:(UISearchController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+//    [self filterResults:searchString];
+//    
+//   [self.tableView reloadData];
+//    
+//    return YES;
+//}
+//
+//
 
 
 
@@ -402,7 +402,8 @@
         PFImageView *profileImageView = (PFImageView * )[sectionHeaderView viewWithTag:1];
         UILabel *userNameLable = (UILabel *)[sectionHeaderView viewWithTag:2];
         UILabel *titleLable = (UILabel *)[sectionHeaderView viewWithTag:3];
-        PFObject *photo = [self.objects objectAtIndex:section];
+     
+     PFObject *photo = [self.objects objectAtIndex:section];
         PFUser *user = [photo objectForKey:@"whoIsuser"];
         PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
         
@@ -472,105 +473,108 @@
                 followButton.selected = YES;
             }
         }
-  // return sectionHeaderView;
-    if (isFiltered == TRUE) {
-        
-        PFImageView *profileImageView = (PFImageView * )[sectionHeaderView viewWithTag:1];
-        //UILabel *userNameLable = (UILabel *)[sectionHeaderView viewWithTag:2];
-        UILabel *titleLable = (UILabel *)[sectionHeaderView viewWithTag:3];
-        
-    
-        PFUser *obj2 = [searchResults objectAtIndex:section];
-        NSLog(@"%@", searchResults);
-        NSLog(@"%lu",searchResults.count);
-        PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
-        PFObject *searchedUser = [query getObjectWithId:obj2.objectId];
-        NSString *title = [searchedUser objectForKey:@"title"];
-        
-        
-        
-
-        
-        
-        //PFObject *photo = [searchResults objectAtIndex:section];
-        PFUser *user = [searchedUser objectForKey:@"whoIsuser"];
-        
-        PFFile *profilePicture = [searchedUser objectForKey:@"profilePhoto"];
-        
-        
-        //
-       // NSString *title = photo[@"title"];
-        //NSString *titleServing = photo[@"serving"];
-        
-        
-        //userNameLable.text = searchedUser;
-        
-        titleLable.text = title;
-        //[searchedUser fetchIfNeededInBackground];
-        
-        profileImageView.file = profilePicture;
-        [profileImageView loadInBackground];
-
-        FollowButton *followButton = (FollowButton *)[sectionHeaderView viewWithTag: 4];
-        followButton.delegate = self;
-        
-        followButton.sectionIndex = section;
-        
-        //Likes button
-        LikesButton *likesButton = (LikesButton *)[sectionHeaderView viewWithTag: 5];
-        likesButton.delegate = self;
-        
-        likesButton.sectionIndex = section;
-        
-        
-        
-        if (!self.likesArray || [user.objectId isEqualToString:[PFUser currentUser].objectId] ) {
-            likesButton.hidden = YES;
-            
-            
-        }else{
-            
-            likesButton.hidden = NO;
-            NSInteger indexOfMatchedObject = [self.likesArray indexOfObject:user.objectId];
-            
-            if (indexOfMatchedObject == NSNotFound) {
-                likesButton.selected = NO;
-                
-                
-            }else{
-                
-                likesButton.selected = YES;
-            }
-        }
-        
-        // update state of following button we dont want user to follow their self
-        
-        if (!self.followingArray || [user.objectId isEqualToString:[PFUser currentUser].objectId] ) {
-            followButton.hidden = YES;
-            
-            
-        }else{
-            followButton.hidden = NO;
-            NSInteger indexOfMatchedObject = [self.followingArray indexOfObject:user.objectId];
-            
-            if (indexOfMatchedObject == NSNotFound) {
-                followButton.selected = NO;
-                
-                
-            }else{
-                
-                followButton.selected = YES;
-            }
-       }
-        //return sectionHeaderView;
-    }
-    
  }
-    
-    return sectionHeaderView;
-    
-}
-        
+   return sectionHeaderView;
+     
+ }
+//    if (isFiltered == TRUE) {
+//        
+//        PFImageView *profileImageView = (PFImageView * )[sectionHeaderView viewWithTag:1];
+//        //UILabel *userNameLable = (UILabel *)[sectionHeaderView viewWithTag:2];
+//        UILabel *titleLable = (UILabel *)[sectionHeaderView viewWithTag:3];
+//        
+//    
+//        PFUser *obj2 = [searchResults objectAtIndex:section];
+//        NSLog(@"%@", searchResults);
+//        NSLog(@"%lu",searchResults.count);
+//        PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
+//        PFObject *searchedUser = [query getObjectWithId:obj2.objectId];
+//        NSString *title = [searchedUser objectForKey:@"title"];
+//        
+//        
+//        
+//
+//        
+//        
+//        //PFObject *photo = [searchResults objectAtIndex:section];
+//        PFUser *user = [searchedUser objectForKey:@"whoIsuser"];
+//        
+//        PFFile *profilePicture = [searchedUser objectForKey:@"profilePhoto"];
+//        
+//        
+//        //
+//       // NSString *title = photo[@"title"];
+//        //NSString *titleServing = photo[@"serving"];
+//        
+//        
+//        //userNameLable.text = searchedUser;
+//        
+//        titleLable.text = title;
+//        //[searchedUser fetchIfNeededInBackground];
+//        
+//        profileImageView.file = profilePicture;
+//        [profileImageView loadInBackground];
+//
+//        FollowButton *followButton = (FollowButton *)[sectionHeaderView viewWithTag: 4];
+//        followButton.delegate = self;
+//        
+//        followButton.sectionIndex = section;
+//        
+//        //Likes button
+//        LikesButton *likesButton = (LikesButton *)[sectionHeaderView viewWithTag: 5];
+//        likesButton.delegate = self;
+//        
+//        likesButton.sectionIndex = section;
+//        
+//        
+//        
+//        if (!self.likesArray || [user.objectId isEqualToString:[PFUser currentUser].objectId] ) {
+//            likesButton.hidden = YES;
+//            
+//            
+//        }else{
+//            
+//            likesButton.hidden = NO;
+//            NSInteger indexOfMatchedObject = [self.likesArray indexOfObject:user.objectId];
+//            
+//            if (indexOfMatchedObject == NSNotFound) {
+//                likesButton.selected = NO;
+//                
+//                
+//            }else{
+//                
+//                likesButton.selected = YES;
+//            }
+//        }
+//        
+//        // update state of following button we dont want user to follow their self
+//        
+//        if (!self.followingArray || [user.objectId isEqualToString:[PFUser currentUser].objectId] ) {
+//            followButton.hidden = YES;
+//            
+//            
+//        }else{
+//            followButton.hidden = NO;
+//            NSInteger indexOfMatchedObject = [self.followingArray indexOfObject:user.objectId];
+//            
+//            if (indexOfMatchedObject == NSNotFound) {
+//                followButton.selected = NO;
+//                
+//                
+//            }else{
+//                
+//                followButton.selected = YES;
+//            }
+//       }
+//        //return sectionHeaderView;
+//    }
+//    
+// }
+//    
+//    return sectionHeaderView;
+//    
+//}
+     
         
         
         
