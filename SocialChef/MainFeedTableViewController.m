@@ -35,15 +35,16 @@
 
 
 - (void)viewDidLoad {
-    
+    self.myyTabelView.delegate = self;
+    self.myyTabelView.dataSource = self;
     //searchResults = [NSMutableArray array];
-    [searchBar becomeFirstResponder];
+    //[searchBar becomeFirstResponder];
     //self.tableView.tableHeaderView = self.searchBar;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"BlackNavagation"] forBarMetrics:UIBarMetricsDefault];
     [super viewDidLoad];
 
     
-    
+    [self.myyTabelView reloadData];
     
     searchResults = [NSMutableArray array];
     
@@ -76,59 +77,61 @@
 
 
 //search bar methid
-//-(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text
-//{
-//    if(text.length == 0)
-//    {
-//        isFiltered = FALSE;
-//        [self.tableView reloadData];
-//        
-//    }
-//    else
-//    {
-//        isFiltered = true;
-//        searchResults = [[NSMutableArray alloc] init];
-//        
-//        [self.tableView reloadData];
-//        
-//    }
-//    
-//    
-//}
+-(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text
+{
+    if(text.length == 0)
+    {
+        isFiltered = FALSE;
+        //[self.myyTabelView reloadData];
+        
+    }
+    else
+    {
+        isFiltered = true;
+        
+        searchResults = [[NSMutableArray alloc] init];
+        [self filterResults:text];
+        
+        [self.tableView reloadData];
+        
+    }
+    
+    
+}
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [searchBar resignFirstResponder];
+    //[UISearchBar resignFirstResponder];
     
     
 }
 
 
-//- (void)filterResults:(NSString *)searchTerm {
-//    
-//    [searchResults removeAllObjects];
-//    
-//    PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
-//    [query whereKeyExists:@"title"];  //this is based on whatever query you are trying to accomplish
-//    
-//    [query whereKey:@"title" containsString:searchTerm];
-//    
-//    
-//    NSArray *results = [query findObjects];
-//    
-//    query.limit = 50;
-//    
-//    
-//    [searchResults addObjectsFromArray:results];
-//    
-//    
-//    }
-//
-//
+- (void)filterResults:(NSString *)searchTerm {
+    
+    [searchResults removeAllObjects];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
+    [query whereKeyExists:@"title"];  //this is based on whatever query you are trying to accomplish
+    
+    [query whereKey:@"title" containsString:searchTerm];
+    
+    
+    NSArray *results = [query findObjects];
+    
+    query.limit = 50;
+    
+    
+    [searchResults addObjectsFromArray:results];
+    
+    
+    }
+
+
 //- (BOOL)searchDisplayController:(UISearchController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-//    [self filterResults:searchString];
 //    
-//   [self.tableView reloadData];
+//    
+//    
 //    
 //    return YES;
 //}
@@ -351,16 +354,29 @@
 
 
 - (PFObject *)objectAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (indexPath.section < self.objects.count) {
         
         return [self.objects objectAtIndex:indexPath.section];
 
     }
-    else{
-        return nil;
+    else if (indexPath.section < searchResults.count) {
+        
+        
+        return [searchResults objectAtIndex:indexPath.section];
     }
-    
+    else return nil;
 }
+
+
+
+        
+        
+        
+        
+    
+    
+
 
 
 
@@ -383,6 +399,7 @@
     }
     
     static NSString *CellIdentifier = @"SectionHeaderCell";
+    
     
     
     UITableViewCell *sectionHeaderView = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -473,108 +490,112 @@
                 followButton.selected = YES;
             }
         }
+  // return sectionHeaderView;
+    if (isFiltered == TRUE) {
+        
+        PFImageView *profileImageView = (PFImageView * )[sectionHeaderView viewWithTag:1];
+        //UILabel *userNameLable = (UILabel *)[sectionHeaderView viewWithTag:2];
+        UILabel *titleLable = (UILabel *)[sectionHeaderView viewWithTag:3];
+        
+    
+        PFUser *obj2 = [searchResults objectAtIndex:section];
+        obj2=nil;
+        if([searchResults count]>1){
+            obj2 = [searchResults objectAtIndex:section];
+        }
+        
+        
+        
+        NSLog(@"%@", searchResults);
+        NSLog(@"%lu",searchResults.count);
+        PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
+        PFObject *searchedUser = [query getObjectWithId:obj2.objectId];
+        NSString *title = [searchedUser objectForKey:@"title"];
+        
+        
+        
+
+        
+        
+        //PFObject *photo = [searchResults objectAtIndex:section];
+        PFUser *user = [searchedUser objectForKey:@"whoIsuser"];
+        
+        PFFile *profilePicture = [searchedUser objectForKey:@"profilePhoto"];
+        
+        
+        //
+       // NSString *title = photo[@"title"];
+        //NSString *titleServing = photo[@"serving"];
+        
+        
+        //userNameLable.text = searchedUser;
+        
+        titleLable.text = title;
+        //[searchedUser fetchIfNeededInBackground];
+        
+        profileImageView.file = profilePicture;
+        [profileImageView loadInBackground];
+
+        FollowButton *followButton = (FollowButton *)[sectionHeaderView viewWithTag: 4];
+        followButton.delegate = self;
+        
+        followButton.sectionIndex = section;
+        
+        //Likes button
+        LikesButton *likesButton = (LikesButton *)[sectionHeaderView viewWithTag: 5];
+        likesButton.delegate = self;
+        
+        likesButton.sectionIndex = section;
+        
+        
+        
+        if (!self.likesArray || [user.objectId isEqualToString:[PFUser currentUser].objectId] ) {
+            likesButton.hidden = YES;
+            
+            
+        }else{
+            
+            likesButton.hidden = NO;
+            NSInteger indexOfMatchedObject = [self.likesArray indexOfObject:user.objectId];
+            
+            if (indexOfMatchedObject == NSNotFound) {
+                likesButton.selected = NO;
+                
+                
+            }else{
+                
+                likesButton.selected = YES;
+            }
+        }
+        
+        // update state of following button we dont want user to follow their self
+        
+        if (!self.followingArray || [user.objectId isEqualToString:[PFUser currentUser].objectId] ) {
+            followButton.hidden = YES;
+            
+            
+        }else{
+            followButton.hidden = NO;
+            NSInteger indexOfMatchedObject = [self.followingArray indexOfObject:user.objectId];
+            
+            if (indexOfMatchedObject == NSNotFound) {
+                followButton.selected = NO;
+                
+                
+            }else{
+                
+                followButton.selected = YES;
+            }
+       }
+        //return sectionHeaderView;
+    }
+    
  }
-   return sectionHeaderView;
-     
- }
-//    if (isFiltered == TRUE) {
-//        
-//        PFImageView *profileImageView = (PFImageView * )[sectionHeaderView viewWithTag:1];
-//        //UILabel *userNameLable = (UILabel *)[sectionHeaderView viewWithTag:2];
-//        UILabel *titleLable = (UILabel *)[sectionHeaderView viewWithTag:3];
-//        
-//    
-//        PFUser *obj2 = [searchResults objectAtIndex:section];
-//        NSLog(@"%@", searchResults);
-//        NSLog(@"%lu",searchResults.count);
-//        PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
-//        PFObject *searchedUser = [query getObjectWithId:obj2.objectId];
-//        NSString *title = [searchedUser objectForKey:@"title"];
-//        
-//        
-//        
-//
-//        
-//        
-//        //PFObject *photo = [searchResults objectAtIndex:section];
-//        PFUser *user = [searchedUser objectForKey:@"whoIsuser"];
-//        
-//        PFFile *profilePicture = [searchedUser objectForKey:@"profilePhoto"];
-//        
-//        
-//        //
-//       // NSString *title = photo[@"title"];
-//        //NSString *titleServing = photo[@"serving"];
-//        
-//        
-//        //userNameLable.text = searchedUser;
-//        
-//        titleLable.text = title;
-//        //[searchedUser fetchIfNeededInBackground];
-//        
-//        profileImageView.file = profilePicture;
-//        [profileImageView loadInBackground];
-//
-//        FollowButton *followButton = (FollowButton *)[sectionHeaderView viewWithTag: 4];
-//        followButton.delegate = self;
-//        
-//        followButton.sectionIndex = section;
-//        
-//        //Likes button
-//        LikesButton *likesButton = (LikesButton *)[sectionHeaderView viewWithTag: 5];
-//        likesButton.delegate = self;
-//        
-//        likesButton.sectionIndex = section;
-//        
-//        
-//        
-//        if (!self.likesArray || [user.objectId isEqualToString:[PFUser currentUser].objectId] ) {
-//            likesButton.hidden = YES;
-//            
-//            
-//        }else{
-//            
-//            likesButton.hidden = NO;
-//            NSInteger indexOfMatchedObject = [self.likesArray indexOfObject:user.objectId];
-//            
-//            if (indexOfMatchedObject == NSNotFound) {
-//                likesButton.selected = NO;
-//                
-//                
-//            }else{
-//                
-//                likesButton.selected = YES;
-//            }
-//        }
-//        
-//        // update state of following button we dont want user to follow their self
-//        
-//        if (!self.followingArray || [user.objectId isEqualToString:[PFUser currentUser].objectId] ) {
-//            followButton.hidden = YES;
-//            
-//            
-//        }else{
-//            followButton.hidden = NO;
-//            NSInteger indexOfMatchedObject = [self.followingArray indexOfObject:user.objectId];
-//            
-//            if (indexOfMatchedObject == NSNotFound) {
-//                followButton.selected = NO;
-//                
-//                
-//            }else{
-//                
-//                followButton.selected = YES;
-//            }
-//       }
-//        //return sectionHeaderView;
-//    }
-//    
-// }
-//    
-//    return sectionHeaderView;
-//    
-//}
-     
+    
+    return sectionHeaderView;
+    
+}
+        
         
         
         
@@ -613,12 +634,12 @@
         
         return 1;
         
-    }else {
+    }else if (isFiltered == TRUE) {
         
         return [searchResults count];
         
     }
-
+       return [searchResults count];
 }
 
 
@@ -630,6 +651,12 @@
         UITableViewCell *cell = [self tableView:tableView cellForNextPageAtIndexPath:indexPath];
         return cell;
     }
+    if (indexPath.section == self.objects.count) {
+        
+        UITableViewCell *cell = [self tableView:tableView cellForNextPageAtIndexPath:indexPath];
+        return cell;
+    }
+
     
     static NSString *CellIdentifier = @"ImageCell";
     
@@ -688,7 +715,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == self.objects.count && self.paginationEnabled) {
+    if (indexPath.section == self.objects.count) {
         
         [self loadNextPage];
         

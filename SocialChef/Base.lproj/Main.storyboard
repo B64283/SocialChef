@@ -1479,22 +1479,10 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="searchDisplayController" destination="7Nx-CZ-u5N" id="U3n-P9-P0r"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ARz-tz-GB3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController searchResultsTitle="search recipes" id="7Nx-CZ-u5N">
-                    <connections>
-                        <outlet property="delegate" destination="uIk-o9-oFh" id="fQd-0s-7c6"/>
-                        <outlet property="searchBar" destination="07s-UT-CM5" id="pOe-bv-mux"/>
-                        <outlet property="searchContentsController" destination="uIk-o9-oFh" id="0IH-xa-BCY"/>
-                        <outlet property="searchResultsDataSource" destination="uIk-o9-oFh" id="55c-8K-SQh"/>
-                        <outlet property="searchResultsDelegate" destination="uIk-o9-oFh" id="TEj-bz-J77"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="146.5" y="-267.5"/>
+            <point key="canvasLocation" x="149.5" y="-327.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kX4-4v-e2r">
@@ -2352,6 +2340,9 @@
                                 <searchBar contentMode="redraw" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="MYN-vb-Cla">
                                     <rect key="frame" x="0.0" y="78" width="375" height="44"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="0vf-SU-hdx" id="aqy-PX-Puq"/>
+                                    </connections>
                                 </searchBar>
                             </subviews>
                             <color key="backgroundColor" red="0.93333333330000001" green="0.92941176469999998" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -2468,11 +2459,21 @@
                         <outlet property="followerNumberLable" destination="obr-dy-i1u" id="pug-Jj-Wy3"/>
                         <outlet property="followingNumberLable" destination="LXK-ag-rli" id="qMu-Ir-f47"/>
                         <outlet property="profileImageView" destination="3MM-hn-hxN" id="Xg2-Lu-fbO"/>
+                        <outlet property="searchDisplayController" destination="8HF-yc-1V6" id="NYA-wR-MCL"/>
                         <outlet property="userNameLable" destination="5nC-Pd-ecw" id="DsB-pp-gq0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tr4-b8-bwI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="QlK-1G-MEV" userLabel="Exit" sceneMemberID="exit"/>
+                <searchDisplayController id="8HF-yc-1V6">
+                    <connections>
+                        <outlet property="delegate" destination="0vf-SU-hdx" id="z7u-dF-6AC"/>
+                        <outlet property="searchBar" destination="MYN-vb-Cla" id="kz0-kY-LzL"/>
+                        <outlet property="searchContentsController" destination="0vf-SU-hdx" id="6Vj-Wo-Mbh"/>
+                        <outlet property="searchResultsDataSource" destination="0vf-SU-hdx" id="TAC-62-w8U"/>
+                        <outlet property="searchResultsDelegate" destination="0vf-SU-hdx" id="M9s-et-sLm"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="839.5" y="-17.5"/>
         </scene>
