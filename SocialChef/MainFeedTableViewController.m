@@ -88,44 +88,81 @@
     else
     {
         isFiltered = true;
+        [self.tableView reloadData];
         
-        searchResults = [[NSMutableArray alloc] init];
-        [self filterResults:text];
+        
+        [searchResults removeAllObjects];
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
+        [query whereKeyExists:@"title"];  //this is based on whatever query you are trying
+        [query whereKeyExists:@"Takenimage"];
+        [query whereKeyExists:@"whoIsuser"];
+        //to accomplish
+        
+        [query whereKey:@"title" containsString:text];
+        [query whereKeyExists:@"Takenimage"];
+        
+        NSArray *results = [query findObjects];
+        
+        //query.limit = 50;
+        
+        [searchResults removeAllObjects];
+        NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF contains[c] %@", text];
+        
+        searchResults = [NSMutableArray arrayWithArray: [searchResults filteredArrayUsingPredicate:resultPredicate]];
+
+        //for (resultPredicate in results)
+        
+            NSRange nameRange = [text rangeOfString:text options:NSCaseInsensitiveSearch];
+            NSRange descriptionRange = [text rangeOfString:text options:NSCaseInsensitiveSearch];
+            if(nameRange.location != NSNotFound || descriptionRange.location != NSNotFound)
+            {
+               [searchResults addObjectsFromArray:results];
+            }
+        
         
         [self.tableView reloadData];
         
     }
-    
+        
     
 }
+
+
+
+
+
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    //[UISearchBar resignFirstResponder];
+    [_searchBar resignFirstResponder];
     
     
 }
 
 
-- (void)filterResults:(NSString *)searchTerm {
-    
-    [searchResults removeAllObjects];
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
-    [query whereKeyExists:@"title"];  //this is based on whatever query you are trying to accomplish
-    
-    [query whereKey:@"title" containsString:searchTerm];
-    
-    
-    NSArray *results = [query findObjects];
-    
-    query.limit = 50;
-    
-    
-    [searchResults addObjectsFromArray:results];
-    
-    
-    }
+//- (void)filterResults:(NSString *)searchTerm {
+//    
+//    [searchResults removeAllObjects];
+//    
+//    PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
+//    [query whereKeyExists:@"title"];  //this is based on whatever query you are trying
+//    [query whereKeyExists:@"Takenimage"];
+//    [query whereKeyExists:@"whoIsuser"];
+//    //to accomplish
+//    
+//    [query whereKey:@"title" containsString:searchTerm];
+//    [query whereKeyExists:@"Takenimage"];
+//    
+//    NSArray *results = [query findObjects];
+//    
+//    query.limit = 50;
+//    
+//    
+//    //[searchResults addObjectsFromArray:results];
+//    
+//    
+//    }
 
 
 //- (BOOL)searchDisplayController:(UISearchController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
@@ -151,8 +188,8 @@
     if (self) {
         self.parseClassName = @"Takenphoto";
         self.pullToRefreshEnabled = YES;
-        self.paginationEnabled = YES;
-        self.objectsPerPage = 10;
+        self.paginationEnabled = NO;
+        self.objectsPerPage = 100;
     }
     
     return self;
@@ -360,11 +397,12 @@
         return [self.objects objectAtIndex:indexPath.section];
 
     }
-    else if (indexPath.section < searchResults.count) {
+    if (indexPath.section < searchResults.count) {
         
         
         return [searchResults objectAtIndex:indexPath.section];
     }
+    
     else return nil;
 }
 
@@ -372,14 +410,6 @@
 
         
         
-        
-        
-    
-    
-
-
-
-
 - (NSIndexPath *)_indexPathForPaginationCell {
     
     return [NSIndexPath indexPathForRow:0 inSection:[self.objects count]];
@@ -420,7 +450,7 @@
         UILabel *userNameLable = (UILabel *)[sectionHeaderView viewWithTag:2];
         UILabel *titleLable = (UILabel *)[sectionHeaderView viewWithTag:3];
      
-     PFObject *photo = [self.objects objectAtIndex:section];
+        PFObject *photo = [self.objects objectAtIndex:section];
         PFUser *user = [photo objectForKey:@"whoIsuser"];
         PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
         
@@ -490,7 +520,9 @@
                 followButton.selected = YES;
             }
         }
-  // return sectionHeaderView;
+  
+     
+     // return sectionHeaderView;
     if (isFiltered == TRUE) {
         
         PFImageView *profileImageView = (PFImageView * )[sectionHeaderView viewWithTag:1];
@@ -498,44 +530,65 @@
         UILabel *titleLable = (UILabel *)[sectionHeaderView viewWithTag:3];
         
     
-        PFUser *obj2 = [searchResults objectAtIndex:section];
-        obj2=nil;
-        if([searchResults count]>1){
-            obj2 = [searchResults objectAtIndex:section];
-        }
+        //PFUser *obj2 = [searchResults objectAtIndex:section];
+        
+        //if([searchResults count]>0){
+        //obj2 =
         
         
+        PFObject *photo = [searchResults objectAtIndex:section];
+        
+        PFUser *user = [photo objectForKey:@"whoIsuser"];
+        PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
         
         NSLog(@"%@", searchResults);
         NSLog(@"%lu",searchResults.count);
-        PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
-        PFObject *searchedUser = [query getObjectWithId:obj2.objectId];
-        NSString *title = [searchedUser objectForKey:@"title"];
-        
-        
-        
-
-        
-        
-        //PFObject *photo = [searchResults objectAtIndex:section];
-        PFUser *user = [searchedUser objectForKey:@"whoIsuser"];
-        
-        PFFile *profilePicture = [searchedUser objectForKey:@"profilePhoto"];
-        
         
         //
-       // NSString *title = photo[@"title"];
+        NSString *title = photo[@"title"];
         //NSString *titleServing = photo[@"serving"];
         
         
-        //userNameLable.text = searchedUser;
+        userNameLable.text = user.username;
         
         titleLable.text = title;
-        //[searchedUser fetchIfNeededInBackground];
         
         profileImageView.file = profilePicture;
         [profileImageView loadInBackground];
+        
 
+        
+        
+//        PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
+//        PFObject *searchedUser = [query getObjectWithId:obj2.objectId];
+//        NSString *title = [searchedUser objectForKey:@"title"];
+//        
+//            //PFObject *photo = [self.objects objectAtIndex:section];
+//            PFUser *user = [searchedUser objectForKey:@"whoIsuser"];
+//            //PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
+//        
+//
+//        
+//        
+//        //PFObject *photo = [searchResults objectAtIndex:section];e
+//        //PFUser *user = [searchedUser objectForKey:@"whoIsuser"];
+//        
+//        PFFile *profilePicture = [searchedUser objectForKey:@"profilePhoto"];
+//        
+//        
+//        //
+//       // NSString *title = photo[@"title"];
+//        //NSString *titleServing = photo[@"serving"];
+//        
+//        [user fetchIfNeeded];
+//        userNameLable.text = user.username;
+//        
+//        titleLable.text = title;
+//        //[searchedUser fetchIfNeededInBackground];
+//        
+//        profileImageView.file = profilePicture;
+//        [profileImageView loadInBackground];
+    
         FollowButton *followButton = (FollowButton *)[sectionHeaderView viewWithTag: 4];
         followButton.delegate = self;
         
@@ -591,15 +644,20 @@
     }
     
  }
+     return sectionHeaderView;
+ }
     
-    return sectionHeaderView;
+
     
-}
+
+
+
+
+
         
         
         
         
-        
     
     
 
@@ -612,34 +670,43 @@
 
 
 
-
+// this is a problem
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     NSInteger sections = self.objects.count;
     
-    if (self.paginationEnabled && sections >0) {
+    if (sections >0) {
         
         sections++;
+           
+           
         
+    
     }
+    
     return sections;
+
+
+
+    
+
+    
+
 }
 
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (tableView == self.tableView) {
+   // if (tableView == self.tableView) {
         //if (tableView == self.searchDisplayController.searchResultsTableView) {
-        
+    
+    
         return 1;
         
-    }else if (isFiltered == TRUE) {
+    
         
-        return [searchResults count];
         
-    }
-       return [searchResults count];
 }
 
 
@@ -651,12 +718,13 @@
         UITableViewCell *cell = [self tableView:tableView cellForNextPageAtIndexPath:indexPath];
         return cell;
     }
-    if (indexPath.section == self.objects.count) {
-        
-        UITableViewCell *cell = [self tableView:tableView cellForNextPageAtIndexPath:indexPath];
-        return cell;
-    }
-
+    
+//    else if (indexPath.section == searchResults.count && isFiltered == TRUE) {
+//        
+//        UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+//        return cell;
+//    }
+//    
     
     static NSString *CellIdentifier = @"ImageCell";
     
@@ -665,11 +733,13 @@
         
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"ImageCell"];
     }
-    PFImageView *photo = (PFImageView *)[cell viewWithTag:1];
-     photo.file = object [@"Takenimage"];
-    [object fetchIfNeeded];
-    [photo loadInBackground];
-    
+    if ((cell !=nil && self.tableView) || (isFiltered == TRUE)) {
+        PFImageView *photo = (PFImageView *)[cell viewWithTag:1];
+        photo.file = object [@"Takenimage"];
+        [object fetchIfNeeded];
+        [photo loadInBackground];
+
+    }
     
     return cell;
     
@@ -715,7 +785,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == self.objects.count) {
+    if (indexPath.section == self.objects.count || searchResults.count) {
         
         [self loadNextPage];
         

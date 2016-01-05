@@ -1479,6 +1479,9 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="searchBar" destination="07s-UT-CM5" id="Coo-Sj-TVz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ARz-tz-GB3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2152,6 +2155,9 @@
                                     <rect key="frame" x="0.0" y="34" width="375" height="44"/>
                                     <color key="barTintColor" red="1" green="0.49746385189999998" blue="0.2675244464" alpha="1" colorSpace="calibratedRGB"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="3MQ-3u-0eM" id="LsF-mN-OGz"/>
+                                    </connections>
                                 </searchBar>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZe-1f-bTG">
                                     <rect key="frame" x="16" y="2" width="53" height="30"/>
@@ -2268,7 +2274,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J2b-j1-qRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-494.5" y="427.5"/>
+            <point key="canvasLocation" x="-352.5" y="395.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5pk-vk-v6g">
@@ -2337,11 +2343,11 @@
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <searchBar contentMode="redraw" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="MYN-vb-Cla">
+                                <searchBar contentMode="redraw" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="eeJ-ba-LXe">
                                     <rect key="frame" x="0.0" y="78" width="375" height="44"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
-                                        <outlet property="delegate" destination="0vf-SU-hdx" id="aqy-PX-Puq"/>
+                                        <outlet property="delegate" destination="0vf-SU-hdx" id="rys-K8-ulO"/>
                                     </connections>
                                 </searchBar>
                             </subviews>
@@ -2459,23 +2465,13 @@
                         <outlet property="followerNumberLable" destination="obr-dy-i1u" id="pug-Jj-Wy3"/>
                         <outlet property="followingNumberLable" destination="LXK-ag-rli" id="qMu-Ir-f47"/>
                         <outlet property="profileImageView" destination="3MM-hn-hxN" id="Xg2-Lu-fbO"/>
-                        <outlet property="searchDisplayController" destination="8HF-yc-1V6" id="NYA-wR-MCL"/>
                         <outlet property="userNameLable" destination="5nC-Pd-ecw" id="DsB-pp-gq0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tr4-b8-bwI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="QlK-1G-MEV" userLabel="Exit" sceneMemberID="exit"/>
-                <searchDisplayController id="8HF-yc-1V6">
-                    <connections>
-                        <outlet property="delegate" destination="0vf-SU-hdx" id="z7u-dF-6AC"/>
-                        <outlet property="searchBar" destination="MYN-vb-Cla" id="kz0-kY-LzL"/>
-                        <outlet property="searchContentsController" destination="0vf-SU-hdx" id="6Vj-Wo-Mbh"/>
-                        <outlet property="searchResultsDataSource" destination="0vf-SU-hdx" id="TAC-62-w8U"/>
-                        <outlet property="searchResultsDelegate" destination="0vf-SU-hdx" id="M9s-et-sLm"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="839.5" y="-17.5"/>
+            <point key="canvasLocation" x="816.5" y="73.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="19u-bJ-LI8">
