@@ -12,14 +12,14 @@
 
 @interface FindFriendViewController ()
 
-@property (weak, nonatomic) IBOutlet PFImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet PFImageView *profilImageView;
 
-@property (weak, nonatomic) IBOutlet UILabel *userNameLable;
+@property (weak, nonatomic) IBOutlet UILabel *userNamLable;
 
-@property (weak, nonatomic) IBOutlet UILabel *followerNumberLable;
+@property (weak, nonatomic) IBOutlet UILabel *follwerNumberLable;
 
 
-@property (weak, nonatomic) IBOutlet UILabel *followingNumberLable;
+@property (weak, nonatomic) IBOutlet UILabel *follwingNumberLable;
 
 
 
@@ -57,9 +57,9 @@
 -(void)updateUserStatus {
     
     PFUser *user = [PFUser currentUser];
-    self.profileImageView.file = user [@"profilePhoto"];
-    [self.profileImageView loadInBackground];
-    self.userNameLable.text = user.username;
+    self.profilImageView.file = user [@"profilePhoto"];
+    [self.profilImageView loadInBackground];
+    self.userNamLable.text = user.username;
     
     //following
     PFQuery *followingQuery = [PFQuery queryWithClassName:@"Activity"];
@@ -68,7 +68,7 @@
     
     [followingQuery findObjectsInBackgroundWithBlock:^(NSArray * followingActivities, NSError * error) {
         if (!error) {
-            self.followingNumberLable.text = [[NSNumber numberWithInteger:followingActivities.count]stringValue];
+            self.follwingNumberLable.text = [[NSNumber numberWithInteger:followingActivities.count]stringValue];
             
         }
         
@@ -83,7 +83,7 @@
     
     [followerQuery findObjectsInBackgroundWithBlock:^(NSArray * followerActivities, NSError * error) {
         if (!error) {
-            self.followerNumberLable.text = [[NSNumber numberWithInteger:followerActivities.count]stringValue];
+            self.follwerNumberLable.text = [[NSNumber numberWithInteger:followerActivities.count]stringValue];
             
         }
         
