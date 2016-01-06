@@ -22,7 +22,7 @@
     
 }
 
-- (NSIndexPath *)_indexPathForPaginationCell;
+//- (NSIndexPath *)_indexPathForPaginationCell;
 
 @property (strong, nonatomic)UISearchController *searchDisplay;
 

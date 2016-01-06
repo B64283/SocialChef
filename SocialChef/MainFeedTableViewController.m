@@ -273,6 +273,24 @@
         
     {
      
+        NSIndexPath *indexPath = nil;
+        //sends filtered data to detailView
+        if (isFiltered == true) {
+            indexPath = [self.tableView indexPathForSelectedRow];
+            PFObject *photo = [searchResults objectAtIndex:indexPath.row];
+            if (photo) {
+                RecipeDetailsViewController *photoDetailsVC = [segue destinationViewController];
+                
+                
+                
+                photoDetailsVC.getObject = photo;
+            }
+
+        }
+            else{
+        
+        
+        
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         PFObject *photo = [self.objects objectAtIndex:indexPath.row];
         //PFQuery *photoQ = [self.objects objectAtIndex:indexPath.section];
@@ -284,7 +302,7 @@
             
         photoDetailsVC.getObject = photo;
         }
-            
+            }
 //           if (photoQ) {
 //            RecipeDetailsViewController *photoDetailsVCQ = [segue destinationViewController];
 //        
