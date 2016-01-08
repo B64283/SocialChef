@@ -26,6 +26,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tomatoes.png" translatesAutoresizingMaskIntoConstraints="NO" id="zXt-xt-LBT">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="launchscreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="Aop-S3-kNz">
                                             <rect key="frame" x="62" y="267" width="250" height="133"/>
                                         </imageView>
@@ -46,5 +49,6 @@
     <resources>
         <image name="launchscreen.png" width="454" height="381"/>
         <image name="lima-bean-24538118.jpg" width="1300" height="957"/>
+        <image name="tomatoes.png" width="542" height="811"/>
     </resources>
 </document>

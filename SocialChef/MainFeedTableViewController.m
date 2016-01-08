@@ -35,8 +35,8 @@
 
 
 - (void)viewDidLoad {
-    self.myyTabelView.delegate = self;
-    self.myyTabelView.dataSource = self;
+    //self.myyTabelView.delegate = self;
+    //self.myyTabelView.dataSource = self;
     //searchResults = [NSMutableArray array];
     //[searchBar becomeFirstResponder];
     //self.tableView.tableHeaderView = self.searchBar;
@@ -44,9 +44,10 @@
     [super viewDidLoad];
 
     
-    [self.myyTabelView reloadData];
+    [self.tableView reloadData];
     
     searchResults = [NSMutableArray array];
+    searchResultsName = [NSMutableArray array];
     
     
     
@@ -82,7 +83,7 @@
     if(text.length == 0)
     {
         isFiltered = FALSE;
-        [self.myyTabelView reloadData];
+        [self.tableView reloadData];
         
     }
     else
@@ -92,24 +93,39 @@
         
         
         [searchResults removeAllObjects];
+        [searchResultsName removeAllObjects];
         
         PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
         [query whereKeyExists:@"title"];  //this is based on whatever query you are trying
-        [query whereKeyExists:@"Takenimage"];
-        [query whereKeyExists:@"whoIsuser"];
-        //to accomplish
+        
+        PFQuery *queryName = [PFQuery queryWithClassName:@"User"];
+        [queryName whereKeyExists:@"username"];
+        
+        
+        //PFUser *user = [query1 whereKeyExists:@"whoIsuser"];
         
         [query whereKey:@"title" containsString:text];
-        [query whereKeyExists:@"Takenimage"];
+        
+        
+        
+        
+        
+        NSArray * resultsName = [queryName findObjects];
+        //[query whereKeyExists:@"Takenimage"];
         
         NSArray *results = [query findObjects];
+        //NSArray *resultsName = [query findObjects];
+        //NSArray *resultsName = [queryName findObjects];
         
         //query.limit = 50;
         
         [searchResults removeAllObjects];
-        NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF contains[C] %@", text];
+        [searchResultsName removeAllObjects];
+
         
-        searchResults = [NSMutableArray arrayWithArray: [searchResults filteredArrayUsingPredicate:resultPredicate]];
+       // NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF contains[C] %@", text];
+        
+        //searchResults = [NSMutableArray arrayWithArray: [searchResults filteredArrayUsingPredicate:resultPredicate]];
 
         //for (resultPredicate in results)
         
@@ -118,6 +134,7 @@
             if(nameRange.location != NSNotFound || descriptionRange.location != NSNotFound)
             {
                [searchResults addObjectsFromArray:results];
+                [searchResultsName addObjectsFromArray:resultsName];
             }
         
         
@@ -200,7 +217,7 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
-    [self loadObjects];
+    //[self loadObjects];
 }
 
 
@@ -522,7 +539,7 @@
     else if (self ->isFiltered == false)
         
     {
-        return self.objects.count;
+        rowCount = self.objects.count;
         
     }
        return rowCount;
@@ -538,13 +555,13 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"ImageCell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ImageCell"];
     }
     
     
     if (tableView == self.tableView) {
         
-        PFImageView *profileImageView = (PFImageView * )[cell viewWithTag:1];
+        PFImageView *profileImageView = (PFImageView * )[cell viewWithTag:10];
         //PFImageView *takenPhotoImageView = (PFImageView * )[cell viewWithTag:6];
         
         UILabel *userNameLable = (UILabel *)[cell viewWithTag:2];
@@ -553,8 +570,9 @@
         PFObject *photo = [self.objects objectAtIndex:indexPath.row];
         PFUser *user = [photo objectForKey:@"whoIsuser"];
         PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
-        //PFFile *takenPicture = [user objectForKey:@"Takenimage"];
         
+        //PFFile *takenPicture = [user objectForKey:@"Takenimage"];
+        [user fetchIfNeeded];
        
         PFImageView *photo1 = (PFImageView *)[cell viewWithTag:6];
         photo1.file = object [@"Takenimage"];
@@ -573,6 +591,7 @@
         titleLable.text = title;
         
         profileImageView.file = profilePicture;
+        //[ fetchIfNeeded];
         [profileImageView loadInBackground];
         
 //        takenPhotoImageView.file = takenPicture;
@@ -636,7 +655,7 @@
         // return sectionHeaderView;
         if (isFiltered == TRUE) {
             
-            PFImageView *profileImageView = (PFImageView * )[cell viewWithTag:1];
+            PFImageView *profileImageView = (PFImageView * )[cell viewWithTag:10];
             UILabel *userNameLable = (UILabel *)[cell viewWithTag:2];
             UILabel *titleLable = (UILabel *)[cell viewWithTag:3];
             
@@ -648,6 +667,7 @@
             
             
             PFObject *photo = [searchResults objectAtIndex:indexPath.row];
+            //PFObject *photo2 = [searchResultsName objectAtIndex:indexPath.row];
             
             PFUser *user = [photo objectForKey:@"whoIsuser"];
             PFFile *profilePicture = [user objectForKey:@"profilePhoto"];
@@ -656,6 +676,11 @@
             NSLog(@"%lu",searchResults.count);
             
             //
+            PFImageView *photo1 = (PFImageView *)[cell viewWithTag:6];
+            photo1.file = object [@"Takenimage"];
+            [object fetchIfNeeded];
+            [photo1 loadInBackground];
+            
             NSString *title = photo[@"title"];
             //NSString *titleServing = photo[@"serving"];
             

@@ -8,6 +8,7 @@
 
 #import "ProfileTableViewController.h"
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import "RecipeDetailsViewController.h"
 @interface ProfileTableViewController ()
 
 @property (weak, nonatomic) IBOutlet PFImageView *profileImageView;
@@ -184,6 +185,77 @@
 }
 
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"DetailsSegue1"])
+        
+    {
+        
+        NSIndexPath *indexPath = nil;
+        //sends filtered data to detailView
+        if (isFiltered == true) {
+            indexPath = [self.tableView indexPathForSelectedRow];
+            PFObject *photo = [searchResults objectAtIndex:indexPath.row];
+            if (photo) {
+                RecipeDetailsViewController *photoDetailsVC = [segue destinationViewController];
+                
+                
+                
+                photoDetailsVC.getObject = photo;
+            }
+            
+        }
+        else{
+            
+            
+            
+            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+            PFObject *photo = [self.objects objectAtIndex:indexPath.row];
+            //PFQuery *photoQ = [self.objects objectAtIndex:indexPath.section];
+            //PFQuery *photoZ = [self.objects objectAtIndex:indexPath.section];
+            if (photo) {
+                RecipeDetailsViewController *photoDetailsVC = [segue destinationViewController];
+                
+                
+                
+                photoDetailsVC.getObject = photo;
+            }
+        }
+        //           if (photoQ) {
+        //            RecipeDetailsViewController *photoDetailsVCQ = [segue destinationViewController];
+        //
+        //
+        //               photoDetailsVCQ.getObjectQuery = photoQ;
+        //
+        //           }
+        //         if (photoZ) {
+        //
+        //             RecipeDetailsViewController *photoDetailsVCZ = [segue destinationViewController];
+        //
+        //
+        //             photoDetailsVCZ.getObjectQuery = photoZ;
+        //
+        
+        
+        
+        
+        
+        //PFObject *post = [self.objects objectAtIndex:indexPath.section];
+        //
+        //        PFQuery *Qpost = [self.objects objectAtIndex:indexPath.section];
+        //
+        //        NSLog(@"%@", post.objectId);
+        //
+        //        RecipeDetailsViewController *vcu =
+        //        
+        //        
+        //        RecipeDetailsViewController *vcuQ = [segue destinationViewController];
+        
+        
+    }
+    
+    
+}
 
 
 

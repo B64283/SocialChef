@@ -17,6 +17,7 @@
      BOOL isFiltered;
     //IBOutlet UISearchResultsTableView *searchResutsTableView;
     NSMutableArray *searchResults;
+    NSMutableArray *searchResultsName;
     //UISearchBar *searchBar;
     //UISearchDisplayController *searchController;
     
