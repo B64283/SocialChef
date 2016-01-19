@@ -7,9 +7,30 @@
 //
 #import <UIKit/UIKit.h>
 #import "MainFeedTableViewController.h"
-@interface FindFriendViewController : MainFeedTableViewController
+
+#import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
+#import "FollowButton.h"
+#import "LikesButton.h"
+@interface FindFriendViewController : MainFeedTableViewController <FollowButtonDelegate, LikesButtonDelegate, UITableViewDelegate,UITableViewDataSource, UISearchDisplayDelegate, UISearchBarDelegate>
+
+{
+    
+    //BOOL isFiltered;
+    //IBOutlet UISearchResultsTableView *searchResutsTableView;
+    //NSMutableArray *searchResults;
+    //NSMutableArray *searchResultsName;
+    //UISearchBar *searchBar;
+    //UISearchDisplayController *searchController;
+    
+    
+    
+    
+    
+}
 
 
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBarName;
 
 
 @property (strong, nonatomic)IBOutlet UIBarButtonItem *backToSett;

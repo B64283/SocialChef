@@ -49,7 +49,14 @@
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
     
+    UIStoryboard *storyboard = [self grabStoryboard];
     
+    // show the storyboard
+    self.window.rootViewController = [storyboard instantiateInitialViewController];
+    
+    
+    
+
     
     
     
@@ -67,6 +74,86 @@
                                                 sourceApplication:sourceApplication
                                                        annotation:annotation];
 }
+
+
+- (UIStoryboard *)grabStoryboard {
+    
+    UIStoryboard *storyboard;
+    
+    // detect the height of our screen
+    int height = [UIScreen mainScreen].bounds.size.height;
+    
+    if (height == 667) {
+        storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        // NSLog(@"Device has a 5inch Display.");
+    } if (height == 568) {
+        storyboard = [UIStoryboard storyboardWithName:@"fourinch" bundle:nil];
+        // NSLog(@"Device has a 4inch Display.");
+    }
+        
+    
+    
+    return storyboard;
+}
+
+
+//- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+//{
+//    UIStoryboard *storyboard = [self grabStoryboard];
+//    
+//    // show the storyboard
+//    self.window.rootViewController = [storyboard instantiateInitialViewController];
+//    [self.window makeKeyAndVisible];
+//    
+//    return YES;
+//}
+
+
+//different screen sizes
+
+//- (UIStoryboard *)grabStoryboard {
+//    
+//    // determine screen size
+//    int screenHeight = [UIScreen mainScreen].bounds.size.height;
+//    UIStoryboard *storyboard;
+//    
+//    switch (screenHeight) {
+//            
+//            // iPhone 4s
+//        case 480:
+//            storyboard = [UIStoryboard storyboardWithName:@"Main-4s" bundle:nil];
+//            break;
+//            
+//            // iPhone 5s
+//        case 568:
+//            storyboard = [UIStoryboard storyboardWithName:@"Main-5s" bundle:nil];
+//            break;
+//            
+//            // iPhone 6
+//        case 667:
+//            storyboard = [UIStoryboard storyboardWithName:@"Main-6" bundle:nil];
+//            break;
+//            
+//            // iPhone 6 Plus
+//        case 736:
+//            storyboard = [UIStoryboard storyboardWithName:@"Main-6-Plus" bundle:nil];
+//            break;
+//            
+//        default:
+//            // it's an iPad
+//            storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//            break;
+//    }
+//    
+//    return storyboard;
+//}
+
+
+
+
+
+
+
 
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {

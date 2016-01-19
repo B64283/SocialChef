@@ -379,11 +379,14 @@
     
     if (imageView.image) {
         
-       
+        
         
         NSData *imageData = UIImageJPEGRepresentation(imageView.image, 1.0);
         PFFile *photoFile = [PFFile fileWithData:imageData];
         PFObject *photo = [PFObject objectWithClassName:@"Takenphoto"];
+        //PFObject *game= [PFObject objectWithClassName:@"Takenphoto"];
+        [photo setObject:[PFUser currentUser].username forKey:@"createdBy"];
+        
         photo [@"Takenimage"] = photoFile;
         photo [@"whoIsuser"] = [PFUser currentUser];
         

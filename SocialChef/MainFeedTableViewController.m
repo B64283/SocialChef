@@ -40,7 +40,7 @@
     //searchResults = [NSMutableArray array];
     //[searchBar becomeFirstResponder];
     //self.tableView.tableHeaderView = self.searchBar;
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"BlackNavagation"] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"BlackNavagation"] forBarMetrics:UIBarMetricsDefault];
     [super viewDidLoad];
 
     
@@ -96,36 +96,47 @@
         [searchResultsName removeAllObjects];
         
         PFQuery *query = [PFQuery queryWithClassName:@"Takenphoto"];
-        [query whereKeyExists:@"title"];  //this is based on whatever query you are trying
+        //PFQuery *queryName = [PFQuery queryWithClassName:@"User"];
+        //[query whereKeyExists:@"title"];  //this is based on whatever query you are
         
-        PFQuery *queryName = [PFQuery queryWithClassName:@"User"];
-        [queryName whereKeyExists:@"username"];
+       //[query whereKeyExists:@"createdBy"];
+        [query whereKeyExists:@"title"];
+        
+   
+        
+        //[query whereKey:@"title" containsString:text];
         
         
-        //PFUser *user = [query1 whereKeyExists:@"whoIsuser"];
+        //PFObject *game= [PFObject objectWithClassName:@"Takenphoto"];
+        
+        
+        
+        //[query whereKey:@"createdBy" containsString:text];
         
         [query whereKey:@"title" containsString:text];
+        [query whereKey:@"title" containsString:[text lowercaseString]];
+
         
-        
-        
-        
-        
-        NSArray * resultsName = [queryName findObjects];
+        //NSArray * resultsName = [queryName findObjects];
         //[query whereKeyExists:@"Takenimage"];
         
         NSArray *results = [query findObjects];
+        //NSArray *resultsName = [userName findObjects];
         //NSArray *resultsName = [query findObjects];
         //NSArray *resultsName = [queryName findObjects];
         
         //query.limit = 50;
         
         [searchResults removeAllObjects];
-        [searchResultsName removeAllObjects];
+        //[searchResultsName removeAllObjects];
 
         
-       // NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF contains[C] %@", text];
+        NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"self.results contains[c] %@", text];
         
-        //searchResults = [NSMutableArray arrayWithArray: [searchResults filteredArrayUsingPredicate:resultPredicate]];
+        //searchResults = [NSMutableArray arrayWithArray: [results  filteredArrayUsingPredicate:resultPredicate];
+        
+        
+        searchResults = [NSMutableArray arrayWithArray: [results filteredArrayUsingPredicate:resultPredicate]];
 
         //for (resultPredicate in results)
         
@@ -134,7 +145,8 @@
             if(nameRange.location != NSNotFound || descriptionRange.location != NSNotFound)
             {
                [searchResults addObjectsFromArray:results];
-                [searchResultsName addObjectsFromArray:resultsName];
+                
+                //[searchResultsName addObjectsFromArray:resultsName];
             }
         
         
@@ -206,7 +218,7 @@
         self.parseClassName = @"Takenphoto";
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
-        self.objectsPerPage = 100;
+        self.objectsPerPage = 70;
     }
     
     return self;

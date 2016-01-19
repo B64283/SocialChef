@@ -32,6 +32,8 @@
 		244C1AC41C3F5C2F0072F69E /* IngredientsBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 244C1AC31C3F5C2F0072F69E /* IngredientsBack.png */; };
 		244C1AC61C3F5CC50072F69E /* lightbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 244C1AC51C3F5CC50072F69E /* lightbackground.png */; };
 		244C1AC81C3F61DB0072F69E /* tomatoes.png in Resources */ = {isa = PBXBuildFile; fileRef = 244C1AC71C3F61DB0072F69E /* tomatoes.png */; };
+		244C1ACA1C3FA7D30072F69E /* chilies.png in Resources */ = {isa = PBXBuildFile; fileRef = 244C1AC91C3FA7D30072F69E /* chilies.png */; };
+		244C1ACD1C483D830072F69E /* fourinch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 244C1ACB1C483D830072F69E /* fourinch.storyboard */; };
 		246591091C2FB5BC000F2CB3 /* NewUsernameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 246591081C2FB5BC000F2CB3 /* NewUsernameViewController.m */; };
 		2465910C1C2FC143000F2CB3 /* NewEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2465910B1C2FC143000F2CB3 /* NewEmailViewController.m */; };
 		246591121C3228D8000F2CB3 /* whiteCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 246591111C3228D8000F2CB3 /* whiteCircle.png */; };
@@ -155,6 +157,8 @@
 		244C1AC31C3F5C2F0072F69E /* IngredientsBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IngredientsBack.png; sourceTree = "<group>"; };
 		244C1AC51C3F5CC50072F69E /* lightbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightbackground.png; sourceTree = "<group>"; };
 		244C1AC71C3F61DB0072F69E /* tomatoes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tomatoes.png; sourceTree = "<group>"; };
+		244C1AC91C3FA7D30072F69E /* chilies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chilies.png; sourceTree = "<group>"; };
+		244C1ACC1C483D830072F69E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = SocialChef/Base.lproj/fourinch.storyboard; sourceTree = "<group>"; };
 		246591071C2FB5BC000F2CB3 /* NewUsernameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUsernameViewController.h; sourceTree = "<group>"; };
 		246591081C2FB5BC000F2CB3 /* NewUsernameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUsernameViewController.m; sourceTree = "<group>"; };
 		2465910A1C2FC143000F2CB3 /* NewEmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewEmailViewController.h; sourceTree = "<group>"; };
@@ -344,6 +348,7 @@
 				241EB9C81C2284C000216D0C /* lima-bean-24538118.jpg */,
 				244C1AC31C3F5C2F0072F69E /* IngredientsBack.png */,
 				24F90D991BF407AF00A6EA3B /* Social-414Chef.png */,
+				244C1AC91C3FA7D30072F69E /* chilies.png */,
 				24F929D21BFDCE610009A598 /* Screen Shot 2015-11-19 at 1.29.40 AM.png */,
 				246591111C3228D8000F2CB3 /* whiteCircle.png */,
 				24EC94571C116B4E00B2F149 /* ProfileHolder.png */,
@@ -420,6 +425,7 @@
 				240BEF711BF561E9004E35FA /* Frameworks */,
 				240BEF721BF56274004E35FA /* Images */,
 				24F90D391BF2B9B100A6EA3B /* Main.storyboard */,
+				244C1ACB1C483D830072F69E /* fourinch.storyboard */,
 				2465910A1C2FC143000F2CB3 /* NewEmailViewController.h */,
 				2465910B1C2FC143000F2CB3 /* NewEmailViewController.m */,
 				246591071C2FB5BC000F2CB3 /* NewUsernameViewController.h */,
@@ -632,6 +638,7 @@
 				240BEF801BF5DB8F004E35FA /* IMG_1732.jpg in Resources */,
 				24EC94581C116B4E00B2F149 /* ProfileHolder.png in Resources */,
 				24F90D431BF2B9B100A6EA3B /* LaunchScreen.storyboard in Resources */,
+				244C1ACA1C3FA7D30072F69E /* chilies.png in Resources */,
 				24F90D981BF3EFEC00A6EA3B /* 600Social-Chef.png in Resources */,
 				240BEF961BFA7A8D004E35FA /* socialButton.png in Resources */,
 				241EB9C91C2284C000216D0C /* lima-bean-24538118.jpg in Resources */,
@@ -643,6 +650,7 @@
 				24F90D901BF3E2BD00A6EA3B /* dreamstime_l_38524672.jpg in Resources */,
 				24F90DA31BF460C000A6EA3B /* Social-ChefIconFix.png in Resources */,
 				240BEF761BF57145004E35FA /* Social-Chefwhite.png in Resources */,
+				244C1ACD1C483D830072F69E /* fourinch.storyboard in Resources */,
 				240BEF861BF5E4E4004E35FA /* jess.jpg in Resources */,
 				24EC94501C10CFDD00B2F149 /* Metal-backgrounds-vector.jpg in Resources */,
 				240BEF981BFA7D8F004E35FA /* launchscreen.png in Resources */,
@@ -755,6 +763,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		244C1ACB1C483D830072F69E /* fourinch.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				244C1ACC1C483D830072F69E /* Base */,
+			);
+			name = fourinch.storyboard;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		24F90D391BF2B9B100A6EA3B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
